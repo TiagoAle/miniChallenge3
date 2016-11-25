@@ -36,7 +36,10 @@ class ViewController: UIViewController {
             DispatchQueue.main.async{
                 
                 // Update the user interface based on the current user's health information.
-                self.healthManager.receiveUserAge()
+                self.dataManager.age = self.healthManager.receiveUserData().age
+                self.dataManager.bloodType = self.healthManager.receiveUserData().biologicalsex?.description
+                self.dataManager.sex = self.healthManager.receiveUserData().bloodtype?.description
+                print(self.healthManager.receiveUserData())
             }
         }
         

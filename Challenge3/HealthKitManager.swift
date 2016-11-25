@@ -49,29 +49,52 @@ class HealthKitManager: NSObject{
         healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead, completion: completion as (Bool, Error?) -> Void)
     }
     
-    func receiveUserAge() -> Void
+    func receiveUserData() -> ( age:Int?,  biologicalsex:HKBiologicalSexObject?, bloodtype:HKBloodTypeObject?)
     {
         var dateOfBirth: Date! = nil
-        
+        var userAge: Int! = nil
         do {
             
             dateOfBirth = try healthKitStore.dateOfBirthComponents().date
+            let now = Date()
+            
+            let ageComponents: DateComponents = Calendar.current.dateComponents([.year], from: dateOfBirth, to: now)
+            
+            userAge = ageComponents.year!
             
         } catch {
             
             print("Either an error occured fetching the user's age information or none has been stored yet. In your app, try to handle this gracefully.")
             
-            return
         }
         
-        let now = Date()
         
-        let ageComponents: DateComponents = Calendar.current.dateComponents([.year], from: dateOfBirth, to: now)
-        
-        let userAge: Int = ageComponents.year!
         
         //let ageValue: String = NumberFormatter.localizedString(from: userAge as NSNumber, number: NumberFormatter.Style.none)
-        print(userAge)
+        // 3. Read blood type
+        var bloodType:HKBloodTypeObject! = nil
+        do {
+            
+             bloodType = try healthKitStore.bloodType()
+        } catch {
+            
+            print("Either an error occured fetching the user's age information or none has been stored yet. In your app, try to handle this gracefully.")
+            
+        }
+        
+        var biologicalSex: HKBiologicalSexObject?
+        do {
+            
+            biologicalSex = try healthKitStore.biologicalSex()
+        } catch {
+            
+            print("Either an error occured fetching the user's age information or none has been stored yet. In your app, try to handle this gracefully.")
+        
+        }
+        
+        
+        // 4. Return the information read in a tuple
+        return (userAge, biologicalSex, bloodType)
     }
     
 //    func readMostRecentSample(sampleType:HKSampleType , completion: ((HKSample, Error?) -> Void)!)
@@ -80,7 +103,7 @@ class HealthKitManager: NSObject{
 //        // 1. Build the Predicate
 //        let past = Date.distantPast as Date
 //        let now   = Date()
-//        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: past, end:now, options: .none)
+//        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: past, end:now, options: .strictStartDate)
 //        
 //        // 2. Build the sort descriptor to return the samples in descending order
 //        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
@@ -97,15 +120,15 @@ class HealthKitManager: NSObject{
 //            }
 //            
 //            // Get the first sample
-//            let mostRecentSample = results.first as? HKQuantitySample
+//            let mostRecentSample = results?.first as? HKQuantitySample
 //            
 //            // Execute the completion closure
 //            if completion != nil {
-//                completion(mostRecentSample,nil)
+//                completion(mostRecentSample!,nil)
 //            }
 //        }
 //        // 5. Execute the Query
-//        self.healthKitStore.executeQuery(sampleQuery)
+//        self.healthKitStore.execute(sampleQuery)
 //    }
     
 }

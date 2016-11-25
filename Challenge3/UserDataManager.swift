@@ -11,6 +11,9 @@ import UIKit
 class UserDataManager: NSObject {
     
     var nickName = ""
+    var sex: String?
+    var age: Int?
+    var bloodType: String?
     
     func saveNickName(nickName: String) -> String{
         
