@@ -87,16 +87,17 @@
                     <connections>
                         <outlet property="nickLabel" destination="5uy-gc-AJr" id="EQ4-Y8-ZEr"/>
                         <outlet property="nickTextField" destination="W2g-gq-UUf" id="Y2e-nL-cVR"/>
+                        <segue destination="zFf-EZ-WYk" kind="push" identifier="ProfileSegue" id="2Do-EH-SgG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S3-yj-gAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1797.5999999999999" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="hQ7-9h-wmm">
             <objects>
-                <viewController id="zFf-EZ-WYk" sceneMemberID="viewController">
+                <viewController id="zFf-EZ-WYk" customClass="ProfileViewController" customModule="Challenge3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Ep-Qo-YLZ"/>
                         <viewControllerLayoutGuide type="bottom" id="yVM-Os-e7I"/>
@@ -106,10 +107,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QHW-kI-JaQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkk-49-bP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2541" y="125"/>
+            <point key="canvasLocation" x="2585" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H3P-2k-QGL">

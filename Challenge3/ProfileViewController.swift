@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    var nickName = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
