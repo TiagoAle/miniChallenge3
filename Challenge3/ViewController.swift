@@ -12,9 +12,16 @@ import HealthKit
 class ViewController: UIViewController {
 
     let healthManager = HealthKitManager()
+    let dataManager = UserDataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.dataManager.UserExist(){
+            //pula direto para a view da ficha
+            self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
+            
+        }
         
         let completion: ((Bool, Error?) -> Void)! = {
             (success, error) -> Void in
@@ -42,6 +49,16 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "ProfileSegue") {
+            // pass data to next view
+            let profileView = segue.destination as? ProfileViewController
+            profileView?.nickName = self.dataManager.nickName
+        }
+        
     }
 
 
