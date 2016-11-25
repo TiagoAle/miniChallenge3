@@ -49,7 +49,7 @@ class HealthKitManager: NSObject{
         healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead, completion: completion as (Bool, Error?) -> Void)
     }
     
-    func updateUserAge() -> Void
+    func receiveUserAge() -> Void
     {
         var dateOfBirth: Date! = nil
         
@@ -73,5 +73,39 @@ class HealthKitManager: NSObject{
         //let ageValue: String = NumberFormatter.localizedString(from: userAge as NSNumber, number: NumberFormatter.Style.none)
         print(userAge)
     }
+    
+//    func readMostRecentSample(sampleType:HKSampleType , completion: ((HKSample, Error?) -> Void)!)
+//    {
+//        
+//        // 1. Build the Predicate
+//        let past = Date.distantPast as Date
+//        let now   = Date()
+//        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: past, end:now, options: .none)
+//        
+//        // 2. Build the sort descriptor to return the samples in descending order
+//        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+//        // 3. we want to limit the number of samples returned by the query to just 1 (the most recent)
+//        let limit = 1
+//        
+//        // 4. Build samples query
+//        let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: mostRecentPredicate, limit: limit, sortDescriptors: [sortDescriptor])
+//        { (sampleQuery, results, error ) -> Void in
+//            
+//            if let queryError = error {
+//                completion(nil,error)
+//                return;
+//            }
+//            
+//            // Get the first sample
+//            let mostRecentSample = results.first as? HKQuantitySample
+//            
+//            // Execute the completion closure
+//            if completion != nil {
+//                completion(mostRecentSample,nil)
+//            }
+//        }
+//        // 5. Execute the Query
+//        self.healthKitStore.executeQuery(sampleQuery)
+//    }
     
 }

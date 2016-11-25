@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async{
                 
                 // Update the user interface based on the current user's health information.
-                self.healthManager.updateUserAge()
+                self.healthManager.receiveUserAge()
             }
         }
         
