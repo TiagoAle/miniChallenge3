@@ -39,8 +39,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.arrayInformations.append(self.dataManager.age! as Int)
                 self.arrayInformations.append(self.dataManager.sex! as String)
                 self.arrayInformations.append(self.dataManager.bloodType! as String)
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
+                self.tableView.reloadData()
+                
                 print(self.healthManager.receiveUserData())
             }
         }
@@ -51,6 +51,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         if self.dataManager.UserExist(){
             //pula direto para a view da ficha
@@ -90,7 +92,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //cell.detailTextLabel?.text = "\(self.descriptionInfo[indexPath.row]) = \(self.arrayInformations[indexPath.row])"
         cell.textLabel?.text = "\(self.descriptionInfo[indexPath.row])"
-        cell.detailTextLabel?.text = "\(self.arrayInformations[indexPath.row])"
+        if self.arrayInformations.count > 0{
+            cell.detailTextLabel?.text = "\(self.arrayInformations[indexPath.row])"
+        }
         return cell
     }
 
