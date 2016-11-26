@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class UserDataManager: NSObject {
     
     var nickName = ""

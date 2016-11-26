@@ -9,20 +9,17 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let healthManager = HealthKitManager()
     let dataManager = UserDataManager()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if self.dataManager.UserExist(){
-            //pula direto para a view da ficha
-            self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
-            
-        }
-        
+    var arrayInformations = [Any]()
+    var descriptionInfo = ["Age", "Sex", "Blood Type"]
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidAppear(_ animated: Bool) {
         let completion: ((Bool, Error?) -> Void)! = {
             (success, error) -> Void in
             
@@ -37,14 +34,30 @@ class ViewController: UIViewController {
                 
                 // Update the user interface based on the current user's health information.
                 self.dataManager.age = self.healthManager.receiveUserData().age
-                self.dataManager.bloodType = self.healthManager.receiveUserData().biologicalsex?.description
-                self.dataManager.sex = self.healthManager.receiveUserData().bloodtype?.description
+                self.dataManager.bloodType = self.healthManager.receiveUserData().bloodtype
+                self.dataManager.sex = self.healthManager.receiveUserData().biologicalsex
+                self.arrayInformations.append(self.dataManager.age! as Int)
+                self.arrayInformations.append(self.dataManager.sex! as String)
+                self.arrayInformations.append(self.dataManager.bloodType! as String)
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
                 print(self.healthManager.receiveUserData())
             }
         }
         
         healthManager.authorizeHealthKit(completion: completion)
-    
+        
+
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if self.dataManager.UserExist(){
+            //pula direto para a view da ficha
+            self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
+            
+        }
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -64,6 +77,22 @@ class ViewController: UIViewController {
         
     }
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.descriptionInfo.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell")! as UITableViewCell
+        
+        //cell.detailTextLabel?.text = "\(self.descriptionInfo[indexPath.row]) = \(self.arrayInformations[indexPath.row])"
+        cell.textLabel?.text = "\(self.descriptionInfo[indexPath.row])"
+        cell.detailTextLabel?.text = "\(self.arrayInformations[indexPath.row])"
+        return cell
+    }
 
 }
 

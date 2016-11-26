@@ -49,7 +49,7 @@ class HealthKitManager: NSObject{
         healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead, completion: completion as (Bool, Error?) -> Void)
     }
     
-    func receiveUserData() -> ( age:Int?,  biologicalsex:HKBiologicalSexObject?, bloodtype:HKBloodTypeObject?)
+    func receiveUserData() -> ( age:Int?,  biologicalsex:String?, bloodtype:String?)
     {
         var dateOfBirth: Date! = nil
         var userAge: Int! = nil
@@ -92,9 +92,50 @@ class HealthKitManager: NSObject{
         
         }
         
+        var bSex: String? {
+            if let biologicalSex =  try? healthKitStore.biologicalSex(){
+                switch biologicalSex.biologicalSex {
+                case .female:
+                    return "Female"
+                case .male:
+                    return "Male"
+                case .notSet:
+                    return nil
+                default:
+                    return nil
+                }
+            }
+            return nil
+        }
         
+        
+        var bType: String? {
+            if let bloodType = try? healthKitStore.bloodType(){
+                switch bloodType.bloodType {
+                case .aPositive:
+                    return "A+"
+                case .aNegative:
+                    return "A-"
+                case .bPositive:
+                    return "B+"
+                case .bNegative:
+                    return "B-"
+                case .abPositive:
+                    return "AB+"
+                case .abNegative:
+                    return "AB-"
+                case .oPositive:
+                    return "O+"
+                case .oNegative:
+                    return "O-"
+                case .notSet:
+                    return nil
+                }
+            }
+            return nil
+        }
         // 4. Return the information read in a tuple
-        return (userAge, biologicalSex, bloodType)
+        return (userAge, bSex, bType)
     }
     
 //    func readMostRecentSample(sampleType:HKSampleType , completion: ((HKSample, Error?) -> Void)!)
