@@ -44,7 +44,10 @@ class UserDataManager: NSObject {
         //        }
         
         UserDefaults.standard.set(nickName, forKey: "nick")
-        self.nickName = nickName
+        if let nick = UserDefaults.standard.object(forKey: "nick") as? String{
+            self.nickName = nick
+        }
+        
         return self.nickName
     }
     

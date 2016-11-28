@@ -13,6 +13,7 @@ import HealthKit
 class Challenge3Tests: XCTestCase {
     
     let healthManger = HealthKitManager()
+    let userDataManager = UserDataManager()
     override func setUp() {
         super.setUp()
         
@@ -67,6 +68,23 @@ class Challenge3Tests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    
+//    func saveNickName(nickName: String) -> String{
+//
+//        
+//        UserDefaults.standard.set(nickName, forKey: "nick")
+//        self.nickName = nickName
+//        return self.nickName
+//    }
+//
+
+    func testSaveNickName(){
+        let nick = "name"
+        self.userDataManager.nickName = nick
+        self.userDataManager.saveNickName(nickName: "test")
+        XCTAssertNotEqual(nick, self.userDataManager.nickName, "O nick nao esta sendo salvo corretamento")
     }
     
 }
