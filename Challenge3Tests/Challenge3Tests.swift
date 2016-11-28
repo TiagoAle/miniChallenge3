@@ -71,20 +71,23 @@ class Challenge3Tests: XCTestCase {
     }
     
     
-//    func saveNickName(nickName: String) -> String{
-//
-//        
-//        UserDefaults.standard.set(nickName, forKey: "nick")
-//        self.nickName = nickName
-//        return self.nickName
-//    }
-//
 
     func testSaveNickName(){
         let nick = "name"
         self.userDataManager.nickName = nick
         self.userDataManager.saveNickName(nickName: "test")
         XCTAssertNotEqual(nick, self.userDataManager.nickName, "O nick nao esta sendo salvo corretamento")
+    }
+    
+
+    func testUserExist(){
+    
+        var text = "none"
+        userDataManager.saveNickName(nickName: "test")
+        text = userDataManager.nickName
+        
+        XCTAssert((text == "test")||userDataManager.UserExist(), "nao consiguiu verificar exitencia do usuario")
+        
     }
     
 }
