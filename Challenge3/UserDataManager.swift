@@ -43,7 +43,7 @@ class UserDataManager: NSObject {
         //
         //        }
         
-        UserDefaults.standard.set(nickName, forKey: "key")
+        UserDefaults.standard.set(nickName, forKey: "nick")
         self.nickName = nickName
         return self.nickName
     }
