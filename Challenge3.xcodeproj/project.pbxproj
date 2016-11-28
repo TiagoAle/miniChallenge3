@@ -20,6 +20,7 @@
 		A7C009F11DE8725F0049541F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F01DE8725F0049541F /* ProfileViewController.swift */; };
 		A7C009F31DE872750049541F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F21DE872750049541F /* RegisterViewController.swift */; };
 		A7C009F51DE8728B0049541F /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F41DE8728B0049541F /* UserDataManager.swift */; };
+		A7DD7E841DEC674C00AC0D29 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		A7C009F01DE8725F0049541F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A7C009F21DE872750049541F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A7C009F41DE8728B0049541F /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				A7C009F41DE8728B0049541F /* UserDataManager.swift */,
 				6A4E8AF51DE704730067B2CF /* HealthKitManager.swift */,
+				A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				6A77FC001DD4BD0C0008AFED /* ViewController.swift in Sources */,
 				A7C009F11DE8725F0049541F /* ProfileViewController.swift in Sources */,
 				A7C009F31DE872750049541F /* RegisterViewController.swift in Sources */,
+				A7DD7E841DEC674C00AC0D29 /* CharacterModel.swift in Sources */,
 				6A4E8AF61DE704730067B2CF /* HealthKitManager.swift in Sources */,
 				6A77FBFE1DD4BD0C0008AFED /* AppDelegate.swift in Sources */,
 			);
