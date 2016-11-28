@@ -158,16 +158,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Zg8-oS-QjE"/>
+                    <navigationItem key="navigationItem" id="Zg8-oS-QjE">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="29B-14-Fkz">
+                            <connections>
+                                <segue destination="zFf-EZ-WYk" kind="show" id="LWj-L7-Dpe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nickLabel" destination="5uy-gc-AJr" id="EQ4-Y8-ZEr"/>
                         <outlet property="nickTextField" destination="W2g-gq-UUf" id="Y2e-nL-cVR"/>
-                        <segue destination="zFf-EZ-WYk" kind="push" identifier="ProfileSegue" id="2Do-EH-SgG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S3-yj-gAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="-949"/>
+            <point key="canvasLocation" x="1985" y="-600"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="hQ7-9h-wmm">
@@ -186,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkk-49-bP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2585" y="139"/>
+            <point key="canvasLocation" x="1985" y="278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H3P-2k-QGL">
@@ -208,6 +213,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b1K-QR-rVB"/>
+        <segue reference="LWj-L7-Dpe"/>
     </inferredMetricsTieBreakers>
 </document>
