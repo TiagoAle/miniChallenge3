@@ -9,43 +9,21 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserDataManagerDelegate {
 
-    let healthManager = HealthKitManager()
     let dataManager = UserDataManager()
-    
     var arrayInformations = [Any]()
-    var descriptionInfo = ["Age", "Sex", "Blood Type"]
+    
+    var descriptionInfo = ["Age", "Sex", "Blood Type", "Weight", "Height", "BMI"]
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
-        let completion: ((Bool, Error?) -> Void)! = {
-            (success, error) -> Void in
-            
-            if !success {
-                
-                print("You didn't allow HealthKit to access these read/write data types. In your app, try to handle this error gracefully when a user decides not to provide access. The error was: \(error). If you're using a simulator, try it on a device.")
-                
-                return
-            }
-            
-            DispatchQueue.main.async{
-                
-                // Update the user interface based on the current user's health information.
-                self.dataManager.age = self.healthManager.receiveUserData().age
-                self.dataManager.bloodType = self.healthManager.receiveUserData().bloodtype
-                self.dataManager.sex = self.healthManager.receiveUserData().biologicalsex
-                self.arrayInformations.append(self.dataManager.age! as Int)
-                self.arrayInformations.append(self.dataManager.sex! as String)
-                self.arrayInformations.append(self.dataManager.bloodType! as String)
-                self.tableView.reloadData()
-                
-                print(self.healthManager.receiveUserData())
-            }
-        }
+        //self.dataManager.checkData()
         
-        healthManager.authorizeHealthKit(completion: completion)
+        self.dataManager.receiveProfile()
+        
+        self.tableView.reloadData()
         
 
     }
@@ -53,6 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.dataManager.delegate = self
         
         if self.dataManager.UserExist(){
             //pula direto para a view da ficha
@@ -60,7 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         
-        
+        self.tableView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -78,6 +57,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
+    // TRY USE USERDATAMANAGERDELEGATE
+    func updatingDataTableView(arrayInfo: [Any]) {
+        self.arrayInformations = arrayInfo
+        self.tableView.reloadData()
+    }
+
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
