@@ -16,6 +16,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var descriptionInfo = ["Age", "Sex", "Blood Type", "Weight", "Height", "BMI"]
     
+    
+    @IBOutlet weak var continueButtom: UIButton!
+    @IBOutlet weak var switchStatus: UISwitch!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +46,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         self.tableView.reloadData()
+        
+        self.continueButtom.isEnabled = false
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -57,6 +66,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
+    //action to change status
+    
+    @IBAction func termsAction(_ sender: UISwitch) {
+        
+        if sender.isOn{
+            
+            self.statusLabel.text = "Yes"
+            self.continueButtom.isEnabled = true
+            
+        }else{
+            self.statusLabel.text = "No"
+            self.continueButtom.isEnabled = false
+        }
+        
+    }
+    
     
     // TRY USE USERDATAMANAGERDELEGATE
     func updatingDataTableView(arrayInfo: [Any]) {

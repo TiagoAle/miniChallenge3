@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gZ4-pc-me0">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gZ4-pc-me0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -63,6 +63,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Terms:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFh-ZG-bzt">
+                                <rect key="frame" x="32" y="356" width="105" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kZC-nt-tNV">
+                                <rect key="frame" x="32" y="385" width="322" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">---------------------------------------------------------------------------------------------------------------------------------------------</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fy3-2i-EPw">
+                                <rect key="frame" x="127" y="500" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="termsAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="LSb-OS-aTw"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKH-sy-WKn">
+                                <rect key="frame" x="206" y="505" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -73,12 +102,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="User Profile" id="Xyr-Ra-Us8"/>
                     <connections>
+                        <outlet property="continueButtom" destination="dIf-gd-V8j" id="SCY-mi-8hv"/>
+                        <outlet property="statusLabel" destination="bKH-sy-WKn" id="8Gn-xG-Qx6"/>
+                        <outlet property="switchStatus" destination="Fy3-2i-EPw" id="8e0-av-lqY"/>
                         <outlet property="tableView" destination="PRI-bT-Ezh" id="5BD-EO-qP4"/>
+                        <segue destination="zFf-EZ-WYk" kind="show" identifier="ProfileSegue" id="b1K-QR-rVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048.8" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1040.8" y="-145.27736131934034"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="LhI-ro-vs7">
@@ -125,16 +158,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Zg8-oS-QjE"/>
+                    <navigationItem key="navigationItem" id="Zg8-oS-QjE">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="29B-14-Fkz">
+                            <connections>
+                                <segue destination="zFf-EZ-WYk" kind="show" id="LWj-L7-Dpe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nickLabel" destination="5uy-gc-AJr" id="EQ4-Y8-ZEr"/>
                         <outlet property="nickTextField" destination="W2g-gq-UUf" id="Y2e-nL-cVR"/>
-                        <segue destination="zFf-EZ-WYk" kind="push" identifier="ProfileSegue" id="2Do-EH-SgG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S3-yj-gAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797.5999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1985" y="-600"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="hQ7-9h-wmm">
@@ -153,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkk-49-bP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2585" y="139"/>
+            <point key="canvasLocation" x="1985" y="278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H3P-2k-QGL">
@@ -174,4 +212,7 @@
             <point key="canvasLocation" x="167" y="139"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="LWj-L7-Dpe"/>
+    </inferredMetricsTieBreakers>
 </document>
