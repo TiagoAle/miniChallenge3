@@ -45,14 +45,14 @@ class HealthKitManager: NSObject{
             }
             return
         }
-            
+        
         healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead, completion: completion as (Bool, Error?) -> Void)
     }
     
     func receiveUserData() -> ( age:Int?,  biologicalsex:String?, bloodtype:String?)
     {
         var dateOfBirth: Date! = nil
-        var userAge: Int! = nil
+        var userAge: Int! = -1
         do {
             
             dateOfBirth = try healthKitStore.dateOfBirthComponents().date
@@ -75,7 +75,7 @@ class HealthKitManager: NSObject{
         var bloodType:HKBloodTypeObject! = nil
         do {
             
-             bloodType = try healthKitStore.bloodType()
+            bloodType = try healthKitStore.bloodType()
         } catch {
             
             print("Either an error occured fetching the user's age information or none has been stored yet. In your app, try to handle this gracefully.")
@@ -89,7 +89,7 @@ class HealthKitManager: NSObject{
         } catch {
             
             print("Either an error occured fetching the user's age information or none has been stored yet. In your app, try to handle this gracefully.")
-        
+            
         }
         
         var bSex: String? {
@@ -100,12 +100,12 @@ class HealthKitManager: NSObject{
                 case .male:
                     return "Male"
                 case .notSet:
-                    return nil
+                    return "Unknown"
                 default:
-                    return nil
+                    return "Unknown"
                 }
             }
-            return nil
+            return "Unknown"
         }
         
         
@@ -129,10 +129,10 @@ class HealthKitManager: NSObject{
                 case .oNegative:
                     return "O-"
                 case .notSet:
-                    return nil
+                    return "Unknown"
                 }
             }
-            return nil
+            return "Unknown"
         }
         // 4. Return the information read in a tuple
         return (userAge, bSex, bType)

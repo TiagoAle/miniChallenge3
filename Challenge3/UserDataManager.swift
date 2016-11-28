@@ -63,15 +63,6 @@ class UserDataManager: NSObject {
     }
     
     func checkData() {
-        if self.sex == nil{
-            self.sex = "Unknown"
-        }
-        if self.age == nil{
-            self.age = -1
-        }
-        if self.bloodType == nil{
-            self.bloodType = "Unknown"
-        }
         if self.height == nil{
             self.height = "Unknown"
         }
