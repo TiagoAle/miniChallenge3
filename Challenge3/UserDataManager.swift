@@ -169,7 +169,7 @@ class UserDataManager: NSObject {
             // 4. Update UI. HealthKit use an internal queue. We make sure that we interact with the UI in the main thread
             DispatchQueue.main.async {
                 self.height = heightLocalizedString
-                self.arrayInformations[3] = self.height! as String
+                //self.arrayInformations[3] = self.height! as String
                 self.updateBMI()
             }
             
