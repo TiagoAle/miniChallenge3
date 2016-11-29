@@ -335,10 +335,10 @@
             </objects>
             <point key="canvasLocation" x="1984.8" y="277.51124437781112"/>
         </scene>
-        <!--Workout View Controller-->
+        <!--Pedometer View Controller-->
         <scene sceneID="kTw-27-fTj">
             <objects>
-                <viewController id="iMk-j0-qpE" customClass="WorkoutViewController" customModule="Challenge3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iMk-j0-qpE" customClass="PedometerViewController" customModule="Challenge3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vGE-z7-RUA"/>
                         <viewControllerLayoutGuide type="bottom" id="oAZ-Ud-VbS"/>
@@ -347,93 +347,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3E8-UQ-oZn" customClass="CustomView" customModule="Challenge3" customModuleProvider="target">
-                                <rect key="frame" x="56" y="125" width="263" height="85"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-Dc-USL">
+                                <rect key="frame" x="137.5" y="317" width="99.5" height="32"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0L1-lE-JHI">
-                                        <rect key="frame" x="18" y="8" width="226" height="69"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="53"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnT-w6-MT4">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="32"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="27"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aah-LZ-z7H">
+                                        <rect key="frame" x="85" y="0.0" width="14.5" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="0L1-lE-JHI" secondAttribute="bottom" constant="8" id="LdG-h4-HAo"/>
-                                    <constraint firstItem="0L1-lE-JHI" firstAttribute="leading" secondItem="3E8-UQ-oZn" secondAttribute="leading" constant="18" id="Poa-Hl-d5N"/>
-                                    <constraint firstAttribute="trailing" secondItem="0L1-lE-JHI" secondAttribute="trailing" constant="19" id="Qso-H9-TBz"/>
-                                    <constraint firstAttribute="width" constant="263" id="feb-RV-5AX"/>
-                                    <constraint firstAttribute="height" constant="85" id="gRv-Yl-YUn"/>
-                                    <constraint firstItem="0L1-lE-JHI" firstAttribute="top" secondItem="3E8-UQ-oZn" secondAttribute="top" constant="8" id="msq-UJ-2XO"/>
+                                    <constraint firstItem="aah-LZ-z7H" firstAttribute="leading" secondItem="bnT-w6-MT4" secondAttribute="trailing" id="AM7-46-JvX"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnT-w6-MT4">
-                                <rect key="frame" x="56" y="218" width="263" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="263" id="BXR-bT-p6S"/>
-                                    <constraint firstAttribute="height" constant="49" id="lXP-2K-Okk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="27"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEV-jd-FpI">
-                                <rect key="frame" x="131" y="275" width="113" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="Jmq-MQ-V8C"/>
-                                    <constraint firstAttribute="height" constant="48" id="QBv-Ih-NYm"/>
-                                </constraints>
-                                <state key="normal" title="Go">
-                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="startTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="Ins-si-ghG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRm-CM-rft">
-                                <rect key="frame" x="131" y="331" width="113" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="06i-jI-5bS"/>
-                                    <constraint firstAttribute="height" constant="48" id="Zm4-aR-eAX"/>
-                                </constraints>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="stopTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="dSY-4A-2U2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJW-26-2al">
-                                <rect key="frame" x="131" y="387" width="113" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="DvQ-2Z-yNx"/>
-                                    <constraint firstAttribute="width" constant="113" id="whv-cn-kcU"/>
-                                </constraints>
-                                <state key="normal" title="Share">
-                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="share:" destination="iMk-j0-qpE" eventType="touchUpInside" id="iig-af-5vE"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZEV-jd-FpI" firstAttribute="top" secondItem="bnT-w6-MT4" secondAttribute="bottom" constant="8" id="2Ik-LM-tXh"/>
-                            <constraint firstItem="ZEV-jd-FpI" firstAttribute="centerX" secondItem="bnT-w6-MT4" secondAttribute="centerX" id="70W-iG-BKy"/>
-                            <constraint firstItem="ZEV-jd-FpI" firstAttribute="top" secondItem="PVt-FS-Vdm" secondAttribute="top" constant="275" id="91s-sa-NRc"/>
-                            <constraint firstItem="BJW-26-2al" firstAttribute="top" secondItem="fRm-CM-rft" secondAttribute="bottom" constant="8" id="C60-Ie-yGl"/>
-                            <constraint firstItem="ZEV-jd-FpI" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="Iqt-ba-hDi"/>
-                            <constraint firstItem="bnT-w6-MT4" firstAttribute="top" secondItem="3E8-UQ-oZn" secondAttribute="bottom" constant="8" id="Kpk-CK-ciW"/>
-                            <constraint firstItem="ZEV-jd-FpI" firstAttribute="leading" secondItem="fRm-CM-rft" secondAttribute="leading" id="Lwp-a7-i1P"/>
-                            <constraint firstItem="fRm-CM-rft" firstAttribute="top" secondItem="ZEV-jd-FpI" secondAttribute="bottom" constant="8" id="j2Z-ka-zy7"/>
-                            <constraint firstItem="ZEV-jd-FpI" firstAttribute="centerX" secondItem="3E8-UQ-oZn" secondAttribute="centerX" id="tmI-Aa-7pI"/>
-                            <constraint firstItem="ZEV-jd-FpI" firstAttribute="leading" secondItem="BJW-26-2al" secondAttribute="leading" id="uhA-nU-eRa"/>
+                            <constraint firstItem="NYc-Dc-USL" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="dzY-7d-ww4"/>
+                            <constraint firstItem="NYc-Dc-USL" firstAttribute="centerY" secondItem="PVt-FS-Vdm" secondAttribute="centerY" id="o57-PV-Pvr"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="milesLabel" destination="bnT-w6-MT4" id="Tlo-QM-EJZ"/>
-                        <outlet property="timerLabel" destination="0L1-lE-JHI" id="fMe-r2-DKn"/>
+                        <outlet property="steps" destination="aah-LZ-z7H" id="VWj-d6-b4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1W-3C-fuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
