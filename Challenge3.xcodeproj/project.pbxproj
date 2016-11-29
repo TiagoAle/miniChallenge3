@@ -18,6 +18,7 @@
 		6A77FC161DD4BD0C0008AFED /* Challenge3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FC151DD4BD0C0008AFED /* Challenge3Tests.swift */; };
 		6A77FC211DD4BD0C0008AFED /* Challenge3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FC201DD4BD0C0008AFED /* Challenge3UITests.swift */; };
 		6AC859B71DED135000590D27 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC859B61DED135000590D27 /* WorkoutViewController.swift */; };
+		6AC8ED061DEDBEC8007D13CC /* PedometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */; };
 		A7C009F11DE8725F0049541F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F01DE8725F0049541F /* ProfileViewController.swift */; };
 		A7C009F31DE872750049541F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F21DE872750049541F /* RegisterViewController.swift */; };
 		A7C009F51DE8728B0049541F /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F41DE8728B0049541F /* UserDataManager.swift */; };
@@ -60,6 +61,7 @@
 		6A77FC201DD4BD0C0008AFED /* Challenge3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge3UITests.swift; sourceTree = "<group>"; };
 		6A77FC221DD4BD0C0008AFED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AC859B61DED135000590D27 /* WorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerViewController.swift; sourceTree = "<group>"; };
 		A7C009F01DE8725F0049541F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A7C009F21DE872750049541F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A7C009F41DE8728B0049541F /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				A7C009F21DE872750049541F /* RegisterViewController.swift */,
 				6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */,
 				6AC859B61DED135000590D27 /* WorkoutViewController.swift */,
+				6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				A7C009F31DE872750049541F /* RegisterViewController.swift in Sources */,
 				A7DD7E841DEC674C00AC0D29 /* CharacterModel.swift in Sources */,
 				6A4E8AF61DE704730067B2CF /* HealthKitManager.swift in Sources */,
+				6AC8ED061DEDBEC8007D13CC /* PedometerViewController.swift in Sources */,
 				6A77FBFE1DD4BD0C0008AFED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
