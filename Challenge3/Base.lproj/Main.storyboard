@@ -98,6 +98,7 @@
                                 <state key="normal" title="view all"/>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="PRI-bT-Ezh" secondAttribute="trailing" id="G0E-Fe-IZC"/>
                             <constraint firstItem="PRI-bT-Ezh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SzH-1r-E47"/>

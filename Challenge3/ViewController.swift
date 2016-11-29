@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.dataManager.receiveProfile()
         
         self.tableView.reloadData()
+        self.view.backgroundColor = UIColor.white
         
 
     }
