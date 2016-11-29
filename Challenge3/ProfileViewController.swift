@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import HealthKit
 
 class ProfileViewController: UIViewController {
     
     var nickName = ""
-
+    let healthManager = HealthKitManager()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +23,6 @@ class ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
