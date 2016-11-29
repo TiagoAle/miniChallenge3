@@ -102,8 +102,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell")! as UITableViewCell
-        
-        //cell.detailTextLabel?.text = "\(self.descriptionInfo[indexPath.row]) = \(self.arrayInformations[indexPath.row])"
+    
         cell.textLabel?.text = "\(self.descriptionInfo[indexPath.row])"
         if self.arrayInformations.count > 0{
             cell.detailTextLabel?.text = "\(self.arrayInformations[indexPath.row])"
