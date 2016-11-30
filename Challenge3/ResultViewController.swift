@@ -10,10 +10,18 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
+    @IBOutlet weak var resultTextView: UITextView!
+    
+    var goal: Bool?
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.goal = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +30,22 @@ class ResultViewController: UIViewController {
     }
     
 
+    func userMadeIt(){
+    
+        if self.goal == true{
+            var text = self.resultTextView.text
+            text?.append(" User win")
+            self.resultTextView.text = text
+        }else{
+        
+            var text = self.resultTextView.text
+            text?.append(" User lose")
+            self.resultTextView.text = text
+            
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
