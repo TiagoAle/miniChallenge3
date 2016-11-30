@@ -309,19 +309,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sp7-3E-C8R">
-                                <rect key="frame" x="103" y="219" width="103" height="30"/>
-                                <state key="normal" title="Iniciar Workout"/>
-                                <connections>
-                                    <segue destination="iMk-j0-qpE" kind="show" identifier="segue" id="KeS-6M-7eo"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C7V-dm-Gq6" firstAttribute="trailing" secondItem="gaR-Rf-7oc" secondAttribute="trailingMargin" id="2yS-kU-I7c"/>
-                            <constraint firstItem="yVM-Os-e7I" firstAttribute="top" secondItem="sp7-3E-C8R" secondAttribute="bottom" constant="418" id="9ML-EE-t5D"/>
-                            <constraint firstItem="sp7-3E-C8R" firstAttribute="centerX" secondItem="gaR-Rf-7oc" secondAttribute="centerX" constant="-33" id="VfO-bR-3Mp"/>
                             <constraint firstItem="C7V-dm-Gq6" firstAttribute="leading" secondItem="gaR-Rf-7oc" secondAttribute="leadingMargin" id="aeI-DC-fby"/>
                             <constraint firstItem="yVM-Os-e7I" firstAttribute="top" secondItem="C7V-dm-Gq6" secondAttribute="bottom" constant="20" id="uXF-6t-sq9"/>
                         </constraints>
@@ -329,6 +320,7 @@
                     <navigationItem key="navigationItem" id="QHW-kI-JaQ"/>
                     <connections>
                         <outlet property="missionTable" destination="C7V-dm-Gq6" id="xDk-vB-p2C"/>
+                        <segue destination="iMk-j0-qpE" kind="show" identifier="segue" id="zXR-Wc-T4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkk-49-bP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
