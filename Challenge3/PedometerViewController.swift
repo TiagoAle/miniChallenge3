@@ -92,12 +92,12 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var lastLocation = locations.last
+        let lastLocation = locations.last
         //var secondLast = locations[locations.count - 2]
         //var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
-        labelSpeed.text = "\((lastLocation?.speed)!)"
+        labelSpeed.text = String.init(format: "%.2f", (lastLocation?.speed)! * 3.6)
         //print(speed)
-        print(lastLocation?.speed)
+        print((lastLocation?.speed)!)
     }
     
 }
