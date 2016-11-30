@@ -15,6 +15,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
    // @IBOutlet weak var activityState: UILabel!
     @IBOutlet weak var steps: UILabel!
     
+    @IBOutlet weak var labelSpeed: UILabel!
     var days:[String] = []
     var stepsTaken:[Int] = []
     var manager = CLLocationManager()
@@ -27,6 +28,12 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
         
         super.viewDidLoad()
         self.manager.delegate = self
+        self.manager.requestAlwaysAuthorization()
+        
+        self.manager.desiredAccuracy = kCLLocationAccuracyBest
+        self.manager.distanceFilter = kCLDistanceFilterNone
+        self.manager.startUpdatingLocation()
+        self.manager.startUpdatingHeading()
         
         var cal = Calendar.current
         var comps = cal.dateComponents([Calendar.Component.year,Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second], from: Date())
@@ -86,8 +93,11 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         var lastLocation = locations.last
-        var secondLast = locations[locations.count - 2]
-        var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
+        //var secondLast = locations[locations.count - 2]
+        //var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
+        labelSpeed.text = "\((lastLocation?.speed)!)"
+        //print(speed)
+        print(lastLocation?.speed)
     }
     
 }
