@@ -91,6 +91,13 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    
+    @IBAction func showResultsAction(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "Result", sender: nil)
+    }
+    
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let lastLocation = locations.last
         //var secondLast = locations[locations.count - 2]

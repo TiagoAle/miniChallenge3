@@ -388,6 +388,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBV-0x-QG4">
+                                <rect key="frame" x="132" y="528" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show result"/>
+                                <connections>
+                                    <action selector="showResultsAction:" destination="iMk-j0-qpE" eventType="touchUpInside" id="kRK-6w-z2G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -442,10 +450,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szK-6t-X9F">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hPI-kI-f0S"/>
+                                    <constraint firstAttribute="width" constant="46" id="v19-8Z-FYF"/>
+                                </constraints>
+                                <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="goToProfile:" destination="U63-LO-HEn" eventType="touchUpInside" id="8Qn-Bq-FDh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vyv-Xl-n9r" firstAttribute="top" secondItem="szK-6t-X9F" secondAttribute="bottom" constant="20" id="AoT-j5-AH7"/>
                             <constraint firstItem="k6q-3u-Akj" firstAttribute="top" secondItem="tAJ-TI-FD6" secondAttribute="bottom" constant="60" id="LIm-F2-fPY"/>
+                            <constraint firstItem="szK-6t-X9F" firstAttribute="centerX" secondItem="0Zp-e6-7ok" secondAttribute="centerX" id="gdY-fg-bFi"/>
                             <constraint firstItem="tAJ-TI-FD6" firstAttribute="top" secondItem="FgO-dr-3GD" secondAttribute="bottom" constant="121" id="hxw-aX-fam"/>
                             <constraint firstItem="tAJ-TI-FD6" firstAttribute="centerX" secondItem="0Zp-e6-7ok" secondAttribute="centerX" id="qBn-DR-Sa2"/>
                             <constraint firstItem="k6q-3u-Akj" firstAttribute="centerX" secondItem="0Zp-e6-7ok" secondAttribute="centerX" id="rRw-Vd-MDd"/>
