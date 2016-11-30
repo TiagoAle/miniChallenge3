@@ -24,6 +24,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
     let activityManager = CMMotionActivityManager()
     let pedoMeter = CMPedometer()
     
+    let desafio = 10.0
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -39,12 +41,16 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
         var cal = Calendar.current
         var comps = cal.dateComponents([Calendar.Component.year,Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second], from: Date())
         
-        comps.hour = 0
-        comps.minute = 0
-        comps.second = 0
+        
+        //comps.hour = 0
+        //comps.minute = 0
+        //comps.second = 0
+        //print("Cal: \(comps.hour)")
         let timeZone = NSTimeZone.system
         cal.timeZone = timeZone
+        
     
+        
         let midnightOfToday = cal.date(from: comps)
         
         
@@ -66,13 +72,17 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
             })
         }
         if(CMPedometer.isStepCountingAvailable()){
-            let fromDate = NSDate(timeIntervalSinceNow: -86400 * 7)
+            //let fromDate = Date(timeIntervalSinceNow: -86400 * 7)
+            let fromDate = Date()
             self.pedoMeter.queryPedometerData(from: fromDate as Date, to: Date(), withHandler: { (data, error) in
                 print(data!)
                 
                 DispatchQueue.main.async {
                     if(error == nil){
                         self.steps.text = "\(data!.numberOfSteps)"
+                        if data!.numberOfSteps.doubleValue >= self.desafio{
+                            self.performSegue(withIdentifier: "Result", sender: nil)
+                        }
                     }
                 }
                 
@@ -82,6 +92,9 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
                 DispatchQueue.main.async {
                     if(error == nil){
                         self.steps.text = "\(data!.numberOfSteps)"
+                        if data!.numberOfSteps.doubleValue >= self.desafio{
+                            self.performSegue(withIdentifier: "Result", sender: nil)
+                        }
                     }
                 }
             }
