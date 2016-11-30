@@ -19,7 +19,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
     var days:[String] = []
     var stepsTaken:[Int] = []
     var manager = CLLocationManager()
-    
+    var locations = [CLLocation]()
    // @IBOutlet weak var stateImageView: UIImageView!
     let activityManager = CMMotionActivityManager()
     let pedoMeter = CMPedometer()
@@ -31,7 +31,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
         self.manager.requestAlwaysAuthorization()
         
         self.manager.desiredAccuracy = kCLLocationAccuracyBest
-        self.manager.distanceFilter = kCLDistanceFilterNone
+        self.manager.activityType = .fitness
+        self.manager.distanceFilter = 1
         self.manager.startUpdatingLocation()
         self.manager.startUpdatingHeading()
         
@@ -52,6 +53,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
                 DispatchQueue.main.async(execute: { () -> Void in
                     if(data!.stationary == true){
                         print("Stationary")
+                        self.labelSpeed.text = "0.00"
                     } else if (data!.walking == true){
                         print("Walking")
                     } else if (data!.running == true){
@@ -99,5 +101,21 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
         //print(speed)
         print((lastLocation?.speed)!)
     }
+    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        
+//        let lastLocation = locations.last
+//        self.locations.append(lastLocation!)
+//        let secondLast: CLLocation
+//        if self.locations.count > 1{
+//            secondLast = self.locations[self.locations.count-2]
+//            let distanceChange: CLLocationDistance = (lastLocation?.distance(from: secondLast))!
+//            let sinceLastUpdate: TimeInterval = (lastLocation?.timestamp.timeIntervalSince(secondLast.timestamp))!
+//            let calculatedSpeed = distanceChange/sinceLastUpdate
+//            labelSpeed.text = String.init(format: "%.2f", (calculatedSpeed) * 3.6)
+//            print(calculatedSpeed)
+//        }
+//        
+//    }
     
 }
