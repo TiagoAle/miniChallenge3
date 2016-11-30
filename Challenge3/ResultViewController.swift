@@ -31,7 +31,13 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func goToProfile(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+
+        let presentingVC = self.presentingViewController!
+        let navigationController = presentingVC is UINavigationController ? presentingVC as? UINavigationController : presentingVC.navigationController
+        navigationController?.popViewController(animated: false)
         
+        self.dismiss(animated: true, completion: nil)
         
     }
     
