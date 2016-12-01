@@ -408,7 +408,7 @@
                     <navigationItem key="navigationItem" title="Daily Mission" id="TrZ-OQ-2m2"/>
                     <connections>
                         <outlet property="labelSpeed" destination="ZtJ-tz-zM1" id="Ok8-lp-GVB"/>
-                        <outlet property="steps" destination="aah-LZ-z7H" id="VWj-d6-b4u"/>
+                        <outlet property="labelSteps" destination="aah-LZ-z7H" id="nK2-p8-MgR"/>
                         <segue destination="U63-LO-HEn" kind="popoverPresentation" identifier="Result" popoverAnchorView="PVt-FS-Vdm" id="Bkz-HF-YHG">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
