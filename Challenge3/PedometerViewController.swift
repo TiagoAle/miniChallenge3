@@ -10,25 +10,31 @@ import UIKit
 import CoreMotion
 import CoreLocation
 
-class PedometerViewController: UIViewController, CLLocationManagerDelegate {
+class PedometerViewController: UIViewController, CLLocationManagerDelegate, PedometerManagerDelegate {
     
    // @IBOutlet weak var activityState: UILabel!
-    @IBOutlet weak var steps: UILabel!
+    @IBOutlet weak var labelSteps: UILabel!
     
     @IBOutlet weak var labelSpeed: UILabel!
-    var days:[String] = []
-    var stepsTaken:[Int] = []
+    var stepsQuant: NSNumber = 0
+    var pedometer = PedometerManager()
+    var speed: Double?
+//    var days:[String] = []
+//    var stepsTaken:[Int] = []
     var manager = CLLocationManager()
     var locations = [CLLocation]()
-   // @IBOutlet weak var stateImageView: UIImageView!
-    let activityManager = CMMotionActivityManager()
-    let pedoMeter = CMPedometer()
-    
-    let desafio = 10.0
+//   // @IBOutlet weak var stateImageView: UIImageView!
+//    let activityManager = CMMotionActivityManager()
+//    let pedoMeter = CMPedometer()
+//    
+//    let desafio = 10.0
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.pedometer.delegate = self
+        pedometer.congigure()
+        pedometer.updateValues()
         self.manager.delegate = self
         self.manager.requestAlwaysAuthorization()
         
@@ -37,68 +43,68 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
         self.manager.distanceFilter = 1
         self.manager.startUpdatingLocation()
         self.manager.startUpdatingHeading()
-        
-        var cal = Calendar.current
-        var comps = cal.dateComponents([Calendar.Component.year,Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second], from: Date())
-        
-        
-        //comps.hour = 0
-        //comps.minute = 0
-        //comps.second = 0
-        //print("Cal: \(comps.hour)")
-        let timeZone = NSTimeZone.system
-        cal.timeZone = timeZone
-        
-    
-        
-        let midnightOfToday = cal.date(from: comps)
-        
-        
-        if(CMMotionActivityManager.isActivityAvailable()){
-            self.activityManager.startActivityUpdates(to: OperationQueue.main, withHandler: { (data) -> Void in
-                DispatchQueue.main.async(execute: { () -> Void in
-                    if(data!.stationary == true){
-                        print("Stationary")
-                        self.labelSpeed.text = "0.00"
-                    } else if (data!.walking == true){
-                        print("Walking")
-                    } else if (data!.running == true){
-                        print("Running")
-                    } else if (data!.automotive == true){
-                        print("Automotive")
-                    }
-                })
-                
-            })
-        }
-        if(CMPedometer.isStepCountingAvailable()){
-            //let fromDate = Date(timeIntervalSinceNow: -86400 * 7)
-            let fromDate = Date()
-            self.pedoMeter.queryPedometerData(from: fromDate as Date, to: Date(), withHandler: { (data, error) in
-                print(data!)
-                
-                DispatchQueue.main.async {
-                    if(error == nil){
-                        self.steps.text = "\(data!.numberOfSteps)"
-                        if data!.numberOfSteps.doubleValue >= self.desafio{
-                            self.performSegue(withIdentifier: "Result", sender: nil)
-                        }
-                    }
-                }
-                
-            })
-            
-            self.pedoMeter.startUpdates(from: midnightOfToday!) { (data, error) -> Void in
-                DispatchQueue.main.async {
-                    if(error == nil){
-                        self.steps.text = "\(data!.numberOfSteps)"
-                        if data!.numberOfSteps.doubleValue >= self.desafio{
-                            self.performSegue(withIdentifier: "Result", sender: nil)
-                        }
-                    }
-                }
-            }
-        }
+//
+//        var cal = Calendar.current
+//        var comps = cal.dateComponents([Calendar.Component.year,Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second], from: Date())
+//        
+//        
+//        //comps.hour = 0
+//        //comps.minute = 0
+//        //comps.second = 0
+//        //print("Cal: \(comps.hour)")
+//        let timeZone = NSTimeZone.system
+//        cal.timeZone = timeZone
+//        
+//    
+//        
+//        let midnightOfToday = cal.date(from: comps)
+//        
+//        
+//        if(CMMotionActivityManager.isActivityAvailable()){
+//            self.activityManager.startActivityUpdates(to: OperationQueue.main, withHandler: { (data) -> Void in
+//                DispatchQueue.main.async(execute: { () -> Void in
+//                    if(data!.stationary == true){
+//                        print("Stationary")
+//                        self.labelSpeed.text = "0.00"
+//                    } else if (data!.walking == true){
+//                        print("Walking")
+//                    } else if (data!.running == true){
+//                        print("Running")
+//                    } else if (data!.automotive == true){
+//                        print("Automotive")
+//                    }
+//                })
+//                
+//            })
+//        }
+//        if(CMPedometer.isStepCountingAvailable()){
+//            //let fromDate = Date(timeIntervalSinceNow: -86400 * 7)
+//            let fromDate = Date()
+//            self.pedoMeter.queryPedometerData(from: fromDate as Date, to: Date(), withHandler: { (data, error) in
+//                print(data!)
+//                
+//                DispatchQueue.main.async {
+//                    if(error == nil){
+//                        self.steps.text = "\(data!.numberOfSteps)"
+//                        if data!.numberOfSteps.doubleValue >= self.desafio{
+//                            self.performSegue(withIdentifier: "Result", sender: nil)
+//                        }
+//                    }
+//                }
+//                
+//            })
+//            
+//            self.pedoMeter.startUpdates(from: midnightOfToday!) { (data, error) -> Void in
+//                DispatchQueue.main.async {
+//                    if(error == nil){
+//                        self.steps.text = "\(data!.numberOfSteps)"
+//                        if data!.numberOfSteps.doubleValue >= self.desafio{
+//                            self.performSegue(withIdentifier: "Result", sender: nil)
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,6 +117,17 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate {
         self.performSegue(withIdentifier: "Result", sender: nil)
     }
     
+    func updateSteps(steps: NSNumber) {
+        self.stepsQuant = steps
+        self.labelSteps.text = "\(self.stepsQuant)"
+        
+    }
+    
+    func clearVelocity() {
+        speed = 0
+        self.labelSpeed.text = "\(self.speed!)"
+        
+    }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
