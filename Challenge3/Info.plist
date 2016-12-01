@@ -9,9 +9,9 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>please</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Allow please</string>
+	<string>We need this information for the app</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Allow please</string>
+	<string>We need this information for the app</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
