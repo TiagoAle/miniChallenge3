@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User Profile-->
+        <!--User Terms-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Challenge3" customModuleProvider="target" sceneMemberID="viewController">
@@ -86,32 +86,13 @@
                                     <action selector="termsAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="LSb-OS-aTw"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKH-sy-WKn">
-                                <rect key="frame" x="206" y="505" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuh-8z-dEW">
-                                <rect key="frame" x="38" y="444" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="view all"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="PRI-bT-Ezh" secondAttribute="trailing" id="G0E-Fe-IZC"/>
-                            <constraint firstItem="PRI-bT-Ezh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SzH-1r-E47"/>
-                            <constraint firstItem="PRI-bT-Ezh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Tg5-GU-tJQ"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="User Profile" id="Xyr-Ra-Us8"/>
+                    <navigationItem key="navigationItem" title="User Terms" id="Xyr-Ra-Us8"/>
                     <connections>
                         <outlet property="continueButtom" destination="dIf-gd-V8j" id="SCY-mi-8hv"/>
-                        <outlet property="statusLabel" destination="bKH-sy-WKn" id="8Gn-xG-Qx6"/>
                         <outlet property="switchStatus" destination="Fy3-2i-EPw" id="8e0-av-lqY"/>
-                        <outlet property="tableView" destination="PRI-bT-Ezh" id="5BD-EO-qP4"/>
                         <segue destination="zFf-EZ-WYk" kind="show" identifier="ProfileSegue" id="b1K-QR-rVB"/>
                     </connections>
                 </viewController>
