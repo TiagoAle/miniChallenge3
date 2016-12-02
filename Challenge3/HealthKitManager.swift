@@ -233,5 +233,42 @@ class HealthKitManager: NSObject{
             }
         })
     }
+    
+    func saveWorkout(startDate:Date , endDate:Date, completion: ( (Bool, Error?) -> Void)!) {
+        
+        // 2. Save Running Workout
+        let workout = HKWorkout(activityType: HKWorkoutActivityType.volleyball, start: startDate, end: endDate)
+        healthKitStore.save(workout, withCompletion: { (success, error) -> Void in
+            if( error != nil  ) {
+                // Error saving the workout
+                completion(success,error)
+            }
+            else {
+                // Workout saved
+                completion(success,nil)
+                
+            }
+        })
+
+    }
+    func readWorkOuts(completion: (([AnyObject]?, Error?) -> Void)!) {
+        
+        // 1. Predicate to read only running workouts
+        let predicate =  HKQuery.predicateForWorkouts(with: HKWorkoutActivityType.volleyball)
+        // 2. Order the workouts by date
+        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+        // 3. Create the query
+        let sampleQuery = HKSampleQuery(sampleType: HKWorkoutType.workoutType(), predicate: predicate, limit: 0, sortDescriptors: [sortDescriptor])
+        { (sampleQuery, results, error ) -> Void in
+            
+            if let queryError = error {
+                print( "There was an error while reading the samples: \(queryError.localizedDescription)")
+            }
+            completion(results,error)
+        }
+        // 4. Execute the query
+        healthKitStore.execute(sampleQuery)
+        
+    }
 
 }

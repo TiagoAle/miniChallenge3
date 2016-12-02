@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import HealthKit
 
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var resultTextView: UITextView!
     
     var goal: Bool?
-    
+    var workoutsArray: [HKWorkout]?
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
+        print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
     
         
