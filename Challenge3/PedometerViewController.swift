@@ -33,15 +33,14 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     var stepsQuant: NSNumber = 0
     var pedometer = PedometerManager()
     var speed: Double?
-//    var days:[String] = []
-//    var stepsTaken:[Int] = []
+
     var manager = CLLocationManager()
     var locations = [CLLocation]()
-//   // @IBOutlet weak var stateImageView: UIImageView!
-//    let activityManager = CMMotionActivityManager()
-//    let pedoMeter = CMPedometer()
-//    
-//    let desafio = 10.0
+
+
+    var cal = Calendar.current
+    var comps: DateComponents?
+    var endDate: Date?
     
     override func viewDidLoad() {
         
@@ -57,7 +56,19 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         self.manager.distanceFilter = 1
         self.manager.startUpdatingLocation()
         self.manager.startUpdatingHeading()
-
+        
+        comps = self.cal.dateComponents([Calendar.Component.year,Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second], from: Date())
+        
+        comps?.hour = 10
+        comps?.minute = 20
+        comps?.second = 0
+        //print("Cal: \(comps.hour)")
+        let timeZone = NSTimeZone.system
+        cal.timeZone = timeZone
+        
+        
+        
+        self.endDate = cal.date(from: comps!)
     }
     
     // Cronometer
@@ -69,7 +80,6 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         startLocation = nil
         lastLocation = nil
         
-        manager.startUpdatingLocation()
     }
     
     
@@ -77,6 +87,34 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         timer.invalidate()
         self.speed = 0.0
         manager.stopUpdatingLocation()
+        
+        healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
+            if( success )
+            {
+                print("Workout saved!")
+            }
+            else if( error != nil ) {
+                print("\(error)")
+            }
+        })
+        
+        var workouts = [HKWorkout]()
+        healthManager.readWorkOuts(completion: { (results, error) -> Void in
+            if( error != nil )
+            {
+                print("Error reading workouts: \(error?.localizedDescription)")
+                return
+            }
+            else
+            {
+                print("Workouts read successfully!")
+            }
+            
+            //Kkeep workouts and refresh tableview in main thread
+            workouts = results as! [HKWorkout]
+            print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
+        
+        })
     }
     
     func updateTime() {
@@ -108,6 +146,16 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     
     @IBAction func showResultsAction(_ sender: UIButton) {
         self.performSegue(withIdentifier: "Result", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "Result") {
+            // pass data to next view
+            let resultView = segue.destination as? ResultViewController
+            resultView?.workoutsArray = sender as! [HKWorkout]?
+        }
+        
     }
     
     func updateSteps(steps: NSNumber) {

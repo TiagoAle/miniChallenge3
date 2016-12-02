@@ -65,21 +65,6 @@ class PedometerManager: NSObject {
             })
         }
         if(CMPedometer.isStepCountingAvailable()){
-//            let fromDate = Date(timeIntervalSinceNow: -86400 * 7)
-//            //let fromDate = Date()
-//            self.pedoMeter.queryPedometerData(from: fromDate as Date, to: Date(), withHandler: { (data, error) in
-//                print(data!)
-//                
-//                DispatchQueue.main.async {
-//                    if(error == nil){
-//                        self.stepsQuant = data!.numberOfSteps
-//                        // passar por delegate
-//                        self.delegate?.updateSteps(steps: self.stepsQuant!)
-//                    }
-//                }
-//                
-//            })
-            
             self.pedoMeter.startUpdates(from: self.midnightOfToday!) { (data, error) -> Void in
                 DispatchQueue.main.async {
                     if(error == nil){
