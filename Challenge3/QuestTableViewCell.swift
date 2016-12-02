@@ -29,7 +29,7 @@ class QuestTableViewCell: UITableViewCell {
         self.title.text = "titulodaquest"
         self.questImage.image = #imageLiteral(resourceName: "male")
         self.reward.text = "tu perde peso"
-        self.questDescription.text = "bem facim man"
+        self.questDescription.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus, orci ac tempor eleifend, tellus leo ultricies erat, sed sodales nisl velit in enim. "
         // Initialization code
     }
 

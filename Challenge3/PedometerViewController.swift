@@ -112,7 +112,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             
             //Kkeep workouts and refresh tableview in main thread
             workouts = results as! [HKWorkout]
-            print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
+            //print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         
         })
     }
