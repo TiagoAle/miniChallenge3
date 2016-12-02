@@ -22,29 +22,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIf-gd-V8j">
-                                <rect key="frame" x="119" y="547" width="137" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Continue"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsq-4p-PV6">
+                                <rect key="frame" x="43.5" y="593" width="288" height="46"/>
+                                <color key="backgroundColor" red="1" green="0.48159492310000002" blue="0.3079790456" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="YOe-2T-32n"/>
+                                    <constraint firstAttribute="width" constant="288" id="hWZ-Sa-wyM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="20"/>
+                                <state key="normal" title="PROSSEGUIR">
+                                    <color key="titleColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="HCF-yp-98j" kind="push" id="Ats-Ug-0aL"/>
+                                    <segue destination="zFf-EZ-WYk" kind="show" identifier="ProfileSegue" id="HU3-Z9-dHs"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fy3-2i-EPw">
-                                <rect key="frame" x="127" y="500" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="termsAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="LSb-OS-aTw"/>
-                                </connections>
-                            </switch>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="WMD-if-icG">
+                                <rect key="frame" x="44" y="533" width="287" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eu me responsabilizo e não vou fazer merda ao usar esse app e talz..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="bHt-uL-yGR">
+                                        <rect key="frame" x="0.0" y="0.0" width="201" height="31"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fy3-2i-EPw">
+                                        <rect key="frame" x="238" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="termsAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="LSb-OS-aTw"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="eN6-G4-Bh1"/>
+                                    <constraint firstAttribute="width" constant="287" id="uM6-io-z5S"/>
+                                </constraints>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar3" translatesAutoresizingMaskIntoConstraints="NO" id="oMx-Yk-nzo">
+                                <rect key="frame" x="75" y="234" width="100" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="2id-ih-5EO"/>
+                                    <constraint firstAttribute="width" constant="100" id="Bfa-Vh-lya"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="balloon" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-qW-RtF">
+                                <rect key="frame" x="133" y="122" width="167" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="72X-sB-kYi"/>
+                                    <constraint firstAttribute="width" constant="167" id="Wgd-NF-NTi"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oMx-Yk-nzo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-62.5" id="07n-X2-K0N"/>
+                            <constraint firstItem="1WD-qW-RtF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="58" id="3ER-MT-PnL"/>
+                            <constraint firstItem="Lsq-4p-PV6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9gc-Uz-Qcf"/>
+                            <constraint firstItem="WMD-if-icG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GTO-p5-PnJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Lsq-4p-PV6" secondAttribute="bottom" constant="28" id="f7Q-zg-XFQ"/>
+                            <constraint firstItem="Lsq-4p-PV6" firstAttribute="top" secondItem="WMD-if-icG" secondAttribute="bottom" constant="29" id="jKr-VC-NpW"/>
+                            <constraint firstItem="oMx-Yk-nzo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="170" id="qko-bt-ZJM"/>
+                            <constraint firstItem="1WD-qW-RtF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="29" id="rK5-Xg-y44"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="User Terms" id="Xyr-Ra-Us8"/>
                     <connections>
-                        <outlet property="continueButtom" destination="dIf-gd-V8j" id="SCY-mi-8hv"/>
+                        <outlet property="continueButtom" destination="Lsq-4p-PV6" id="QnS-58-qLy"/>
                         <outlet property="switchStatus" destination="Fy3-2i-EPw" id="8e0-av-lqY"/>
-                        <segue destination="zFf-EZ-WYk" kind="show" identifier="ProfileSegue" id="b1K-QR-rVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -503,10 +552,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="avatar3" width="190" height="272"/>
+        <image name="balloon" width="1500" height="1114"/>
         <image name="male" width="385" height="411"/>
         <image name="trofeu" width="1100" height="1100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b1K-QR-rVB"/>
+        <segue reference="HU3-Z9-dHs"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,7 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UserDataManagerDelegate {
+class ViewController: UIViewController {
 
     let dataManager = UserDataManager()
     var arrayInformations = [Any]()
@@ -20,25 +20,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var continueButtom: UIButton!
     @IBOutlet weak var switchStatus: UISwitch!
     
-    @IBOutlet weak var statusLabel: UILabel!
+    //@IBOutlet weak var statusLabel: UILabel!
     
-    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
         //self.dataManager.checkData()
         
         self.dataManager.receiveProfile()
         
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         self.view.backgroundColor = UIColor.white
         
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.dataManager.delegate = self
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
+        //self.dataManager.delegate = self
         
         if self.dataManager.UserExist(){
             //pula direto para a view da ficha
@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
         
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         
         self.continueButtom.isEnabled = false
         
@@ -74,11 +74,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if sender.isOn{
             
-            self.statusLabel.text = "Yes"
+            //self.statusLabel.text = "Yes"
             self.continueButtom.isEnabled = true
             
         }else{
-            self.statusLabel.text = "No"
+            //self.statusLabel.text = "No"
             self.continueButtom.isEnabled = false
         }
         
@@ -86,29 +86,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     // TRY USE USERDATAMANAGERDELEGATE
-    func updatingDataTableView(arrayInfo: [Any]) {
-        self.arrayInformations = arrayInfo
-        self.tableView.reloadData()
-    }
+//    func updatingDataTableView(arrayInfo: [Any]) {
+//        self.arrayInformations = arrayInfo
+//        //self.tableView.reloadData()
+//    }
 
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.descriptionInfo.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell")! as UITableViewCell
-    
-        cell.textLabel?.text = "\(self.descriptionInfo[indexPath.row])"
-        if self.arrayInformations.count > 0{
-            cell.detailTextLabel?.text = "\(self.arrayInformations[indexPath.row])"
-        }
-        return cell
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return self.descriptionInfo.count
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell")! as UITableViewCell
+//    
+//        cell.textLabel?.text = "\(self.descriptionInfo[indexPath.row])"
+//        if self.arrayInformations.count > 0{
+//            cell.detailTextLabel?.text = "\(self.arrayInformations[indexPath.row])"
+//        }
+//        return cell
+//    }
 
 }
 
