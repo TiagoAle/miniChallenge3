@@ -42,8 +42,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = self.missionTable.dequeueReusableCell(withIdentifier: "Cell")! as UITableViewCell
-        cell.textLabel?.text = "Mission \(indexPath.row)"
+        
+        let cell = self.missionTable.dequeueReusableCell(withIdentifier: "cell")! as! QuestTableViewCell
+        cell.reward.text = "deu man"
         
         return cell
     }
