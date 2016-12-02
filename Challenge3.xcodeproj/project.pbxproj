@@ -21,6 +21,7 @@
 		6AC8ED061DEDBEC8007D13CC /* PedometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */; };
 		6AC8ED081DEE64D5007D13CC /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8ED071DEE64D5007D13CC /* WorkoutManager.swift */; };
 		6AC8ED0C1DEFA331007D13CC /* PedometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */; };
+		A734EBC21DF1B035002E2634 /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734EBC11DF1B035002E2634 /* QuestTableViewCell.swift */; };
 		A7C009F11DE8725F0049541F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F01DE8725F0049541F /* ProfileViewController.swift */; };
 		A7C009F31DE872750049541F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F21DE872750049541F /* RegisterViewController.swift */; };
 		A7C009F51DE8728B0049541F /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C009F41DE8728B0049541F /* UserDataManager.swift */; };
@@ -67,6 +68,7 @@
 		6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerViewController.swift; sourceTree = "<group>"; };
 		6AC8ED071DEE64D5007D13CC /* WorkoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerManager.swift; sourceTree = "<group>"; };
+		A734EBC11DF1B035002E2634 /* QuestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestTableViewCell.swift; sourceTree = "<group>"; };
 		A7C009F01DE8725F0049541F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A7C009F21DE872750049541F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A7C009F41DE8728B0049541F /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		6A4E8AF31DE703CF0067B2CF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A734EBC11DF1B035002E2634 /* QuestTableViewCell.swift */,
 				6A77FC011DD4BD0C0008AFED /* Main.storyboard */,
 				6A77FC091DD4BD0C0008AFED /* LaunchScreen.storyboard */,
 			);
@@ -264,7 +267,7 @@
 				TargetAttributes = {
 					6A77FBF91DD4BD0C0008AFED = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q922D8LNNZ;
+						DevelopmentTeam = K463X7473S;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
@@ -342,6 +345,7 @@
 				6A77FC061DD4BD0C0008AFED /* Challenge3.xcdatamodeld in Sources */,
 				6A77FC001DD4BD0C0008AFED /* ViewController.swift in Sources */,
 				6AC859B71DED135000590D27 /* WorkoutViewController.swift in Sources */,
+				A734EBC21DF1B035002E2634 /* QuestTableViewCell.swift in Sources */,
 				6AC8ED081DEE64D5007D13CC /* WorkoutManager.swift in Sources */,
 				A7C009F11DE8725F0049541F /* ProfileViewController.swift in Sources */,
 				A7C009F31DE872750049541F /* RegisterViewController.swift in Sources */,
@@ -503,10 +507,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Challenge3/Challenge3.entitlements;
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.tiago.Challenge3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -517,10 +521,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Challenge3/Challenge3.entitlements;
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.tiago.Challenge3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
