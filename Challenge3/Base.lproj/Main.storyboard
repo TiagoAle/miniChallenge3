@@ -39,7 +39,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="zFf-EZ-WYk" kind="show" identifier="ProfileSegue" id="HU3-Z9-dHs"/>
+                                    <segue destination="HCF-yp-98j" kind="show" identifier="" id="uz6-W8-0VW"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="WMD-if-icG">
@@ -94,6 +94,7 @@
                     <connections>
                         <outlet property="continueButtom" destination="Lsq-4p-PV6" id="QnS-58-qLy"/>
                         <outlet property="switchStatus" destination="Fy3-2i-EPw" id="8e0-av-lqY"/>
+                        <segue destination="zFf-EZ-WYk" kind="show" identifier="ProfileSegue" id="ndl-Fp-3dV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -558,6 +559,6 @@
         <image name="trofeu" width="1100" height="1100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HU3-Z9-dHs"/>
+        <segue reference="ndl-Fp-3dV"/>
     </inferredMetricsTieBreakers>
 </document>
