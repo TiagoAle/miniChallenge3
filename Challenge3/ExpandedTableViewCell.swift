@@ -1,5 +1,5 @@
 //
-//  QuestTableViewCell.swift
+//  ExpandedTableViewCell.swift
 //  Challenge3
 //
 //  Created by Daniel Dias on 02/12/16.
@@ -8,16 +8,24 @@
 
 import UIKit
 
-class QuestTableViewCell: UITableViewCell {
+protocol MyCustomCellDelegator {
+    func callSegueFromCell(myData dataobject: AnyObject)
+}
+
+class ExpandedTableViewCell: UITableViewCell {
+
     
     var delegate:MyCustomCellDelegator!
-
     
     @IBOutlet weak var questImage: UIImageView!
     
     @IBOutlet weak var title: UILabel!
     
     @IBOutlet weak var reward: UILabel!
+    
+    @IBOutlet weak var questDescription: UILabel!
+    
+    
     
     
     
@@ -26,6 +34,7 @@ class QuestTableViewCell: UITableViewCell {
         self.title.text = "titulodaquest"
         self.questImage.image = #imageLiteral(resourceName: "male")
         self.reward.text = "tu perde peso"
+        self.questDescription.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus, orci ac tempor eleifend, tellus leo ultricies erat, sed sodales nisl velit in enim. "
         // Initialization code
     }
     
@@ -34,5 +43,18 @@ class QuestTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
+    @IBAction func startMission(_ sender: UIButton) {
+        
+        
+        let mydata = "Teste"
+        if(self.delegate != nil){ //Just to be safe.
+            self.delegate.callSegueFromCell(myData: mydata as AnyObject)
+        }
+        
+       
+        
+    }
+    
     
 }

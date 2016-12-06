@@ -19,7 +19,7 @@ class ResultViewController: UIViewController {
         
         super.viewDidLoad()
 
-        print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
+        //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
     
         

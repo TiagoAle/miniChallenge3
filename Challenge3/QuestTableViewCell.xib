@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="61" id="KGk-i7-Jjw" customClass="QuestTableViewCell" customModule="Challenge3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="80.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fHe-H5-PCd">
+                        <rect key="frame" x="15" y="13" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="OoO-br-MLE"/>
+                            <constraint firstAttribute="width" constant="60" id="nul-13-DWw"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que ele ganha fazendo a quest" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGA-V2-Sls">
+                        <rect key="frame" x="91" y="42" width="251" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="DfM-yp-ayd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of quest..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFG-hI-Ak1">
+                        <rect key="frame" x="91" y="13" width="251" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="4ct-lS-goi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RGA-V2-Sls" firstAttribute="leading" secondItem="fHe-H5-PCd" secondAttribute="trailing" constant="16" id="64d-U0-3gW"/>
+                    <constraint firstItem="VFG-hI-Ak1" firstAttribute="leading" secondItem="fHe-H5-PCd" secondAttribute="trailing" constant="16" id="9m4-wH-ybo"/>
+                    <constraint firstItem="fHe-H5-PCd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="NjG-fG-bzb"/>
+                    <constraint firstAttribute="trailing" secondItem="VFG-hI-Ak1" secondAttribute="trailing" constant="1" id="Rma-m9-DL8"/>
+                    <constraint firstAttribute="trailing" secondItem="RGA-V2-Sls" secondAttribute="trailing" constant="1" id="Wzf-rm-GOp"/>
+                    <constraint firstItem="RGA-V2-Sls" firstAttribute="top" secondItem="VFG-hI-Ak1" secondAttribute="bottom" constant="8" id="dFj-Wd-43c"/>
+                    <constraint firstItem="fHe-H5-PCd" firstAttribute="top" secondItem="VFG-hI-Ak1" secondAttribute="bottom" constant="-21" id="nYz-VZ-MNn"/>
+                    <constraint firstItem="VFG-hI-Ak1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="pXb-9y-E4y"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="questImage" destination="fHe-H5-PCd" id="vXs-hP-Zmz"/>
+                <outlet property="reward" destination="RGA-V2-Sls" id="TKt-lF-hSC"/>
+                <outlet property="title" destination="VFG-hI-Ak1" id="RcG-Pf-rgE"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-96.5"/>
+        </tableViewCell>
+    </objects>
+</document>

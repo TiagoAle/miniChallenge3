@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellExp" rowHeight="193" id="KGk-i7-Jjw" customClass="ExpandedTableViewCell" customModule="Challenge3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="193"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="192"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aKV-xP-ibl">
+                        <rect key="frame" x="15" y="13" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="j35-Tt-YJN"/>
+                            <constraint firstAttribute="height" constant="60" id="qbv-Tp-KEV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3m-5J-S1m">
+                        <rect key="frame" x="15" y="81" width="327" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="327" id="YWy-Y1-4ly"/>
+                            <constraint firstAttribute="height" constant="44" id="js1-pG-sdA"/>
+                        </constraints>
+                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus, orci ac tempor eleifend, tellus leo ultricies erat, sed sodales nisl velit in enim. </string>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O que ele ganha fazendo a quest" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHd-Z2-PKh">
+                        <rect key="frame" x="91" y="42" width="251" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="Q02-B2-wh0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHC-I8-Ob6">
+                        <rect key="frame" x="36" y="139" width="271" height="40"/>
+                        <color key="backgroundColor" red="1" green="0.48159492310000002" blue="0.3079790456" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="271" id="0S3-5m-1TD"/>
+                            <constraint firstAttribute="height" constant="40" id="FBt-pN-cac"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <state key="normal" title="Start Quest">
+                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="startMission:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Jbl-gP-iZp"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of quest..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbE-vh-N8M">
+                        <rect key="frame" x="91" y="13" width="251" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="iAO-Pg-hvS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="p3m-5J-S1m" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="23e-4T-Z5W"/>
+                    <constraint firstItem="aKV-xP-ibl" firstAttribute="top" secondItem="HbE-vh-N8M" secondAttribute="bottom" constant="-21" id="BCY-jw-nqb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="bHC-I8-Ob6" secondAttribute="bottom" constant="5.5" id="D75-4S-vyd"/>
+                    <constraint firstItem="UHd-Z2-PKh" firstAttribute="top" secondItem="HbE-vh-N8M" secondAttribute="bottom" constant="8" id="Nxj-mL-2mF"/>
+                    <constraint firstItem="HbE-vh-N8M" firstAttribute="leading" secondItem="aKV-xP-ibl" secondAttribute="trailing" constant="16" id="RAQ-1v-q7K"/>
+                    <constraint firstItem="aKV-xP-ibl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="U6B-1p-OYF"/>
+                    <constraint firstItem="bHC-I8-Ob6" firstAttribute="top" secondItem="p3m-5J-S1m" secondAttribute="bottom" constant="14" id="YlU-IU-k8l"/>
+                    <constraint firstItem="bHC-I8-Ob6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aRR-u7-qDe"/>
+                    <constraint firstItem="UHd-Z2-PKh" firstAttribute="leading" secondItem="aKV-xP-ibl" secondAttribute="trailing" constant="16" id="cLd-FP-18P"/>
+                    <constraint firstItem="p3m-5J-S1m" firstAttribute="top" secondItem="UHd-Z2-PKh" secondAttribute="bottom" constant="8" id="i2X-j1-NbP"/>
+                    <constraint firstAttribute="trailing" secondItem="HbE-vh-N8M" secondAttribute="trailing" constant="1" id="uJE-d8-ecg"/>
+                    <constraint firstAttribute="trailing" secondItem="UHd-Z2-PKh" secondAttribute="trailing" constant="1" id="uUt-dA-rEC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="questDescription" destination="p3m-5J-S1m" id="bti-cB-FxJ"/>
+                <outlet property="questImage" destination="aKV-xP-ibl" id="haI-1t-Lww"/>
+                <outlet property="reward" destination="UHd-Z2-PKh" id="jHo-Vf-ID2"/>
+                <outlet property="title" destination="HbE-vh-N8M" id="4bh-0o-6EU"/>
+            </connections>
+            <point key="canvasLocation" x="74.5" y="74.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -88,33 +88,33 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         self.speed = 0.0
         manager.stopUpdatingLocation()
         
-        healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
-            if( success )
-            {
-                print("Workout saved!")
-            }
-            else if( error != nil ) {
-                print("\(error)")
-            }
-        })
+//        healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
+//            if( success )
+//            {
+//                print("Workout saved!")
+//            }
+//            else if( error != nil ) {
+//                print("\(error)")
+//            }
+//        })
         
-        var workouts = [HKWorkout]()
-        healthManager.readWorkOuts(completion: { (results, error) -> Void in
-            if( error != nil )
-            {
-                print("Error reading workouts: \(error?.localizedDescription)")
-                return
-            }
-            else
-            {
-                print("Workouts read successfully!")
-            }
-            
-            //Kkeep workouts and refresh tableview in main thread
-            workouts = results as! [HKWorkout]
+//        var workouts = [HKWorkout]()
+//        healthManager.readWorkOuts(completion: { (results, error) -> Void in
+//            if( error != nil )
+//            {
+//                print("Error reading workouts: \(error?.localizedDescription)")
+//                return
+//            }
+//            else
+//            {
+//                print("Workouts read successfully!")
+//            }
+//            
+//            //Kkeep workouts and refresh tableview in main thread
+//            workouts = results as! [HKWorkout]
             //print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         
-        })
+//        })
     }
     
     func updateTime() {
