@@ -47,7 +47,7 @@ class ExpandedTableViewCell: UITableViewCell {
     @IBAction func startMission(_ sender: UIButton) {
         
         
-        let mydata = "Teste"
+        let mydata = "segue"
         if(self.delegate != nil){ //Just to be safe.
             self.delegate.callSegueFromCell(myData: mydata as AnyObject)
         }

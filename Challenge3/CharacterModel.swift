@@ -13,7 +13,7 @@ class CharacterModel: NSObject {
     var charImage: UIImage?
     var nickName: String?
     var age: Int?
-    var items: [String]?
+    var items: [String]?  
     var missions: [String]?
     var gender: String?
 

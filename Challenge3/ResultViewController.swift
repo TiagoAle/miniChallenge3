@@ -14,14 +14,15 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var resultTextView: UITextView!
     
     var goal: Bool?
-    var workoutsArray: [HKWorkout]?
+    //var workoutsArray: [HKWorkout]?
+    var missionData: Mission?
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
-    
+        
         
         self.goal = true
         self.userMadeIt()
@@ -50,6 +51,7 @@ class ResultViewController: UIViewController {
         if self.goal == true{
             var text = self.resultTextView.text
             text?.append(" User win")
+            
             self.resultTextView.text = text
         }else{
         

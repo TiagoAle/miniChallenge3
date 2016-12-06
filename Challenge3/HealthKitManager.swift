@@ -38,7 +38,7 @@ class HealthKitManager: NSObject{
         // 3. If the store is not available (for instance, iPad) return an error and don't go on.
         if !HKHealthStore.isHealthDataAvailable()
         {
-            let error = NSError(domain: "com.bepid.tiago.Challenge3", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this Device"])
+            let error = NSError(domain: "com.bepid.Daniel.Challenge3", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this Device"])
             if( completion != nil )
             {
                 completion(false, error)

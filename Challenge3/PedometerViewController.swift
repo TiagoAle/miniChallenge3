@@ -15,6 +15,10 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     
    // @IBOutlet weak var activityState: UILabel!
     
+    //Mission
+    
+    var mission = Mission.init(type: "Missão Diária", activityType: HKWorkoutActivityType.walking, startDate: Date(), goal: 10)
+    
     //Cronometer
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
@@ -47,7 +51,6 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         super.viewDidLoad()
         self.pedometer.delegate = self
         pedometer.congigure()
-        pedometer.updateValues()
         self.manager.delegate = self
         self.manager.requestAlwaysAuthorization()
         
@@ -72,6 +75,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     }
     
     // Cronometer
+    
     @IBAction func startTimer(_ sender: Any) {
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
         zeroTime = Date.timeIntervalSinceReferenceDate
@@ -80,13 +84,16 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         startLocation = nil
         lastLocation = nil
         
+        mission.status = StatusMission.inProgress
+        pedometer.updateValues(startDate: Date())
+        
     }
-    
-    
     @IBAction func stopTimer(_ sender: Any) {
         timer.invalidate()
-        self.speed = 0.0
+        self.speed = 0.00
+        
         manager.stopUpdatingLocation()
+        
         
 //        healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
 //            if( success )
@@ -97,7 +104,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
 //                print("\(error)")
 //            }
 //        })
-        
+//        
 //        var workouts = [HKWorkout]()
 //        healthManager.readWorkOuts(completion: { (results, error) -> Void in
 //            if( error != nil )
@@ -112,8 +119,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
 //            
 //            //Kkeep workouts and refresh tableview in main thread
 //            workouts = results as! [HKWorkout]
-            //print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
-        
+//            //print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
+//            
 //        })
     }
     
@@ -144,23 +151,29 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     }
     
     
-    @IBAction func showResultsAction(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "Result", sender: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "Result") {
             // pass data to next view
             let resultView = segue.destination as? ResultViewController
-            resultView?.workoutsArray = sender as! [HKWorkout]?
+            resultView?.missionData = sender as? Mission
         }
         
     }
     
     func updateSteps(steps: NSNumber) {
         self.stepsQuant = steps
-        self.labelSteps.text = "\(self.stepsQuant)"
+        mission.currentProgress = steps
+        if mission.currentProgress.intValue >= mission.goal.intValue {
+            mission.endDate = Date()
+            mission.xpEarned = 10
+            mission.status = StatusMission.done
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "Result", sender: self.mission)
+            }
+            
+        }
+        self.labelSteps.text = "\(mission.currentProgress)"
         
     }
     
@@ -169,15 +182,18 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         self.labelSpeed.text = "\(self.speed!)"
         
     }
-    
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         var lastLocation = locations.last
         //var secondLast = locations[locations.count - 2]
         //var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
-        labelSpeed.text = String.init(format: "%.2f", (lastLocation?.speed)! * 3.6)
-        //print(speed)
-        print((lastLocation?.speed)!)
+        if !(lastLocation?.speed.isLessThanOrEqualTo(-1.0))!{
+            labelSpeed.text = String.init(format: "%.2f", (lastLocation?.speed)! * 3.6)
+            //print(speed)
+            print((lastLocation?.speed)!)
+        }
+        
         
         if startLocation == nil {
             startLocation = locations.first as CLLocation!

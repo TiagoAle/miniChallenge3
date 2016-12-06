@@ -45,7 +45,7 @@ class PedometerManager: NSObject {
         self.midnightOfToday = cal.date(from: comps)
         
     }
-    func updateValues(){
+    func updateValues(startDate: Date){
         if(CMMotionActivityManager.isActivityAvailable()){
             self.activityManager.startActivityUpdates(to: OperationQueue.main, withHandler: { (data) -> Void in
                 DispatchQueue.main.async(execute: { () -> Void in
@@ -65,7 +65,7 @@ class PedometerManager: NSObject {
             })
         }
         if(CMPedometer.isStepCountingAvailable()){
-            self.pedoMeter.startUpdates(from: self.midnightOfToday!) { (data, error) -> Void in
+            self.pedoMeter.startUpdates(from: startDate) { (data, error) -> Void in
                 DispatchQueue.main.async {
                     if(error == nil){
                         self.stepsQuant = data!.numberOfSteps
