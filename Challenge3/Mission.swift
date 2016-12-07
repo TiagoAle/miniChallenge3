@@ -17,6 +17,8 @@ enum StatusMission {
 
 class Mission: NSObject {
     
+    
+    var title: String
     var type: String
     var activityType: String
     var xpEarned: Int?
@@ -26,7 +28,8 @@ class Mission: NSObject {
     var goal: NSNumber
     var currentProgress: NSNumber
     
-    init(type: String, activityType: String, startDate: Date, goal: NSNumber) {
+    init(title: String, type: String, activityType: String, startDate: Date, goal: NSNumber) {
+        self.title = title
         self.type = type
         self.activityType = activityType
         self.startDate = startDate

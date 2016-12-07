@@ -17,6 +17,8 @@ class ExpandedTableViewCell: UITableViewCell {
     
     var delegate:MyCustomCellDelegator!
     
+    var mission: Mission?
+    
     @IBOutlet weak var questImage: UIImageView!
     
     @IBOutlet weak var title: UILabel!

@@ -16,12 +16,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var index: Int? = nil
     var nickName = ""
     let healthManager = HealthKitManager()
+    
+    var missionsArray: [Mission] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
          self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
+        
+        let mission1 = Mission(title: "Walk for prize", type: "Daily", activityType: "Walk", startDate: Date(), goal: 100)
+        self.missionsArray.append(mission1)
         
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
@@ -46,7 +54,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.missionsArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.index == indexPath.row{
@@ -72,16 +80,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            print(self.missionTable.rowHeight)
             
             
-                let cell = self.missionTable.dequeueReusableCell(withIdentifier: "CellExp")! as! ExpandedTableViewCell
-                cell.reward.text = "deu man"
-                self.missionTable.rowHeight = 193
-                print(indexPath.row)
-                cell.delegate = self
-                return cell
+            let cell = self.missionTable.dequeueReusableCell(withIdentifier: "CellExp")! as! ExpandedTableViewCell
+            cell.mission = self.missionsArray[indexPath.row]
+            cell.title.text = cell.mission?.title
+            
+            //cell.reward.text = "deu man"
+            self.missionTable.rowHeight = 193
+            print(indexPath.row)
+            cell.delegate = self
+            return cell
         }else {
         
             let cell = self.missionTable.dequeueReusableCell(withIdentifier: "Cell")! as! QuestTableViewCell
-            cell.reward.text = "deu man"
+            cell.mission = self.missionsArray[indexPath.row]
+            cell.title.text = cell.mission?.title
+            //cell.reward.text = "deu man"
             self.missionTable.rowHeight = 80
             cell.delegate = self
             

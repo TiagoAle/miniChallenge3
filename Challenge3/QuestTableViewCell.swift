@@ -11,7 +11,7 @@ import UIKit
 class QuestTableViewCell: UITableViewCell {
     
     var delegate:MyCustomCellDelegator!
-
+    var mission: Mission?
     
     @IBOutlet weak var questImage: UIImageView!
     
