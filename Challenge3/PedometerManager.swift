@@ -58,7 +58,7 @@ class PedometerManager: NSObject {
                     } else if (data!.running == true){
                         print("Running")
                     } else if (data!.automotive == true){
-                        print("Automotiv")
+                        print("Automotive")
                     }
                 })
                 
