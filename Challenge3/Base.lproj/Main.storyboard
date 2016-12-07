@@ -296,20 +296,26 @@
                                 <rect key="frame" x="74" y="526" width="200" height="31.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Steps :  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mio-P4-IZj">
-                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="27"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20q-E9-1wr">
-                                        <rect key="frame" x="137.5" y="0.0" width="9.5" height="31.5"/>
+                                        <rect key="frame" x="135.5" y="0.0" width="9.5" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/10000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZK-2E-GnX">
-                                        <rect key="frame" x="147" y="0.0" width="53" height="31.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZK-2E-GnX">
+                                        <rect key="frame" x="145" y="0.0" width="6" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pad-ZK-qLt">
+                                        <rect key="frame" x="151" y="0.0" width="49" height="31.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -348,6 +354,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Daily Mission" id="TrZ-OQ-2m2"/>
                     <connections>
+                        <outlet property="goal" destination="pad-ZK-qLt" id="WLq-kW-Ao8"/>
                         <outlet property="labelSpeed" destination="j5W-Zn-XXp" id="Phb-fx-kdi"/>
                         <outlet property="labelSteps" destination="20q-E9-1wr" id="PZg-hx-0n5"/>
                         <outlet property="milesLabel" destination="ucR-d4-VW1" id="3vP-Ih-GXA"/>
@@ -438,6 +445,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AyK-IG-kJh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="barTintColor" red="0.99215686270000003" green="0.4823529412" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

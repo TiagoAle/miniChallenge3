@@ -17,8 +17,9 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     
     //Mission
     
-    var mission = Mission.init(type: "Missão Diária", activityType: HKWorkoutActivityType.walking, startDate: Date(), goal: 10)
-    
+    @IBOutlet weak var goal: UILabel!
+    var mission = Mission.init(type: "Missão Diária", activityType: "Walking", startDate: Date(), goal: 10)
+
     //Cronometer
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
@@ -49,6 +50,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        goal.text = "\(mission.goal.intValue)"
         self.pedometer.delegate = self
         pedometer.congigure()
         self.manager.delegate = self

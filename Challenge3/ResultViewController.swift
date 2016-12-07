@@ -51,7 +51,11 @@ class ResultViewController: UIViewController {
         if self.goal == true{
             var text = self.resultTextView.text
             text?.append(" User win")
-            
+            text?.append("\n Type: \((self.missionData?.type)!)")
+            text?.append("\n Steps: \((self.missionData?.currentProgress)!)")
+            text?.append("\n Activity: \((self.missionData?.activityType)!)")
+            text?.append("\n \((self.missionData?.startDate)!)")
+            text?.append("\n \((self.missionData?.endDate)!)")
             self.resultTextView.text = text
         }else{
         
