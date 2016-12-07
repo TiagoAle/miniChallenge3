@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Comfortaa-Bold.ttf">
+            <string>Comfortaa-Bold</string>
+        </array>
         <array key="Comfortaa-Regular.ttf">
             <string>Comfortaa</string>
         </array>
@@ -231,140 +234,168 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH2-JN-7FC">
-                                <rect key="frame" x="27" y="120" width="113" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EF-ah-zUF">
+                                <rect key="frame" x="19" y="587" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.58431372549019611" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="1Fe-OU-rs8"/>
-                                    <constraint firstAttribute="width" constant="113" id="N1B-Wb-ENU"/>
+                                    <constraint firstAttribute="height" constant="50" id="Sxs-ag-CH2"/>
+                                    <constraint firstAttribute="width" constant="100" id="VeJ-sH-sUV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
-                                <state key="normal" title="Go">
-                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="startTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="pdA-Ra-HPD"/>
+                                    <action selector="pauseTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="JbV-4P-VLe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-sK-E1m">
-                                <rect key="frame" x="234" y="120" width="113" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZT-q1-yb3">
+                                <rect key="frame" x="88" y="234" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.58431372550000005" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="Sj1-Nr-oIs"/>
-                                    <constraint firstAttribute="height" constant="48" id="aew-Qg-189"/>
+                                    <constraint firstAttribute="height" constant="200" id="kcN-Kd-Ez1"/>
+                                    <constraint firstAttribute="width" constant="200" id="meO-Mn-ypi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="50"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="oFw-Tw-nFT"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g2I-G5-Npe">
+                                <rect key="frame" x="139" y="97" width="98" height="61"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV0-tx-F3d">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="45.5"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="39"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyH-Xg-b36">
+                                        <rect key="frame" x="0.0" y="45.5" width="98" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="brH-oB-oGs">
+                                <rect key="frame" x="19" y="96" width="67" height="47"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hws-LH-gCS">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="35"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4q-lh-UzI">
+                                        <rect key="frame" x="0.0" y="35" width="67" height="12"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="awV-xG-AuS">
+                                <rect key="frame" x="289" y="95" width="67" height="47"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-UN-rTI">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="35"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8D-dU-Tvd">
+                                        <rect key="frame" x="0.0" y="35" width="67" height="12"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7av-id-0EB">
+                                <rect key="frame" x="158.5" y="454" width="58.5" height="47"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTR-IV-W6Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="58.5" height="35"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPR-aj-h3M">
+                                        <rect key="frame" x="0.0" y="35" width="58.5" height="12"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOE-n0-eGE">
+                                <rect key="frame" x="259" y="587" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.58431372550000005" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HNd-rh-3nG"/>
+                                    <constraint firstAttribute="width" constant="100" id="vUd-fL-dni"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
                                 <state key="normal" title="Stop">
-                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="stopTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="7xW-hK-FZj"/>
+                                    <action selector="stopTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="eKt-XP-kxV"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAn-RG-X38">
-                                <rect key="frame" x="106.5" y="564" width="148" height="20"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcn-mi-oEW">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="20"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5W-Zn-XXp">
-                                        <rect key="frame" x="64" y="0.0" width="33.5" height="20"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Km/h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-Vq-Pji">
-                                        <rect key="frame" x="97.5" y="0.0" width="50.5" height="20"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 Meters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucR-d4-VW1">
-                                <rect key="frame" x="56" y="461" width="263" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="6Yq-kl-635"/>
-                                    <constraint firstAttribute="width" constant="263" id="STf-oA-pcs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="27"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fl6-lO-iD9">
-                                <rect key="frame" x="74" y="526" width="200" height="31.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Steps :  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mio-P4-IZj">
-                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="31.5"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="27"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20q-E9-1wr">
-                                        <rect key="frame" x="135.5" y="0.0" width="9.5" height="31.5"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZK-2E-GnX">
-                                        <rect key="frame" x="145" y="0.0" width="6" height="31.5"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pad-ZK-qLt">
-                                        <rect key="frame" x="151" y="0.0" width="49" height="31.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31.5" id="3wc-Fi-EV6"/>
-                                    <constraint firstAttribute="width" constant="200" id="UbU-mc-8Yw"/>
-                                    <constraint firstItem="20q-E9-1wr" firstAttribute="leading" secondItem="Mio-P4-IZj" secondAttribute="trailing" id="Zys-RD-GzS"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYA-oF-SvM">
-                                <rect key="frame" x="74" y="373" width="226" height="69"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="69" id="Vs9-0j-DE4"/>
-                                    <constraint firstAttribute="width" constant="226" id="rLZ-oH-u7F"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="53"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oAn-RG-X38" firstAttribute="top" secondItem="Fl6-lO-iD9" secondAttribute="bottom" constant="6" id="1N9-GF-l2o"/>
-                            <constraint firstItem="Fl6-lO-iD9" firstAttribute="top" secondItem="ucR-d4-VW1" secondAttribute="bottom" constant="16" id="HUv-Xh-nxn"/>
-                            <constraint firstItem="BH2-JN-7FC" firstAttribute="leading" secondItem="PVt-FS-Vdm" secondAttribute="leadingMargin" constant="11" id="I0S-Ha-XB4"/>
-                            <constraint firstItem="BH2-JN-7FC" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="56" id="IcC-DZ-pM1"/>
-                            <constraint firstItem="Xpv-sK-E1m" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="56" id="Kmj-5j-feT"/>
-                            <constraint firstItem="ucR-d4-VW1" firstAttribute="top" secondItem="cYA-oF-SvM" secondAttribute="bottom" constant="19" id="PH9-mk-qiq"/>
-                            <constraint firstItem="Fl6-lO-iD9" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" constant="-13.5" id="SjI-zN-Q4h"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Xpv-sK-E1m" secondAttribute="trailing" constant="12" id="UO4-sO-GVk"/>
-                            <constraint firstItem="oAZ-Ud-VbS" firstAttribute="top" secondItem="oAn-RG-X38" secondAttribute="bottom" constant="83" id="Zwm-IC-1zE"/>
-                            <constraint firstItem="cYA-oF-SvM" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="hEG-Bp-p9d"/>
-                            <constraint firstItem="ucR-d4-VW1" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="pwq-k4-n8d"/>
-                            <constraint firstItem="oAn-RG-X38" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" constant="-7" id="zwt-Zq-CeI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hOE-n0-eGE" secondAttribute="trailing" id="3qu-Iv-LLf"/>
+                            <constraint firstItem="brH-oB-oGs" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="32" id="AEw-Em-ouv"/>
+                            <constraint firstItem="UZT-q1-yb3" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="IxN-Rd-O7b"/>
+                            <constraint firstItem="0EF-ah-zUF" firstAttribute="leading" secondItem="PVt-FS-Vdm" secondAttribute="leadingMargin" constant="3" id="MFR-ky-0dD"/>
+                            <constraint firstItem="g2I-G5-Npe" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="33" id="Mf9-Gu-ofu"/>
+                            <constraint firstItem="awV-xG-AuS" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="31" id="OY8-78-12Y"/>
+                            <constraint firstItem="7av-id-0EB" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="Pge-40-pLZ"/>
+                            <constraint firstItem="oAZ-Ud-VbS" firstAttribute="top" secondItem="0EF-ah-zUF" secondAttribute="bottom" constant="30" id="c6J-pv-Pef"/>
+                            <constraint firstItem="7av-id-0EB" firstAttribute="top" secondItem="UZT-q1-yb3" secondAttribute="bottom" constant="20" id="hsg-PC-UjS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="awV-xG-AuS" secondAttribute="trailing" constant="3" id="jro-kj-YKT"/>
+                            <constraint firstItem="UZT-q1-yb3" firstAttribute="centerY" secondItem="PVt-FS-Vdm" secondAttribute="centerY" id="qhU-Qk-ydd"/>
+                            <constraint firstItem="g2I-G5-Npe" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="wIZ-Q4-bE7"/>
+                            <constraint firstItem="brH-oB-oGs" firstAttribute="leading" secondItem="PVt-FS-Vdm" secondAttribute="leadingMargin" constant="3" id="z4v-8V-Rkt"/>
+                            <constraint firstItem="oAZ-Ud-VbS" firstAttribute="top" secondItem="hOE-n0-eGE" secondAttribute="bottom" constant="30" id="zhF-B8-lAX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Daily Mission" id="TrZ-OQ-2m2"/>
                     <connections>
-                        <outlet property="goal" destination="pad-ZK-qLt" id="WLq-kW-Ao8"/>
-                        <outlet property="labelSpeed" destination="j5W-Zn-XXp" id="Phb-fx-kdi"/>
-                        <outlet property="labelSteps" destination="20q-E9-1wr" id="PZg-hx-0n5"/>
-                        <outlet property="milesLabel" destination="ucR-d4-VW1" id="3vP-Ih-GXA"/>
-                        <outlet property="timerLabel" destination="cYA-oF-SvM" id="9mI-DK-jrl"/>
+                        <outlet property="buttonStart" destination="UZT-q1-yb3" id="x6L-eG-CaT"/>
+                        <outlet property="buttonStop" destination="hOE-n0-eGE" id="CQd-R7-bOi"/>
+                        <outlet property="labelSpeed" destination="kTR-IV-W6Z" id="43x-7g-J2b"/>
+                        <outlet property="labelSteps" destination="ZK1-UN-rTI" id="g8R-9F-vgn"/>
+                        <outlet property="milesLabel" destination="Hws-LH-gCS" id="EUG-HF-rUy"/>
+                        <outlet property="miliSeconds" destination="cyH-Xg-b36" id="viJ-fl-8Sz"/>
+                        <outlet property="timerLabel" destination="ZV0-tx-F3d" id="bop-ss-3CY"/>
                         <segue destination="U63-LO-HEn" kind="presentation" identifier="Result" id="KEe-oD-HGG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1W-3C-fuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2924" y="260"/>
+            <point key="canvasLocation" x="2924" y="259.52023988005999"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="0kI-pY-JAI">
@@ -480,16 +511,6 @@
                                     <constraint firstAttribute="height" constant="90" id="ei3-CM-er0"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teobaldo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcq-5r-xRb">
-                                <rect key="frame" x="163" y="90" width="168" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="168" id="6Pc-48-tci"/>
-                                    <constraint firstAttribute="height" constant="29" id="koH-PZ-xPq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
-                                <color key="textColor" red="0.29829727560000002" green="0.29829727560000002" blue="0.29829727560000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lvl. 00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNs-Zf-9v7">
                                 <rect key="frame" x="163" y="120" width="168" height="21"/>
                                 <constraints>
@@ -538,6 +559,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teobaldo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcq-5r-xRb">
+                                <rect key="frame" x="163" y="80" width="168" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="6Pc-48-tci"/>
+                                    <constraint firstAttribute="height" constant="39" id="koH-PZ-xPq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" red="0.29829727560000002" green="0.29829727560000002" blue="0.29829727560000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -550,7 +581,7 @@
                             <constraint firstItem="P6L-M8-Asg" firstAttribute="leading" secondItem="Ha9-Vw-1do" secondAttribute="leadingMargin" constant="27" id="8pm-Bb-Ppc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P6L-M8-Asg" secondAttribute="trailing" constant="28" id="BDQ-JV-pnz"/>
                             <constraint firstItem="xPi-8y-VeI" firstAttribute="centerX" secondItem="Ha9-Vw-1do" secondAttribute="centerX" constant="3.5" id="IQk-kY-enQ"/>
-                            <constraint firstItem="dcq-5r-xRb" firstAttribute="top" secondItem="yUh-zv-EdA" secondAttribute="bottom" constant="26" id="Js3-jQ-k0B"/>
+                            <constraint firstItem="dcq-5r-xRb" firstAttribute="top" secondItem="yUh-zv-EdA" secondAttribute="bottom" constant="16" id="Js3-jQ-k0B"/>
                             <constraint firstItem="IkV-8H-kca" firstAttribute="leading" secondItem="Ha9-Vw-1do" secondAttribute="leadingMargin" constant="27" id="Jx7-5M-uIl"/>
                             <constraint firstItem="87D-fg-0dM" firstAttribute="top" secondItem="vNs-Zf-9v7" secondAttribute="bottom" constant="15" id="QG6-j5-E8L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vNs-Zf-9v7" secondAttribute="trailing" constant="28" id="Ssi-uN-SjB"/>
@@ -568,6 +599,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cRt-QV-3LX"/>
                     <connections>
+                        <outlet property="labelNickName" destination="dcq-5r-xRb" id="J50-zY-QT6"/>
                         <outlet property="missionTable" destination="id0-3M-RGe" id="v5f-ND-NOe"/>
                         <segue destination="iMk-j0-qpE" kind="show" identifier="segue" id="GQM-Qt-zph"/>
                     </connections>
@@ -586,6 +618,6 @@
         <image name="lifeBar" width="1432" height="68"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="edd-3c-UHM"/>
+        <segue reference="b0o-Fw-B9s"/>
     </inferredMetricsTieBreakers>
 </document>

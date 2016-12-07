@@ -12,6 +12,7 @@ import HealthKit
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCustomCellDelegator {
     
     @IBOutlet weak var missionTable: UITableView!
+    @IBOutlet weak var labelNickName: UILabel!
     
     var index: Int? = nil
     var nickName = ""
@@ -20,7 +21,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
-         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
+        self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
         self.missionTable.reloadData()

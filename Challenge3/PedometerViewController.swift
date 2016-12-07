@@ -13,11 +13,18 @@ import HealthKit
 
 class PedometerViewController: UIViewController, CLLocationManagerDelegate, PedometerManagerDelegate {
     
+    @IBOutlet weak var buttonStart: UIButton!
+    @IBOutlet weak var buttonStop: UIButton!
+    var backgroundOrigin: UIColor?
+    var mili: Int?
+    var sec: Int?
+    var min: Int?
+    
    // @IBOutlet weak var activityState: UILabel!
     
     //Mission
     
-    @IBOutlet weak var goal: UILabel!
+//    @IBOutlet weak var goal: UILabel!
     var mission = Mission.init(type: "Missão Diária", activityType: "Walking", startDate: Date(), goal: 10)
 
     //Cronometer
@@ -34,6 +41,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     //Pedometer
     @IBOutlet weak var labelSteps: UILabel!
     
+    @IBOutlet weak var miliSeconds: UILabel!
     @IBOutlet weak var labelSpeed: UILabel!
     var stepsQuant: NSNumber = 0
     var pedometer = PedometerManager()
@@ -50,7 +58,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        goal.text = "\(mission.goal.intValue)"
+        backgroundOrigin = self.buttonStart.backgroundColor
+        //goal.text = "\(mission.goal.intValue)"
         self.pedometer.delegate = self
         pedometer.congigure()
         self.manager.delegate = self
@@ -79,51 +88,57 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     // Cronometer
     
     @IBAction func startTimer(_ sender: Any) {
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
-        zeroTime = Date.timeIntervalSinceReferenceDate
-        
-        distanceTraveled = 0.0
-        startLocation = nil
-        lastLocation = nil
-        
-        mission.verifyMission()
-        pedometer.updateValues(startDate: Date())
-        
+        if !timer.isValid{
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+            zeroTime = Date.timeIntervalSinceReferenceDate
+            
+            distanceTraveled = 0.0
+            startLocation = nil
+            lastLocation = nil
+            
+            mission.verifyMission()
+            pedometer.updateValues(startDate: Date())
+            
+            buttonStart.backgroundColor = UIColor(colorLiteralRed: 0, green: 0.7, blue: 0, alpha: 1)
+        }
     }
+    
+
     @IBAction func stopTimer(_ sender: Any) {
         timer.invalidate()
         self.speed = 0.00
         
         manager.stopUpdatingLocation()
         
-        
-//        healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
-//            if( success )
-//            {
-//                print("Workout saved!")
-//            }
-//            else if( error != nil ) {
-//                print("\(error)")
-//            }
-//        })
-//        
-//        var workouts = [HKWorkout]()
-//        healthManager.readWorkOuts(completion: { (results, error) -> Void in
-//            if( error != nil )
-//            {
-//                print("Error reading workouts: \(error?.localizedDescription)")
-//                return
-//            }
-//            else
-//            {
-//                print("Workouts read successfully!")
-//            }
-//            
-//            //Kkeep workouts and refresh tableview in main thread
-//            workouts = results as! [HKWorkout]
-//            //print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
-//            
-//        })
+        buttonStart.backgroundColor = backgroundOrigin
+        //        healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
+        //            if( success )
+        //            {
+        //                print("Workout saved!")
+        //            }
+        //            else if( error != nil ) {
+        //                print("\(error)")
+        //            }
+        //        })
+        //
+        //        var workouts = [HKWorkout]()
+        //        healthManager.readWorkOuts(completion: { (results, error) -> Void in
+        //            if( error != nil )
+        //            {
+        //                print("Error reading workouts: \(error?.localizedDescription)")
+        //                return
+        //            }
+        //            else
+        //            {
+        //                print("Workouts read successfully!")
+        //            }
+        //
+        //            //Kkeep workouts and refresh tableview in main thread
+        //            workouts = results as! [HKWorkout]
+        //            //print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
+        //            
+        //        })
+
     }
     
     func updateTime() {
@@ -139,7 +154,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         let strSeconds = String(format: "%02d", seconds)
         let strMSX10 = String(format: "%02d", millisecsX10)
         
-        timerLabel.text = "\(strMinutes):\(strSeconds):\(strMSX10)"
+        miliSeconds.text = "\(strMSX10)"
+        timerLabel.text = "\(strMinutes):\(strSeconds)"
         
         if timerLabel.text == "60:00:00" {
             timer.invalidate()
@@ -205,7 +221,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             
             let trimmedDistance = String(format: "%.2f", distanceTraveled)
             
-            milesLabel.text = "\(trimmedDistance) Meters"
+            milesLabel.text = "\(trimmedDistance)"
         }
         
         lastLocation = locations.last as CLLocation!
