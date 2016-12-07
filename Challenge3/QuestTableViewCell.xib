@@ -16,9 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="343" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="343" height="80.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRy-ca-Loy">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fHe-H5-PCd">
                         <rect key="frame" x="15" y="13" width="60" height="60"/>
                         <constraints>
@@ -46,14 +50,18 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="KRy-ca-Loy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5cz-fq-6A3"/>
                     <constraint firstItem="RGA-V2-Sls" firstAttribute="leading" secondItem="fHe-H5-PCd" secondAttribute="trailing" constant="16" id="64d-U0-3gW"/>
+                    <constraint firstAttribute="trailing" secondItem="KRy-ca-Loy" secondAttribute="trailing" id="7L0-AL-Vhk"/>
                     <constraint firstItem="VFG-hI-Ak1" firstAttribute="leading" secondItem="fHe-H5-PCd" secondAttribute="trailing" constant="16" id="9m4-wH-ybo"/>
                     <constraint firstItem="fHe-H5-PCd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="NjG-fG-bzb"/>
                     <constraint firstAttribute="trailing" secondItem="VFG-hI-Ak1" secondAttribute="trailing" constant="1" id="Rma-m9-DL8"/>
                     <constraint firstAttribute="trailing" secondItem="RGA-V2-Sls" secondAttribute="trailing" constant="1" id="Wzf-rm-GOp"/>
+                    <constraint firstAttribute="bottom" secondItem="KRy-ca-Loy" secondAttribute="bottom" id="aUy-LG-gDP"/>
                     <constraint firstItem="RGA-V2-Sls" firstAttribute="top" secondItem="VFG-hI-Ak1" secondAttribute="bottom" constant="8" id="dFj-Wd-43c"/>
                     <constraint firstItem="fHe-H5-PCd" firstAttribute="top" secondItem="VFG-hI-Ak1" secondAttribute="bottom" constant="-21" id="nYz-VZ-MNn"/>
                     <constraint firstItem="VFG-hI-Ak1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="pXb-9y-E4y"/>
+                    <constraint firstItem="KRy-ca-Loy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rdj-Ry-3aB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
