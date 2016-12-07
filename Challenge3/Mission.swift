@@ -35,5 +35,13 @@ class Mission: NSObject {
         self.status = .stoped
     }
     
-    
+    func verifyMission() {
+        if currentProgress.doubleValue == 0{
+            self.status = StatusMission.stoped
+        }else if self.currentProgress.doubleValue >= self.goal.doubleValue {
+            self.status = StatusMission.done
+        }else{
+            self.status = StatusMission.inProgress
+        }
+    }
 }

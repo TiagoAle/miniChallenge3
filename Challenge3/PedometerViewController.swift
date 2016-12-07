@@ -86,7 +86,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         startLocation = nil
         lastLocation = nil
         
-        mission.status = StatusMission.inProgress
+        mission.verifyMission()
         pedometer.updateValues(startDate: Date())
         
     }
@@ -169,7 +169,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         if mission.currentProgress.intValue >= mission.goal.intValue {
             mission.endDate = Date()
             mission.xpEarned = 10
-            mission.status = StatusMission.done
+            mission.verifyMission()
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "Result", sender: self.mission)
             }
