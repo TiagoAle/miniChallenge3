@@ -18,7 +18,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     //Mission
     
     @IBOutlet weak var goal: UILabel!
-    var mission = Mission.init(title: "dorgas", type: "Missão Diária", activityType: "Walking", startDate: Date(), goal: 10)
+    var mission = Mission.init(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
 
     //Cronometer
     @IBOutlet weak var timerLabel: UILabel!

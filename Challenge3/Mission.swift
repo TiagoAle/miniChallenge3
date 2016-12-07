@@ -15,12 +15,27 @@ enum StatusMission {
     case stoped
 }
 
+enum TypeMission {
+    case daily
+    case extra
+    case event
+}
+
+enum TypeActivity {
+    case run
+    case walk
+    case upStairs
+}
+
+
 class Mission: NSObject {
     
     
     var title: String
-    var type: String
-    var activityType: String
+    
+    var type: TypeMission
+    var activityType: TypeActivity
+    
     var xpEarned: Int?
     var status: StatusMission
     var startDate: Date
@@ -28,7 +43,14 @@ class Mission: NSObject {
     var goal: NSNumber
     var currentProgress: NSNumber
     
-    init(title: String, type: String, activityType: String, startDate: Date, goal: NSNumber) {
+    var prize: String
+    var missionDescription: String
+    
+    
+    
+    
+    
+    init(title: String, type: TypeMission, activityType: TypeActivity, startDate: Date, goal: NSNumber, description: String, prize: String) {
         self.title = title
         self.type = type
         self.activityType = activityType
@@ -36,6 +58,8 @@ class Mission: NSObject {
         self.goal = goal
         self.currentProgress = 0
         self.status = .stoped
+        self.missionDescription = description
+        self.prize = prize
     }
     
     func verifyMission() {

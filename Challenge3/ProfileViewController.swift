@@ -28,8 +28,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
          self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
-        let mission1 = Mission(title: "Walk for prize", type: "Daily", activityType: "Walk", startDate: Date(), goal: 100)
+        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "anda vuado ate conseguir atingir o total de passos", prize: "fica suado")
+        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "corre que o vetim ta vindo", prize: "ganha as mina tudim")
+        
         self.missionsArray.append(mission1)
+        self.missionsArray.append(mission2)
+        
         
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
@@ -83,8 +87,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = self.missionTable.dequeueReusableCell(withIdentifier: "CellExp")! as! ExpandedTableViewCell
             cell.mission = self.missionsArray[indexPath.row]
             cell.title.text = cell.mission?.title
-            
-            //cell.reward.text = "deu man"
+            cell.questDescription.text = cell.mission?.missionDescription
+            cell.reward.text = cell.mission?.prize
             self.missionTable.rowHeight = 193
             print(indexPath.row)
             cell.delegate = self
@@ -94,7 +98,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = self.missionTable.dequeueReusableCell(withIdentifier: "Cell")! as! QuestTableViewCell
             cell.mission = self.missionsArray[indexPath.row]
             cell.title.text = cell.mission?.title
-            //cell.reward.text = "deu man"
+            //cell.questDescription.text = cell.mission?.missionDescription
+            cell.reward.text = cell.mission?.prize
             self.missionTable.rowHeight = 80
             cell.delegate = self
             
