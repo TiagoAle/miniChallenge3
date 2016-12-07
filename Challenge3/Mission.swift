@@ -45,6 +45,8 @@ class Mission: NSObject {
     
     var prize: String
     var missionDescription: String
+    var enabled: Bool?
+    var lastDate: String
     
     
     
@@ -60,8 +62,19 @@ class Mission: NSObject {
         self.status = .stoped
         self.missionDescription = description
         self.prize = prize
+        self.enabled = true
+        
+        let todaysDate:Date = Date()
+        let dateFormatter:DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayString:String = dateFormatter.string(from: todaysDate)
+        self.lastDate = todayString
+        print(self.lastDate)
+
+        
+        
     }
-    
+
     func verifyMission() {
         if currentProgress.doubleValue == 0{
             self.status = StatusMission.stoped
@@ -71,4 +84,20 @@ class Mission: NSObject {
             self.status = StatusMission.inProgress
         }
     }
+    
+    func missionEnabled(){
+        let todaysDate:Date = Date()
+        let dateFormatter:DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayString:String = dateFormatter.string(from: todaysDate)
+
+        
+        if self.lastDate != todayString{
+            self.enabled = true
+        }
+        
+        
+    }
 }
+
+
