@@ -25,14 +25,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
-         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
-        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "anda vuado ate conseguir atingir o total de passos", prize: "fica suado")
-        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "corre que o vetim ta vindo", prize: "ganha as mina tudim")
+        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "ande 100 passos", prize: "win 70 Exp")
+        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "run for 2 meters", prize: "Win 120 Exp")
+        let mission3 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 20, description: "ande 20 passos", prize: "Win 50 Exp")
+        let mission4 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
+        let mission5 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
         
         self.missionsArray.append(mission1)
         self.missionsArray.append(mission2)
+        self.missionsArray.append(mission3)
+        self.missionsArray.append(mission4)
+        self.missionsArray.append(mission5)
+        
         
         
         self.missionTable.reloadData()
