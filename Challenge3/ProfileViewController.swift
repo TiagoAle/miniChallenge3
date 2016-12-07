@@ -17,13 +17,35 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var index: Int? = nil
     var nickName = ""
     let healthManager = HealthKitManager()
+    
+    var missionsArray: [Mission] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
+<<<<<<< HEAD
         labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
+=======
+>>>>>>> 6cedb853536222ead092b33ce267bd0b02f23719
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
+        
+        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "ande 100 passos", prize: "win 70 Exp")
+        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "run for 2 meters", prize: "Win 120 Exp")
+        let mission3 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 20, description: "ande 20 passos", prize: "Win 50 Exp")
+        let mission4 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
+        let mission5 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
+        
+        self.missionsArray.append(mission1)
+        self.missionsArray.append(mission2)
+        self.missionsArray.append(mission3)
+        self.missionsArray.append(mission4)
+        self.missionsArray.append(mission5)
+        
+        
         
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
@@ -48,7 +70,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.missionsArray.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.index == indexPath.row{
@@ -74,16 +96,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            print(self.missionTable.rowHeight)
             
             
-                let cell = self.missionTable.dequeueReusableCell(withIdentifier: "CellExp")! as! ExpandedTableViewCell
-                cell.reward.text = "deu man"
-                self.missionTable.rowHeight = 193
-                print(indexPath.row)
-                cell.delegate = self
-                return cell
+            let cell = self.missionTable.dequeueReusableCell(withIdentifier: "CellExp")! as! ExpandedTableViewCell
+            cell.mission = self.missionsArray[indexPath.row]
+            cell.title.text = cell.mission?.title
+            cell.questDescription.text = cell.mission?.missionDescription
+            cell.reward.text = cell.mission?.prize
+            self.missionTable.rowHeight = 193
+            print(indexPath.row)
+            cell.delegate = self
+            return cell
         }else {
         
             let cell = self.missionTable.dequeueReusableCell(withIdentifier: "Cell")! as! QuestTableViewCell
-            cell.reward.text = "deu man"
+            cell.mission = self.missionsArray[indexPath.row]
+            cell.title.text = cell.mission?.title
+            //cell.questDescription.text = cell.mission?.missionDescription
+            cell.reward.text = cell.mission?.prize
             self.missionTable.rowHeight = 80
             cell.delegate = self
             

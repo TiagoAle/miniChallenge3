@@ -15,10 +15,27 @@ enum StatusMission {
     case stoped
 }
 
+enum TypeMission {
+    case daily
+    case extra
+    case event
+}
+
+enum TypeActivity {
+    case run
+    case walk
+    case upStairs
+}
+
+
 class Mission: NSObject {
     
-    var type: String
-    var activityType: String
+    
+    var title: String
+    
+    var type: TypeMission
+    var activityType: TypeActivity
+    
     var xpEarned: Int?
     var status: StatusMission
     var startDate: Date
@@ -26,15 +43,38 @@ class Mission: NSObject {
     var goal: NSNumber
     var currentProgress: NSNumber
     
-    init(type: String, activityType: String, startDate: Date, goal: NSNumber) {
+    var prize: String
+    var missionDescription: String
+    var enabled: Bool?
+    var lastDate: String
+    
+    
+    
+    
+    
+    init(title: String, type: TypeMission, activityType: TypeActivity, startDate: Date, goal: NSNumber, description: String, prize: String) {
+        self.title = title
         self.type = type
         self.activityType = activityType
         self.startDate = startDate
         self.goal = goal
         self.currentProgress = 0
         self.status = .stoped
+        self.missionDescription = description
+        self.prize = prize
+        self.enabled = true
+        
+        let todaysDate:Date = Date()
+        let dateFormatter:DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayString:String = dateFormatter.string(from: todaysDate)
+        self.lastDate = todayString
+        print(self.lastDate)
+
+        
+        
     }
-    
+
     func verifyMission() {
         if currentProgress.doubleValue == 0{
             self.status = StatusMission.stoped
@@ -44,4 +84,20 @@ class Mission: NSObject {
             self.status = StatusMission.inProgress
         }
     }
+    
+    func missionEnabled(){
+        let todaysDate:Date = Date()
+        let dateFormatter:DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayString:String = dateFormatter.string(from: todaysDate)
+
+        
+        if self.lastDate != todayString{
+            self.enabled = true
+        }
+        
+        
+    }
 }
+
+
