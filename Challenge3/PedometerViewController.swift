@@ -13,6 +13,7 @@ import HealthKit
 
 class PedometerViewController: UIViewController, CLLocationManagerDelegate, PedometerManagerDelegate {
     
+    @IBOutlet weak var labelGoal: UILabel!
     @IBOutlet weak var buttonStart: UIButton!
     @IBOutlet weak var buttonStop: UIButton!
     var backgroundOrigin: UIColor?
@@ -66,7 +67,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
         super.viewDidLoad()
         backgroundOrigin = self.buttonStart.backgroundColor
-        //goal.text = "\(mission.goal.intValue)"
+        self.labelGoal.text = "\(self.mission?.goal.intValue)"
         self.pedometer.delegate = self
         pedometer.congigure()
         self.manager.delegate = self
