@@ -90,7 +90,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
         
         self.endDate = cal.date(from: comps!)
-        print(self.mission!.title)
+        print(self.mission!.goal)
     }
     
     // Cronometer
