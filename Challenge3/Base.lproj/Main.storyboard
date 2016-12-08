@@ -576,12 +576,17 @@
                                 <color key="textColor" red="0.29829727560000002" green="0.29829727560000002" blue="0.29829727560000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SXp-w0-WLz">
+                            <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SXp-w0-WLz">
                                 <rect key="frame" x="51" y="194" width="280" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="XhC-2u-160"/>
                                     <constraint firstAttribute="width" constant="280" id="reE-GJ-Bhy"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
