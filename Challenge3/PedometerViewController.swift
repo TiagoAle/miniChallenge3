@@ -67,7 +67,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
         super.viewDidLoad()
         backgroundOrigin = self.buttonStart.backgroundColor
-        self.labelGoal.text = "\(self.mission?.goal.intValue)"
+        self.labelGoal.text = "\((self.mission?.goal.intValue)!)"
         self.pedometer.delegate = self
         pedometer.congigure()
         self.manager.delegate = self
@@ -210,7 +210,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             }
             
         }
-        self.labelSteps.text = "\(mission?.currentProgress)"
+        self.labelSteps.text = "\((mission?.currentProgress)!)"
         
     }
     
