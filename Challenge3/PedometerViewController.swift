@@ -22,6 +22,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     var calorias: String?
     var timePause: TimeInterval = 0
     var paused: Bool = false
+    var mission: Mission? //= Mission(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
     
    // @IBOutlet weak var activityState: UILabel!
     
@@ -29,7 +30,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     
 
     @IBOutlet weak var goal: UILabel!
-    var mission = Mission.init(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
+    
+//     self.mission = Mission(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
 
 
     //Cronometer
@@ -88,6 +90,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
         
         self.endDate = cal.date(from: comps!)
+        print(self.mission!.title)
     }
     
     // Cronometer
@@ -100,7 +103,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             startLocation = nil
             lastLocation = nil
             
-            mission.verifyMission()
+            self.mission?.verifyMission()
             pedometer.updateValues(startDate: Date())
             
             buttonStart.backgroundColor = UIColor(colorLiteralRed: 0, green: 0.7, blue: 0, alpha: 1)
@@ -196,17 +199,17 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     
     func updateSteps(steps: NSNumber) {
         self.stepsQuant = steps
-        mission.currentProgress = steps
-        if mission.currentProgress.intValue >= mission.goal.intValue {
-            mission.endDate = Date()
-            mission.xpEarned = 10
-            mission.verifyMission()
+        self.mission?.currentProgress = steps
+        if (self.mission?.currentProgress.intValue)! >= (self.mission?.goal.intValue)! {
+            self.mission?.endDate = Date()
+            self.mission?.xpEarned = 10
+            self.mission?.verifyMission()
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "Result", sender: self.mission)
             }
             
         }
-        self.labelSteps.text = "\(mission.currentProgress)"
+        self.labelSteps.text = "\(mission?.currentProgress)"
         
     }
     
