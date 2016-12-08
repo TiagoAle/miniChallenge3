@@ -16,6 +16,7 @@ class CharacterModel: NSObject {
     var items: [String]?  
     var missions: [String]?
     var gender: String?
+    var exp: Double?
 
 
     init(gender:String , nickName: String, age: Int, items: [String], missions: [String]) {
@@ -29,6 +30,7 @@ class CharacterModel: NSObject {
         self.age = age
         self.items = items
         self.missions = missions
+        self.exp = 0.0
     }
     
 
