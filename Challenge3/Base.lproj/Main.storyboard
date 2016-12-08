@@ -308,39 +308,26 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="awV-xG-AuS">
-                                <rect key="frame" x="289" y="95" width="67" height="47"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-UN-rTI">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="35"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8D-dU-Tvd">
-                                        <rect key="frame" x="0.0" y="35" width="67" height="12"/>
-                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="10"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7av-id-0EB">
-                                <rect key="frame" x="158.5" y="454" width="58.5" height="47"/>
+                                <rect key="frame" x="300" y="96" width="59" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTR-IV-W6Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="58.5" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="35"/>
                                         <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPR-aj-h3M">
-                                        <rect key="frame" x="0.0" y="35" width="58.5" height="12"/>
+                                        <rect key="frame" x="0.0" y="35" width="59" height="12"/>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="IWO-lG-50M"/>
+                                    <constraint firstAttribute="height" constant="47" id="zQy-kP-Cpd"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOE-n0-eGE">
                                 <rect key="frame" x="259" y="587" width="100" height="50"/>
@@ -362,21 +349,59 @@
                                     <action selector="stopTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="eKt-XP-kxV"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UF1-yb-uhN">
+                                <rect key="frame" x="132" y="449" width="110" height="47"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awV-xG-AuS">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="35"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-UN-rTI">
+                                                <rect key="frame" x="0.0" y="0.0" width="51" height="35"/>
+                                                <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52E-PY-jNP">
+                                                <rect key="frame" x="51" y="0.0" width="8.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmp-E4-L1P">
+                                                <rect key="frame" x="59.5" y="0.0" width="50.5" height="35"/>
+                                                <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8D-dU-Tvd">
+                                        <rect key="frame" x="0.0" y="35" width="110" height="12"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="QxL-wH-evh"/>
+                                    <constraint firstAttribute="width" constant="110" id="Urc-48-cpl"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="hOE-n0-eGE" secondAttribute="trailing" id="3qu-Iv-LLf"/>
+                            <constraint firstItem="7av-id-0EB" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="32" id="6nz-ib-XT9"/>
                             <constraint firstItem="brH-oB-oGs" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="32" id="AEw-Em-ouv"/>
+                            <constraint firstItem="UF1-yb-uhN" firstAttribute="top" secondItem="UZT-q1-yb3" secondAttribute="bottom" constant="15" id="EOb-sQ-6l5"/>
                             <constraint firstItem="UZT-q1-yb3" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="IxN-Rd-O7b"/>
                             <constraint firstItem="0EF-ah-zUF" firstAttribute="leading" secondItem="PVt-FS-Vdm" secondAttribute="leadingMargin" constant="3" id="MFR-ky-0dD"/>
                             <constraint firstItem="g2I-G5-Npe" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="33" id="Mf9-Gu-ofu"/>
-                            <constraint firstItem="awV-xG-AuS" firstAttribute="top" secondItem="vGE-z7-RUA" secondAttribute="bottom" constant="31" id="OY8-78-12Y"/>
-                            <constraint firstItem="7av-id-0EB" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="Pge-40-pLZ"/>
                             <constraint firstItem="oAZ-Ud-VbS" firstAttribute="top" secondItem="0EF-ah-zUF" secondAttribute="bottom" constant="30" id="c6J-pv-Pef"/>
-                            <constraint firstItem="7av-id-0EB" firstAttribute="top" secondItem="UZT-q1-yb3" secondAttribute="bottom" constant="20" id="hsg-PC-UjS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="awV-xG-AuS" secondAttribute="trailing" constant="3" id="jro-kj-YKT"/>
                             <constraint firstItem="UZT-q1-yb3" firstAttribute="centerY" secondItem="PVt-FS-Vdm" secondAttribute="centerY" id="qhU-Qk-ydd"/>
+                            <constraint firstItem="UF1-yb-uhN" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="srC-rv-dMw"/>
                             <constraint firstItem="g2I-G5-Npe" firstAttribute="centerX" secondItem="PVt-FS-Vdm" secondAttribute="centerX" id="wIZ-Q4-bE7"/>
+                            <constraint firstItem="7av-id-0EB" firstAttribute="trailing" secondItem="PVt-FS-Vdm" secondAttribute="trailingMargin" id="x3k-3I-pv9"/>
                             <constraint firstItem="brH-oB-oGs" firstAttribute="leading" secondItem="PVt-FS-Vdm" secondAttribute="leadingMargin" constant="3" id="z4v-8V-Rkt"/>
                             <constraint firstItem="oAZ-Ud-VbS" firstAttribute="top" secondItem="hOE-n0-eGE" secondAttribute="bottom" constant="30" id="zhF-B8-lAX"/>
                         </constraints>
@@ -385,6 +410,7 @@
                     <connections>
                         <outlet property="buttonStart" destination="UZT-q1-yb3" id="x6L-eG-CaT"/>
                         <outlet property="buttonStop" destination="hOE-n0-eGE" id="CQd-R7-bOi"/>
+                        <outlet property="labelGoal" destination="dmp-E4-L1P" id="Xct-1A-8SJ"/>
                         <outlet property="labelSpeed" destination="kTR-IV-W6Z" id="43x-7g-J2b"/>
                         <outlet property="labelSteps" destination="ZK1-UN-rTI" id="g8R-9F-vgn"/>
                         <outlet property="milesLabel" destination="Hws-LH-gCS" id="EUG-HF-rUy"/>
