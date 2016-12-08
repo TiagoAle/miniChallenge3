@@ -30,10 +30,10 @@
                             <constraint firstAttribute="height" constant="60" id="qbv-Tp-KEV"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3m-5J-S1m">
-                        <rect key="frame" x="15" y="81" width="327" height="44"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3m-5J-S1m">
+                        <rect key="frame" x="36" y="81" width="271" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="327" id="YWy-Y1-4ly"/>
+                            <constraint firstAttribute="width" constant="271" id="YWy-Y1-4ly"/>
                             <constraint firstAttribute="height" constant="44" id="js1-pG-sdA"/>
                         </constraints>
                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus, orci ac tempor eleifend, tellus leo ultricies erat, sed sodales nisl velit in enim. </string>

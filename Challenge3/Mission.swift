@@ -43,7 +43,7 @@ class Mission: NSObject {
     var goal: NSNumber
     var currentProgress: NSNumber
     
-    var prize: String
+    var prize: String?
     var missionDescription: String
     var enabled: Bool?
     var lastDate: String
@@ -69,13 +69,26 @@ class Mission: NSObject {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let todayString:String = dateFormatter.string(from: todaysDate)
         self.lastDate = todayString
-        print(self.lastDate)
+        print(self.prize)
+        let myString: String = self.prize!
+        let myStringArr = myString.components(separatedBy: " ")
+        for i in myStringArr {
+        
+            if let exp = Int(i){
+                self.xpEarned = exp
+                print(self.xpEarned!)
+            }
+            
+        }
+
+
         //print(self.enabled)
 
         
         
     }
 
+    
     func verifyMission() {
         if currentProgress.doubleValue == 0{
             self.status = StatusMission.stoped
