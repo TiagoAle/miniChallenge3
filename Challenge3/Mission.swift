@@ -70,7 +70,7 @@ class Mission: NSObject {
         let todayString:String = dateFormatter.string(from: todaysDate)
         self.lastDate = todayString
         print(self.lastDate)
-        print(self.enabled)
+        //print(self.enabled)
 
         
         
@@ -96,7 +96,7 @@ class Mission: NSObject {
         if self.lastDate != todayString{
             self.enabled = true
             print(todayString)
-            print(self.enabled)
+           // print(self.enabled)
         }
         
         
