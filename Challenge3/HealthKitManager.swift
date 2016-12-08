@@ -13,6 +13,11 @@ import HealthKit
 class HealthKitManager: NSObject{
     let healthKitStore: HKHealthStore = HKHealthStore()
     
+    let distanceCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)
+    
+    let calorias = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)
+    let distanceUnit = HKUnit(from: "mi")
+    let caloriasUnit = HKUnit.calorie()
     func authorizeHealthKit(completion: ((_ success:Bool,_ error:Error?) -> Void)!)
     {
         // 1. Set the types you want to read from HK Store
@@ -21,6 +26,7 @@ class HealthKitManager: NSObject{
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!,
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.bloodType)!,
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!,
             HKObjectType.workoutType()
@@ -237,7 +243,8 @@ class HealthKitManager: NSObject{
     func saveWorkout(startDate:Date , endDate:Date, completion: ( (Bool, Error?) -> Void)!) {
         
         // 2. Save Running Workout
-        let workout = HKWorkout(activityType: HKWorkoutActivityType.volleyball, start: startDate, end: endDate)
+        //let workout2 = HKWorkout(activityType: HKWorkoutActivityType.walking, start: startDate, end: endDate, duration: 0, totalEnergyBurned: HKQuantity(unit: HKUnit.calorie(), doubleValue: 10.0), totalDistance: HKQuantity(unit: HKUnit.meter(), doubleValue: 0.0), metadata: nil)
+        let workout = HKWorkout(activityType: HKWorkoutActivityType.walking, start: startDate, end: endDate)
         healthKitStore.save(workout, withCompletion: { (success, error) -> Void in
             if( error != nil  ) {
                 // Error saving the workout
@@ -254,7 +261,7 @@ class HealthKitManager: NSObject{
     func readWorkOuts(completion: (([AnyObject]?, Error?) -> Void)!) {
         
         // 1. Predicate to read only running workouts
-        let predicate =  HKQuery.predicateForWorkouts(with: HKWorkoutActivityType.volleyball)
+        let predicate =  HKQuery.predicateForWorkouts(with: HKWorkoutActivityType.walking)
         // 2. Order the workouts by date
         let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
         // 3. Create the query
@@ -269,6 +276,44 @@ class HealthKitManager: NSObject{
         // 4. Execute the query
         healthKitStore.execute(sampleQuery)
         
+    }
+    
+    func fetchTotalJoulesConsumedWithCompletionHandler(
+        completionHandler:@escaping (Double?, NSError?)->()) {
+        
+        let calendar = Calendar.current
+        let now = Date()
+        let components = calendar.dateComponents([.year, .month, .day], from: now)
+        let startDate = calendar.date(from: components)
+        
+        let endDate = calendar.date(byAdding: .day, value: 1, to: Date())
+        
+        let sampleType = HKQuantityType.quantityType(
+            forIdentifier: HKQuantityTypeIdentifier.dietaryEnergyConsumed)
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate,
+                                                    end: endDate, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: sampleType!,
+                                      quantitySamplePredicate: predicate,
+                                      options: .cumulativeSum) { query, result, error in
+                                        
+                                        if result != nil {
+                                            completionHandler(nil, error as NSError?)
+                                            return
+                                        }
+                                        
+                                        var totalCalories = 0.0
+                                        
+                                        if let quantity = result?.sumQuantity() {
+                                            let unit = HKUnit.joule()
+                                            totalCalories = quantity.doubleValue(for: unit)
+                                        }
+                                        
+                                        completionHandler(totalCalories, error as NSError?)
+        }
+        
+        healthKitStore.execute(query)
     }
 
 }

@@ -19,6 +19,9 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     var mili: Int?
     var sec: Int?
     var min: Int?
+    var calorias: String?
+    var timePause: TimeInterval = 0
+    var paused: Bool = false
     
    // @IBOutlet weak var activityState: UILabel!
     
@@ -66,13 +69,13 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         pedometer.congigure()
         self.manager.delegate = self
         self.manager.requestAlwaysAuthorization()
-        
+    
         self.manager.desiredAccuracy = kCLLocationAccuracyBest
         self.manager.activityType = .fitness
         self.manager.distanceFilter = 1
         self.manager.startUpdatingLocation()
         self.manager.startUpdatingHeading()
-        
+    
         comps = self.cal.dateComponents([Calendar.Component.year,Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second], from: Date())
         
         comps?.hour = 10
@@ -93,7 +96,6 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         if !timer.isValid{
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
             zeroTime = Date.timeIntervalSinceReferenceDate
-            
             distanceTraveled = 0.0
             startLocation = nil
             lastLocation = nil
@@ -102,50 +104,60 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             pedometer.updateValues(startDate: Date())
             
             buttonStart.backgroundColor = UIColor(colorLiteralRed: 0, green: 0.7, blue: 0, alpha: 1)
+            
         }
+    }
+    
+    @IBAction func pauseTimer(_ sender: Any) {
+        timer.invalidate()
+        self.timePause = self.timePause + Date.timeIntervalSinceReferenceDate - zeroTime
+        self.paused = true
     }
     
 
     @IBAction func stopTimer(_ sender: Any) {
         timer.invalidate()
         self.speed = 0.00
+        self.timePause = 0
         
         manager.stopUpdatingLocation()
         
         buttonStart.backgroundColor = backgroundOrigin
-        //        healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
-        //            if( success )
-        //            {
-        //                print("Workout saved!")
-        //            }
-        //            else if( error != nil ) {
-        //                print("\(error)")
-        //            }
-        //        })
-        //
-        //        var workouts = [HKWorkout]()
-        //        healthManager.readWorkOuts(completion: { (results, error) -> Void in
-        //            if( error != nil )
-        //            {
-        //                print("Error reading workouts: \(error?.localizedDescription)")
-        //                return
-        //            }
-        //            else
-        //            {
-        //                print("Workouts read successfully!")
-        //            }
-        //
-        //            //Kkeep workouts and refresh tableview in main thread
-        //            workouts = results as! [HKWorkout]
-        //            //print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
-        //            
-        //        })
+                healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
+                    if( success )
+                    {
+                        print("Workout saved!")
+                    }
+                    else if( error != nil ) {
+                        print("\(error)")
+                    }
+                })
+        
+                var workouts = [HKWorkout]()
+                healthManager.readWorkOuts(completion: { (results, error) -> Void in
+                    if( error != nil )
+                    {
+                        print("Error reading workouts: \(error?.localizedDescription)")
+                        return
+                    }
+                    else
+                    {
+                        print("Workouts read successfully!")
+                    }
+        
+                    //Kkeep workouts and refresh tableview in main thread
+                    workouts = results as! [HKWorkout]
+                   // print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
+                    
+                })
 
     }
     
     func updateTime() {
         let currentTime = Date.timeIntervalSinceReferenceDate
-        var timePassed: TimeInterval = currentTime - zeroTime
+        
+        var timePassed: TimeInterval = currentTime - zeroTime + self.timePause
+        
         let minutes = UInt8(timePassed / 60.0)
         timePassed -= (TimeInterval(minutes) * 60)
         let seconds = UInt8(timePassed)
@@ -163,6 +175,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             timer.invalidate()
             manager.stopUpdatingLocation()
         }
+       
     }
     //
     override func didReceiveMemoryWarning() {

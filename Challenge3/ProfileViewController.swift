@@ -26,10 +26,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
-<<<<<<< HEAD
         labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
-=======
->>>>>>> 6cedb853536222ead092b33ce267bd0b02f23719
+
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         

@@ -9,7 +9,7 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UserDataManagerDelegate {
 
     let dataManager = UserDataManager()
     var arrayInformations = [Any]()
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        self.tableView.delegate = self
 //        self.tableView.dataSource = self
-        //self.dataManager.delegate = self
+        self.dataManager.delegate = self
         
         if self.dataManager.UserExist(){
             //pula direto para a view da ficha
@@ -86,10 +86,10 @@ class ViewController: UIViewController {
     
     
     // TRY USE USERDATAMANAGERDELEGATE
-//    func updatingDataTableView(arrayInfo: [Any]) {
-//        self.arrayInformations = arrayInfo
-//        //self.tableView.reloadData()
-//    }
+    func updatingDataTableView(arrayInfo: [Any]) {
+        self.arrayInformations = arrayInfo
+        print(self.arrayInformations)
+    }
 
 
 //    func numberOfSections(in tableView: UITableView) -> Int {

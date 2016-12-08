@@ -24,8 +24,10 @@ class UserDataManager: NSObject {
     var bloodType: String?
     var weight: String?
     var height: String?
+    var calorie: String?
     var heightSample: HKQuantitySample?
     var weightSample: HKQuantitySample?
+    var calorieSample: HKQuantitySample?
     var bmi: Double?
     
     func saveNickName(nickName: String) -> String{
@@ -69,6 +71,9 @@ class UserDataManager: NSObject {
         if self.weight == nil{
             self.weight = "Unknown"
         }
+        if self.calorie == nil{
+            self.calorie = "Unknown"
+        }
         if self.bmi == nil{
             self.bmi = -1
         }
@@ -93,6 +98,7 @@ class UserDataManager: NSObject {
                 self.sex = self.healthManager.receiveUserData().biologicalsex
                 self.updateHeight()
                 self.updateWeight()
+                self.updateCalories()
                 
                 self.checkData()
                 
@@ -102,6 +108,7 @@ class UserDataManager: NSObject {
                 self.arrayInformations.append(self.weight! as String)
                 self.arrayInformations.append(self.height! as String)
                 self.arrayInformations.append(self.bmi! as Double)
+                self.arrayInformations.append(self.calorie! as String)
                 
                 
                 self.delegate?.updatingDataTableView(arrayInfo: self.arrayInformations)
@@ -171,6 +178,37 @@ class UserDataManager: NSObject {
                 self.height = heightLocalizedString
                 self.arrayInformations[4] = self.height! as String
                 self.updateBMI()
+            }
+            
+        })
+    }
+    
+    func updateCalories(){
+        // 1. Construct an HKSampleType for Height
+        let sampleType = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)
+        
+        // 2. Call the method to read the most recent Height sample
+        self.healthManager.readMostRecentSample(sampleType: sampleType!, completion: { (mostRecentHeight, error) -> Void in
+            
+            if( error != nil )
+            {
+                print("Error reading height from HealthKit Store: \(error?.localizedDescription)")
+                return
+            }
+            
+            var heightLocalizedString = "Unknown"
+            self.calorieSample = mostRecentHeight as? HKQuantitySample;
+            // 3. Format the height to display it on the screen
+            if let meters = self.calorieSample?.quantity.doubleValue(for: HKUnit.calorie()) {
+                let heightFormatter = EnergyFormatter()
+                heightFormatter.isForFoodEnergyUse = true
+                heightLocalizedString = heightFormatter.string(fromValue: meters, unit: .calorie)
+            }
+            
+            
+            // 4. Update UI. HealthKit use an internal queue. We make sure that we interact with the UI in the main thread
+            DispatchQueue.main.async {
+                self.calorie = heightLocalizedString
             }
             
         })

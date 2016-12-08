@@ -251,7 +251,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="pauseTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="JbV-4P-VLe"/>
+                                    <action selector="pauseTimer:" destination="iMk-j0-qpE" eventType="touchUpInside" id="vC9-uT-X0C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZT-q1-yb3">
@@ -473,7 +473,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gZ4-pc-me0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AyK-IG-kJh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AyK-IG-kJh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
