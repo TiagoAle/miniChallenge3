@@ -22,7 +22,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     var calorias: String?
     var timePause: TimeInterval = 0
     var paused: Bool = false
-    var mission: Mission? = Mission(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
+    var mission: Mission? //= Mission(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
     
    // @IBOutlet weak var activityState: UILabel!
     
@@ -90,6 +90,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
         
         self.endDate = cal.date(from: comps!)
+        print(self.mission!.title)
     }
     
     // Cronometer
@@ -199,7 +200,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     func updateSteps(steps: NSNumber) {
         self.stepsQuant = steps
         self.mission?.currentProgress = steps
-        if (self.mission?.currentProgress.intValue)! >= (mission?.goal.intValue)! {
+        if (self.mission?.currentProgress.intValue)! >= (self.mission?.goal.intValue)! {
             self.mission?.endDate = Date()
             self.mission?.xpEarned = 10
             self.mission?.verifyMission()

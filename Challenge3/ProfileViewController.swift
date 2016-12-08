@@ -53,13 +53,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "segue") {
-//            let vc = segue.destination as! testeViewController
-//            present(vc, animated: true, completion: nil)
-//           // self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segue") {
+            let vc = segue.destination as! PedometerViewController
+            vc.mission = missionsArray[self.index!]
+        }
+    }
 
     // MARK: - Navigation
     func numberOfSections(in tableView: UITableView) -> Int {
