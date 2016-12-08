@@ -183,8 +183,11 @@ class UserDataManager: NSObject {
         })
     }
     
+    
+    
     func updateCalories(){
         // 1. Construct an HKSampleType for Height
+        
         let sampleType = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)
         
         // 2. Call the method to read the most recent Height sample
