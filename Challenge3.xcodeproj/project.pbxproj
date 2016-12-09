@@ -7,8 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A4E8AF01DE703A60067B2CF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4E8AEF1DE703A60067B2CF /* HealthKit.framework */; };
+		05C8D5D6E68BE9853DE13411 /* Pods_WatchMoveVersion_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503C1D577A3D25D3B1C57DFC /* Pods_WatchMoveVersion_Extension.framework */; };
+		2E7906A1D923899ACC337FCA /* Pods_WatchMoveVersion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2BB899819BAB2141F0790A /* Pods_WatchMoveVersion.framework */; };
 		6A4E8AF61DE704730067B2CF /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E8AF51DE704730067B2CF /* HealthKitManager.swift */; };
+		6A56CD5B1DF99F1C00CA339C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD591DF99F1C00CA339C /* Interface.storyboard */; };
+		6A56CD5D1DF99F1C00CA339C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD5C1DF99F1C00CA339C /* Assets.xcassets */; };
+		6A56CD641DF99F1C00CA339C /* WatchMoveVersion Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A56CD631DF99F1C00CA339C /* WatchMoveVersion Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6A56CD6B1DF99F1C00CA339C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD6A1DF99F1C00CA339C /* InterfaceController.swift */; };
+		6A56CD6D1DF99F1C00CA339C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD6C1DF99F1C00CA339C /* ExtensionDelegate.swift */; };
+		6A56CD6F1DF99F1C00CA339C /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD6E1DF99F1C00CA339C /* NotificationController.swift */; };
+		6A56CD711DF99F1C00CA339C /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD701DF99F1C00CA339C /* ComplicationController.swift */; };
+		6A56CD731DF99F1C00CA339C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD721DF99F1C00CA339C /* Assets.xcassets */; };
+		6A56CD771DF99F1C00CA339C /* WatchMoveVersion.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6A56CD571DF99F1B00CA339C /* WatchMoveVersion.app */; };
+		6A56CD821DF9A19200CA339C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56CD811DF9A19200CA339C /* HealthKit.framework */; };
+		6A56CD841DFAC9F700CA339C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD831DFAC9F700CA339C /* GoogleService-Info.plist */; };
 		6A77FBFE1DD4BD0C0008AFED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */; };
 		6A77FC001DD4BD0C0008AFED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */; };
 		6A77FC031DD4BD0C0008AFED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A77FC011DD4BD0C0008AFED /* Main.storyboard */; };
@@ -31,9 +43,26 @@
 		A7CED8331DEEFFB700AB620D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CED8321DEEFFB700AB620D /* ResultViewController.swift */; };
 		A7DD7E841DEC674C00AC0D29 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */; };
 		A7FCE6971DF255EA00F58741 /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FCE6961DF255EA00F58741 /* testeViewController.swift */; };
+		B65A344F40E0B088A8D2ACCF /* Pods_Challenge3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BF24B53A614961972FA4BC /* Pods_Challenge3Tests.framework */; };
+		B97B66D4E622341EB31DDDFE /* Pods_Challenge3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00B44E11DC5E89A3B4C7721 /* Pods_Challenge3.framework */; };
+		D090F4C03D94402A47B927A2 /* Pods_Challenge3UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B5E74D322CEACD44A9A434 /* Pods_Challenge3UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6A56CD651DF99F1C00CA339C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A77FBF21DD4BD0C0008AFED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A56CD621DF99F1C00CA339C;
+			remoteInfo = "WatchMoveVersion Extension";
+		};
+		6A56CD751DF99F1C00CA339C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A77FBF21DD4BD0C0008AFED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A56CD561DF99F1B00CA339C;
+			remoteInfo = WatchMoveVersion;
+		};
 		6A77FC121DD4BD0C0008AFED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A77FBF21DD4BD0C0008AFED /* Project object */;
@@ -50,10 +79,56 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6A56CD7D1DF99F1C00CA339C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6A56CD641DF99F1C00CA339C /* WatchMoveVersion Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A56CD7F1DF99F1C00CA339C /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6A56CD771DF99F1C00CA339C /* WatchMoveVersion.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		6A4E8AEF1DE703A60067B2CF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		0BB430982DF174FF420D76A7 /* Pods-Challenge3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge3UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge3UITests/Pods-Challenge3UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		21B5E74D322CEACD44A9A434 /* Pods_Challenge3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge3UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EDBB8E3E7A6A0414DECF089 /* Pods-WatchMoveVersion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchMoveVersion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchMoveVersion/Pods-WatchMoveVersion.debug.xcconfig"; sourceTree = "<group>"; };
+		39760C8F5CED3381487FE35E /* Pods-Challenge3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge3Tests/Pods-Challenge3Tests.release.xcconfig"; sourceTree = "<group>"; };
+		4417A5C5AAE4411CF591D774 /* Pods-WatchMoveVersion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchMoveVersion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchMoveVersion/Pods-WatchMoveVersion.release.xcconfig"; sourceTree = "<group>"; };
+		503C1D577A3D25D3B1C57DFC /* Pods_WatchMoveVersion_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchMoveVersion_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57BF24B53A614961972FA4BC /* Pods_Challenge3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4E8AF41DE704190067B2CF /* Challenge3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Challenge3.entitlements; sourceTree = "<group>"; };
 		6A4E8AF51DE704730067B2CF /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		6A56CD571DF99F1B00CA339C /* WatchMoveVersion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMoveVersion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A56CD5A1DF99F1C00CA339C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6A56CD5C1DF99F1C00CA339C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A56CD5E1DF99F1C00CA339C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A56CD631DF99F1C00CA339C /* WatchMoveVersion Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchMoveVersion Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A56CD691DF99F1C00CA339C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		6A56CD6A1DF99F1C00CA339C /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6A56CD6C1DF99F1C00CA339C /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6A56CD6E1DF99F1C00CA339C /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		6A56CD701DF99F1C00CA339C /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		6A56CD721DF99F1C00CA339C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A56CD741DF99F1C00CA339C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A56CD801DF9A19200CA339C /* WatchMoveVersion Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchMoveVersion Extension.entitlements"; sourceTree = "<group>"; };
+		6A56CD811DF9A19200CA339C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		6A56CD831DFAC9F700CA339C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A77FBFA1DD4BD0C0008AFED /* Challenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +147,11 @@
 		6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerViewController.swift; sourceTree = "<group>"; };
 		6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerManager.swift; sourceTree = "<group>"; };
 		6AC8ED0F1DF6E04E007D13CC /* Mission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		748630775866894136E48C99 /* Pods-Challenge3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge3Tests/Pods-Challenge3Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		8572F8711148A532BE5CC88B /* Pods-Challenge3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge3/Pods-Challenge3.debug.xcconfig"; sourceTree = "<group>"; };
+		85BC33CABDB4089AFD9A2F5E /* Pods-Challenge3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge3.release.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge3/Pods-Challenge3.release.xcconfig"; sourceTree = "<group>"; };
+		9286CDDB4A088D1978954789 /* Pods-WatchMoveVersion Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchMoveVersion Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchMoveVersion Extension/Pods-WatchMoveVersion Extension.release.xcconfig"; sourceTree = "<group>"; };
+		944609B7D1E5B870FED9A5EA /* Pods-WatchMoveVersion Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchMoveVersion Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchMoveVersion Extension/Pods-WatchMoveVersion Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		A7C009F01DE8725F0049541F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A7C009F21DE872750049541F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A7C009F41DE8728B0049541F /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -82,14 +162,34 @@
 		A7CED8321DEEFFB700AB620D /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		A7FCE6961DF255EA00F58741 /* testeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
+		AF3D332B7A3FC3E42D49B63A /* Pods-Challenge3UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge3UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge3UITests/Pods-Challenge3UITests.release.xcconfig"; sourceTree = "<group>"; };
+		C00B44E11DC5E89A3B4C7721 /* Pods_Challenge3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2BB899819BAB2141F0790A /* Pods_WatchMoveVersion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchMoveVersion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		13A26A702A43C39077C5744E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E7906A1D923899ACC337FCA /* Pods_WatchMoveVersion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A56CD601DF99F1C00CA339C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A56CD821DF9A19200CA339C /* HealthKit.framework in Frameworks */,
+				05C8D5D6E68BE9853DE13411 /* Pods_WatchMoveVersion_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A77FBF71DD4BD0C0008AFED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A4E8AF01DE703A60067B2CF /* HealthKit.framework in Frameworks */,
+				B97B66D4E622341EB31DDDFE /* Pods_Challenge3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B65A344F40E0B088A8D2ACCF /* Pods_Challenge3Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,16 +205,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D090F4C03D94402A47B927A2 /* Pods_Challenge3UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		357442CF96FE87A24285E183 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8572F8711148A532BE5CC88B /* Pods-Challenge3.debug.xcconfig */,
+				85BC33CABDB4089AFD9A2F5E /* Pods-Challenge3.release.xcconfig */,
+				748630775866894136E48C99 /* Pods-Challenge3Tests.debug.xcconfig */,
+				39760C8F5CED3381487FE35E /* Pods-Challenge3Tests.release.xcconfig */,
+				0BB430982DF174FF420D76A7 /* Pods-Challenge3UITests.debug.xcconfig */,
+				AF3D332B7A3FC3E42D49B63A /* Pods-Challenge3UITests.release.xcconfig */,
+				2EDBB8E3E7A6A0414DECF089 /* Pods-WatchMoveVersion.debug.xcconfig */,
+				4417A5C5AAE4411CF591D774 /* Pods-WatchMoveVersion.release.xcconfig */,
+				944609B7D1E5B870FED9A5EA /* Pods-WatchMoveVersion Extension.debug.xcconfig */,
+				9286CDDB4A088D1978954789 /* Pods-WatchMoveVersion Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6A4E8AEE1DE703A60067B2CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6A4E8AEF1DE703A60067B2CF /* HealthKit.framework */,
+				6A56CD811DF9A19200CA339C /* HealthKit.framework */,
+				C00B44E11DC5E89A3B4C7721 /* Pods_Challenge3.framework */,
+				57BF24B53A614961972FA4BC /* Pods_Challenge3Tests.framework */,
+				21B5E74D322CEACD44A9A434 /* Pods_Challenge3UITests.framework */,
+				CB2BB899819BAB2141F0790A /* Pods_WatchMoveVersion.framework */,
+				503C1D577A3D25D3B1C57DFC /* Pods_WatchMoveVersion_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,14 +278,50 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		6A56CD581DF99F1C00CA339C /* WatchMoveVersion */ = {
+			isa = PBXGroup;
+			children = (
+				6A56CD591DF99F1C00CA339C /* Interface.storyboard */,
+				6A56CD5C1DF99F1C00CA339C /* Assets.xcassets */,
+				6A56CD5E1DF99F1C00CA339C /* Info.plist */,
+			);
+			path = WatchMoveVersion;
+			sourceTree = "<group>";
+		};
+		6A56CD671DF99F1C00CA339C /* WatchMoveVersion Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6A56CD801DF9A19200CA339C /* WatchMoveVersion Extension.entitlements */,
+				6A56CD6A1DF99F1C00CA339C /* InterfaceController.swift */,
+				6A56CD6C1DF99F1C00CA339C /* ExtensionDelegate.swift */,
+				6A56CD6E1DF99F1C00CA339C /* NotificationController.swift */,
+				6A56CD701DF99F1C00CA339C /* ComplicationController.swift */,
+				6A56CD721DF99F1C00CA339C /* Assets.xcassets */,
+				6A56CD741DF99F1C00CA339C /* Info.plist */,
+				6A56CD681DF99F1C00CA339C /* Supporting Files */,
+			);
+			path = "WatchMoveVersion Extension";
+			sourceTree = "<group>";
+		};
+		6A56CD681DF99F1C00CA339C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A56CD691DF99F1C00CA339C /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		6A77FBF11DD4BD0C0008AFED = {
 			isa = PBXGroup;
 			children = (
 				6A77FBFC1DD4BD0C0008AFED /* Challenge3 */,
 				6A77FC141DD4BD0C0008AFED /* Challenge3Tests */,
 				6A77FC1F1DD4BD0C0008AFED /* Challenge3UITests */,
+				6A56CD581DF99F1C00CA339C /* WatchMoveVersion */,
+				6A56CD671DF99F1C00CA339C /* WatchMoveVersion Extension */,
 				6A77FBFB1DD4BD0C0008AFED /* Products */,
 				6A4E8AEE1DE703A60067B2CF /* Frameworks */,
+				357442CF96FE87A24285E183 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +331,8 @@
 				6A77FBFA1DD4BD0C0008AFED /* Challenge3.app */,
 				6A77FC111DD4BD0C0008AFED /* Challenge3Tests.xctest */,
 				6A77FC1C1DD4BD0C0008AFED /* Challenge3UITests.xctest */,
+				6A56CD571DF99F1B00CA339C /* WatchMoveVersion.app */,
+				6A56CD631DF99F1C00CA339C /* WatchMoveVersion Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +347,7 @@
 				6A77FC071DD4BD0C0008AFED /* Assets.xcassets */,
 				6A4E8AF31DE703CF0067B2CF /* Views */,
 				6A77FC0C1DD4BD0C0008AFED /* Info.plist */,
+				6A56CD831DFAC9F700CA339C /* GoogleService-Info.plist */,
 				6A77FC041DD4BD0C0008AFED /* Challenge3.xcdatamodeld */,
 			);
 			path = Challenge3;
@@ -222,17 +385,62 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A77FBF91DD4BD0C0008AFED /* Challenge3 */ = {
+		6A56CD561DF99F1B00CA339C /* WatchMoveVersion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A77FC251DD4BD0C0008AFED /* Build configuration list for PBXNativeTarget "Challenge3" */;
+			buildConfigurationList = 6A56CD7E1DF99F1C00CA339C /* Build configuration list for PBXNativeTarget "WatchMoveVersion" */;
 			buildPhases = (
-				6A77FBF61DD4BD0C0008AFED /* Sources */,
-				6A77FBF71DD4BD0C0008AFED /* Frameworks */,
-				6A77FBF81DD4BD0C0008AFED /* Resources */,
+				11FCA1F8C4DA52B380F7F217 /* [CP] Check Pods Manifest.lock */,
+				6A56CD551DF99F1B00CA339C /* Resources */,
+				6A56CD7D1DF99F1C00CA339C /* Embed App Extensions */,
+				13A26A702A43C39077C5744E /* Frameworks */,
+				7D95019432450C1483B7B360 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6A56CD661DF99F1C00CA339C /* PBXTargetDependency */,
+			);
+			name = WatchMoveVersion;
+			productName = WatchMoveVersion;
+			productReference = 6A56CD571DF99F1B00CA339C /* WatchMoveVersion.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6A56CD621DF99F1C00CA339C /* WatchMoveVersion Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A56CD7C1DF99F1C00CA339C /* Build configuration list for PBXNativeTarget "WatchMoveVersion Extension" */;
+			buildPhases = (
+				F3E6625925999329B47E4C25 /* [CP] Check Pods Manifest.lock */,
+				6A56CD5F1DF99F1C00CA339C /* Sources */,
+				6A56CD601DF99F1C00CA339C /* Frameworks */,
+				6A56CD611DF99F1C00CA339C /* Resources */,
+				7E23A9C0EF25505100C231F3 /* [CP] Embed Pods Frameworks */,
+				D3F831996C1FCA2599D93D51 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchMoveVersion Extension";
+			productName = "WatchMoveVersion Extension";
+			productReference = 6A56CD631DF99F1C00CA339C /* WatchMoveVersion Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		6A77FBF91DD4BD0C0008AFED /* Challenge3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A77FC251DD4BD0C0008AFED /* Build configuration list for PBXNativeTarget "Challenge3" */;
+			buildPhases = (
+				AC8DC534086EC4A15622AAF6 /* [CP] Check Pods Manifest.lock */,
+				6A77FBF61DD4BD0C0008AFED /* Sources */,
+				6A77FBF71DD4BD0C0008AFED /* Frameworks */,
+				6A77FBF81DD4BD0C0008AFED /* Resources */,
+				6A56CD7F1DF99F1C00CA339C /* Embed Watch Content */,
+				8315217D2C1EE687CB073B77 /* [CP] Embed Pods Frameworks */,
+				490C256B7CE6F2C9C3737596 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A56CD761DF99F1C00CA339C /* PBXTargetDependency */,
 			);
 			name = Challenge3;
 			productName = Challenge3;
@@ -243,9 +451,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A77FC281DD4BD0C0008AFED /* Build configuration list for PBXNativeTarget "Challenge3Tests" */;
 			buildPhases = (
+				5D94308293C886C457B3A5FA /* [CP] Check Pods Manifest.lock */,
 				6A77FC0D1DD4BD0C0008AFED /* Sources */,
 				6A77FC0E1DD4BD0C0008AFED /* Frameworks */,
 				6A77FC0F1DD4BD0C0008AFED /* Resources */,
+				F065C0E1AC8BCA8309E78282 /* [CP] Embed Pods Frameworks */,
+				AD8181E26C8DC5966CCB63FB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,9 +472,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A77FC2B1DD4BD0C0008AFED /* Build configuration list for PBXNativeTarget "Challenge3UITests" */;
 			buildPhases = (
+				F451C65F241699FFB0797E87 /* [CP] Check Pods Manifest.lock */,
 				6A77FC181DD4BD0C0008AFED /* Sources */,
 				6A77FC191DD4BD0C0008AFED /* Frameworks */,
 				6A77FC1A1DD4BD0C0008AFED /* Resources */,
+				B3631B6F05019266F45F919C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,13 +498,34 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Tiago Queiroz";
 				TargetAttributes = {
-					6A77FBF91DD4BD0C0008AFED = {
+					6A56CD561DF99F1B00CA339C = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = K463X7473S;
+						DevelopmentTeam = Q922D8LNNZ;
+						ProvisioningStyle = Automatic;
+					};
+					6A56CD621DF99F1C00CA339C = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = Q922D8LNNZ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
-							com.apple.HealthKit = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
+					};
+					6A77FBF91DD4BD0C0008AFED = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = Q922D8LNNZ;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.HealthKit = {
+								enabled = 0;
 							};
 						};
 					};
@@ -325,11 +559,30 @@
 				6A77FBF91DD4BD0C0008AFED /* Challenge3 */,
 				6A77FC101DD4BD0C0008AFED /* Challenge3Tests */,
 				6A77FC1B1DD4BD0C0008AFED /* Challenge3UITests */,
+				6A56CD561DF99F1B00CA339C /* WatchMoveVersion */,
+				6A56CD621DF99F1C00CA339C /* WatchMoveVersion Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6A56CD551DF99F1B00CA339C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A56CD5D1DF99F1C00CA339C /* Assets.xcassets in Resources */,
+				6A56CD5B1DF99F1C00CA339C /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A56CD611DF99F1C00CA339C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A56CD731DF99F1C00CA339C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A77FBF81DD4BD0C0008AFED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +592,7 @@
 				A7C8E30A1DF1F003006A55EB /* ExpandedTableViewCell.xib in Resources */,
 				6A77FC031DD4BD0C0008AFED /* Main.storyboard in Resources */,
 				A7C8E30E1DF1F90F006A55EB /* QuestTableViewCell.xib in Resources */,
+				6A56CD841DFAC9F700CA339C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +612,216 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11FCA1F8C4DA52B380F7F217 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		490C256B7CE6F2C9C3737596 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Challenge3/Pods-Challenge3-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D94308293C886C457B3A5FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7D95019432450C1483B7B360 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchMoveVersion/Pods-WatchMoveVersion-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E23A9C0EF25505100C231F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchMoveVersion Extension/Pods-WatchMoveVersion Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8315217D2C1EE687CB073B77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Challenge3/Pods-Challenge3-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC8DC534086EC4A15622AAF6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AD8181E26C8DC5966CCB63FB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Challenge3Tests/Pods-Challenge3Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3631B6F05019266F45F919C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Challenge3UITests/Pods-Challenge3UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3F831996C1FCA2599D93D51 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WatchMoveVersion Extension/Pods-WatchMoveVersion Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F065C0E1AC8BCA8309E78282 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Challenge3Tests/Pods-Challenge3Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E6625925999329B47E4C25 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F451C65F241699FFB0797E87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		6A56CD5F1DF99F1C00CA339C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A56CD6F1DF99F1C00CA339C /* NotificationController.swift in Sources */,
+				6A56CD711DF99F1C00CA339C /* ComplicationController.swift in Sources */,
+				6A56CD6D1DF99F1C00CA339C /* ExtensionDelegate.swift in Sources */,
+				6A56CD6B1DF99F1C00CA339C /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A77FBF61DD4BD0C0008AFED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,6 +864,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6A56CD661DF99F1C00CA339C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A56CD621DF99F1C00CA339C /* WatchMoveVersion Extension */;
+			targetProxy = 6A56CD651DF99F1C00CA339C /* PBXContainerItemProxy */;
+		};
+		6A56CD761DF99F1C00CA339C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A56CD561DF99F1B00CA339C /* WatchMoveVersion */;
+			targetProxy = 6A56CD751DF99F1C00CA339C /* PBXContainerItemProxy */;
+		};
 		6A77FC131DD4BD0C0008AFED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6A77FBF91DD4BD0C0008AFED /* Challenge3 */;
@@ -414,6 +887,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6A56CD591DF99F1C00CA339C /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A56CD5A1DF99F1C00CA339C /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		6A77FC011DD4BD0C0008AFED /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -433,6 +914,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6A56CD781DF99F1C00CA339C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EDBB8E3E7A6A0414DECF089 /* Pods-WatchMoveVersion.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				IBSC_MODULE = WatchMoveVersion_Extension;
+				INFOPLIST_FILE = WatchMoveVersion/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		6A56CD791DF99F1C00CA339C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4417A5C5AAE4411CF591D774 /* Pods-WatchMoveVersion.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				IBSC_MODULE = WatchMoveVersion_Extension;
+				INFOPLIST_FILE = WatchMoveVersion/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		6A56CD7A1DF99F1C00CA339C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 944609B7D1E5B870FED9A5EA /* Pods-WatchMoveVersion Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchMoveVersion Extension/WatchMoveVersion Extension.entitlements";
+				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				INFOPLIST_FILE = "WatchMoveVersion Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		6A56CD7B1DF99F1C00CA339C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9286CDDB4A088D1978954789 /* Pods-WatchMoveVersion Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchMoveVersion Extension/WatchMoveVersion Extension.entitlements";
+				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				INFOPLIST_FILE = "WatchMoveVersion Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
 		6A77FC231DD4BD0C0008AFED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -528,10 +1085,12 @@
 		};
 		6A77FC261DD4BD0C0008AFED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8572F8711148A532BE5CC88B /* Pods-Challenge3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Challenge3/Challenge3.entitlements;
-				DEVELOPMENT_TEAM = K463X7473S;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q922D8LNNZ;
 				INFOPLIST_FILE = Challenge3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3;
@@ -542,10 +1101,12 @@
 		};
 		6A77FC271DD4BD0C0008AFED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85BC33CABDB4089AFD9A2F5E /* Pods-Challenge3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Challenge3/Challenge3.entitlements;
-				DEVELOPMENT_TEAM = K463X7473S;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q922D8LNNZ;
 				INFOPLIST_FILE = Challenge3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3;
@@ -556,6 +1117,7 @@
 		};
 		6A77FC291DD4BD0C0008AFED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 748630775866894136E48C99 /* Pods-Challenge3Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -571,6 +1133,7 @@
 		};
 		6A77FC2A1DD4BD0C0008AFED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39760C8F5CED3381487FE35E /* Pods-Challenge3Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -586,6 +1149,7 @@
 		};
 		6A77FC2C1DD4BD0C0008AFED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BB430982DF174FF420D76A7 /* Pods-Challenge3UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = Q922D8LNNZ;
@@ -600,6 +1164,7 @@
 		};
 		6A77FC2D1DD4BD0C0008AFED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF3D332B7A3FC3E42D49B63A /* Pods-Challenge3UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = Q922D8LNNZ;
@@ -615,6 +1180,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6A56CD7C1DF99F1C00CA339C /* Build configuration list for PBXNativeTarget "WatchMoveVersion Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A56CD7A1DF99F1C00CA339C /* Debug */,
+				6A56CD7B1DF99F1C00CA339C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A56CD7E1DF99F1C00CA339C /* Build configuration list for PBXNativeTarget "WatchMoveVersion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A56CD781DF99F1C00CA339C /* Debug */,
+				6A56CD791DF99F1C00CA339C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6A77FBF51DD4BD0C0008AFED /* Build configuration list for PBXProject "Challenge3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

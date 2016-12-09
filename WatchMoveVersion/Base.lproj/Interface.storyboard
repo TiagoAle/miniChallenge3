@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dXb-c5-It1">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Comfortaa-Bold.ttf">
+            <string>Comfortaa-Bold</string>
+        </array>
+        <array key="Comfortaa-Regular.ttf">
+            <string>Comfortaa</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="220" y="345"/>
-        </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
@@ -26,14 +31,87 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="206" y="813"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="WatchMoveVersion" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="529" y="820"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="aMy-wv-hhD">
+            <objects>
+                <controller id="dXb-c5-It1" customClass="InterfaceController" customModule="Challenge3Watch" customModuleProvider="target">
+                    <items>
+                        <button width="83" height="83" alignment="center" backgroundImage="avatarCircle2" id="HYr-uJ-9fO">
+                            <connections>
+                                <segue destination="S7Q-5D-he4" kind="push" id="2gL-s8-uGa"/>
+                            </connections>
+                        </button>
+                        <label alignment="center" verticalAlignment="center" text="Teobaldo" id="fFR-Yb-Gyw">
+                            <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="16"/>
+                        </label>
+                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="watchShield" id="gIv-RJ-LW6">
+                            <connections>
+                                <segue destination="s4V-Iq-M9T" kind="push" id="SR0-pH-hMz"/>
+                            </connections>
+                        </button>
+                        <label alignment="center" verticalAlignment="bottom" text="Quests" id="xcl-ip-JKe">
+                            <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="8"/>
+                        </label>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="332"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="dkm-7E-Fwp">
+            <objects>
+                <controller id="S7Q-5D-he4">
+                    <items>
+                        <label alignment="center" text="Teobaldo" id="bbZ-bS-0le">
+                            <color key="textColor" red="1" green="0.48159492310000002" blue="0.3079790456" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="16"/>
+                        </label>
+                        <button width="111" height="106" alignment="center" backgroundImage="lvlRings" id="Hw9-DD-y2i"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="476" y="194"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="WkS-6o-jzN">
+            <objects>
+                <controller id="s4V-Iq-M9T">
+                    <items>
+                        <table alignment="left" id="Yjr-3C-GwX">
+                            <items>
+                                <tableRow id="q2i-s6-1y8">
+                                    <group key="rootItem" width="1" height="149" alignment="left" id="zkf-xF-qeL"/>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="477" y="472"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="1w8-0y-JVo">
+            <objects>
+                <controller id="PuA-Jw-H1W">
+                    <items>
+                        <imageView width="100" height="101" alignment="center" image="watchRing" id="OoK-87-9gi"/>
+                        <button width="102" alignment="center" verticalAlignment="bottom" title="Pause" id="h1l-rf-DG0">
+                            <color key="backgroundColor" red="1" green="0.41077703049999997" blue="0.18837801230000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" name="Comfortaa" family="Comfortaa" pointSize="22"/>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="715" y="472"/>
         </scene>
     </scenes>
 </document>
