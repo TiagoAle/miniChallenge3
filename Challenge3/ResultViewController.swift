@@ -11,6 +11,7 @@ import HealthKit
 
 class ResultViewController: UIViewController {
 
+    let dataManager = UserDataManager()
     @IBOutlet weak var resultTextView: UITextView!
     
     var goal: Bool?
@@ -23,7 +24,8 @@ class ResultViewController: UIViewController {
         //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
         
-        
+       var xp = self.dataManager.saveExp(exp: Double((self.missionData?.xpEarned)!))
+        print(xp)
         self.goal = true
         self.userMadeIt()
     }

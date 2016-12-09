@@ -29,21 +29,10 @@ class UserDataManager: NSObject {
     var weightSample: HKQuantitySample?
     var calorieSample: HKQuantitySample?
     var bmi: Double?
+    var exp: Double?
     
     func saveNickName(nickName: String) -> String{
         
-        //        if let nickName = UserDefaults.standard.object(forKey: "nick") as? String{
-        //            print("um usuario ja esta cadastrado")
-        //
-        //        // ---- mudar usuario ja cadastrado
-        //        //----
-        //
-        //            self.nickName = nickName
-        //        }else{
-        //            UserDefaults.standard.set(nickName, forKey: "key")
-        //            self.nickName = nickName
-        //
-        //        }
         
         UserDefaults.standard.set(nickName, forKey: "nick")
         if let nick = UserDefaults.standard.object(forKey: "nick") as? String{
@@ -63,6 +52,18 @@ class UserDataManager: NSObject {
         }
         
     }
+    
+    func saveExp(exp: Double) -> Double{
+        
+        UserDefaults.standard.set(exp, forKey: "exp")
+        if let exp = UserDefaults.standard.object(forKey: "exp") as? Double{
+            self.exp = exp
+        }
+        
+        return self.exp!
+    }
+    
+    
     
     func checkData() {
         if self.height == nil{

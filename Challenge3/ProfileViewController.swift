@@ -14,19 +14,29 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var missionTable: UITableView!
     @IBOutlet weak var labelNickName: UILabel!
     
+    @IBOutlet weak var expProgress: UIProgressView!
+    
+    
     var index: Int? = nil
     var nickName = ""
     let healthManager = HealthKitManager()
+    let dataManager = UserDataManager()
+    var character: CharacterModel?
     
     var missionsArray: [Mission] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
         labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
+        self.character = CharacterModel(gender: "Male", nickName: self.nickName, age: 16, items: [], missions: [])
+        self.character?.exp = self.dataManager.saveExp(exp: (self.character?.exp)!)
+
+        
+        self.expProgress.setProgress(Float((self.character?.exp)!), animated: true)
 
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
