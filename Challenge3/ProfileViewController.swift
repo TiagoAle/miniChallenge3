@@ -34,11 +34,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.dataSource = self
         labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
         self.character = CharacterModel(gender: "Male", nickName: self.nickName, age: 16, items: [], missions: [])
-        self.character?.exp = self.dataManager.saveExp(exp: (self.character?.exp)!)
+        
+        // atualiza o progresso na barra
+        //self.character?.exp = self.dataManager.saveExp(exp: (self.character?.exp)!)
+        //self.expProgress.setProgress(Float((self.character?.exp)!), animated: true)
 
         
-        self.expProgress.setProgress(Float((self.character?.exp)!), animated: true)
-
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
@@ -53,6 +54,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        self.missionsArray.append(mission3)
 //        self.missionsArray.append(mission4)
 //        self.missionsArray.append(mission5)
+        
         //let userID = FIRAuth.auth()?.currentUser?.uid
         Mission.asyncAll(completion: {(json) in
             for key in json.keys {
