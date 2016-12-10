@@ -72,23 +72,16 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let todayString:String = dateFormatter.string(from: todaysDate)
         self.lastDate = todayString
-        print(self.prize)
+       // print(self.prize)
         let myString: String = self.prize!
         let myStringArr = myString.components(separatedBy: " ")
         for i in myStringArr {
         
             if let exp = Int(i){
                 self.xpEarned = exp
-                print(self.xpEarned!)
+                //print(self.xpEarned!)
             }
-            
         }
-
-
-        //print(self.enabled)
-
-        
-        
     }
 
     
