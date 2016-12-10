@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterModel: NSObject {
+class CharacterModel: NSObject, FIRDataModel, Uploadable, Typeable {
     
     var charImage: UIImage?
     var nickName: String?
@@ -18,7 +18,10 @@ class CharacterModel: NSObject {
     var gender: String?
     var exp: Double?
     var level: Int?
+    
+    typealias JSON = [String: AnyObject]
 
+    
     init(gender:String , nickName: String, age: Int, items: [String], missions: [String]) {
         if gender == "male" {
             self.charImage = UIImage(named: "male")
@@ -32,6 +35,15 @@ class CharacterModel: NSObject {
         self.missions = missions
         self.exp = 0.0
         self.level = 1
+    }
+    
+    func toAnyObject() -> JSON {
+        return getJSON()
+    }
+    
+    func getJSON() -> [String: AnyObject] {
+        let keyPaths = [#keyPath(Mission.title), #keyPath(Mission.goal), #keyPath(Mission.prize)]
+        return PathsManager.shared.configureJSON(keyPaths: keyPaths, type: self)
     }
     
 

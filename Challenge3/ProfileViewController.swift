@@ -34,11 +34,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.dataSource = self
         labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
         self.character = CharacterModel(gender: "Male", nickName: self.nickName, age: 16, items: [], missions: [])
-        self.character?.exp = self.dataManager.saveExp(exp: (self.character?.exp)!)
+        
+        // atualiza o progresso na barra
+        //self.character?.exp = self.dataManager.saveExp(exp: (self.character?.exp)!)
+        //self.expProgress.setProgress(Float((self.character?.exp)!), animated: true)
 
         
-        self.expProgress.setProgress(Float((self.character?.exp)!), animated: true)
-
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
@@ -53,19 +54,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        self.missionsArray.append(mission3)
 //        self.missionsArray.append(mission4)
 //        self.missionsArray.append(mission5)
+        
         //let userID = FIRAuth.auth()?.currentUser?.uid
         Mission.asyncAll(completion: {(json) in
             for key in json.keys {
                 Mission.asyncAll(path: key, completion: { (json) in
-                    let mission = Mission()
-                    mission.title = json["title"] as? String
-                    mission.activityType = json["activityType"] as? String
-                    mission.missionDescription = json["description"] as? String
-                    mission.goal = json["goal"] as? NSNumber
-                    mission.prize = String(describing: json["prize"] as! NSNumber)
-                    mission.type = json["type"] as? String
+
+                    let title = json["title"] as? String
+                    let activityType = json["activityType"] as? String
+                    let missionDescription = json["description"] as? String
+                    let goal = json["goal"] as? NSNumber
+                    let prize = json["prize"] as? String
+                    let type = json["type"] as? String
+                    
+                    let mission = Mission(title: title!, type: type!, activityType: activityType!, startDate: Date(), goal: goal!, description: missionDescription!, prize: prize!)
+        
                     self.missionsArray.append(mission)
-                    //print(mission.title)
                     self.missionTable.reloadData()
                 })
             }
