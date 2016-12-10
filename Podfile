@@ -7,7 +7,12 @@ target 'Challenge3' do
 
   # Pods for Challenge3
   pod 'Firebase/Core'
+  pod 'Firebase'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+
+
   target 'Challenge3Tests' do
     inherit! :search_paths
     # Pods for testing

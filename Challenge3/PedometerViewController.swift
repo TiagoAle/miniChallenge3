@@ -67,7 +67,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
         super.viewDidLoad()
         backgroundOrigin = self.buttonStart.backgroundColor
-        self.labelGoal.text = "\((self.mission?.goal.intValue)!)"
+        self.labelGoal.text = "\((self.mission?.goal?.intValue)!)"
         self.pedometer.delegate = self
         pedometer.congigure()
         self.manager.delegate = self
@@ -201,7 +201,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     func updateSteps(steps: NSNumber) {
         self.stepsQuant = steps
         self.mission?.currentProgress = steps
-        if (self.mission?.currentProgress.intValue)! >= (self.mission?.goal.intValue)! {
+        if (self.mission?.currentProgress?.intValue)! >= (self.mission?.goal?.intValue)! {
             self.mission?.endDate = Date()
 //            self.mission?.xpEarned = 10
             self.mission?.verifyMission()

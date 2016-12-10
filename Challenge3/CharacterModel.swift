@@ -17,7 +17,7 @@ class CharacterModel: NSObject {
     var missions: [String]?
     var gender: String?
     var exp: Double?
-
+    var level: Int?
 
     init(gender:String , nickName: String, age: Int, items: [String], missions: [String]) {
         if gender == "male" {
@@ -31,6 +31,7 @@ class CharacterModel: NSObject {
         self.items = items
         self.missions = missions
         self.exp = 0.0
+        self.level = 1
     }
     
 

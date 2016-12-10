@@ -21,6 +21,17 @@
 		6A56CD771DF99F1C00CA339C /* WatchMoveVersion.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6A56CD571DF99F1B00CA339C /* WatchMoveVersion.app */; };
 		6A56CD821DF9A19200CA339C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56CD811DF9A19200CA339C /* HealthKit.framework */; };
 		6A56CD841DFAC9F700CA339C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD831DFAC9F700CA339C /* GoogleService-Info.plist */; };
+		6A56CDAA1DFAF20400CA339C /* Readeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD9E1DFAF20400CA339C /* Readeable.swift */; };
+		6A56CDAB1DFAF20400CA339C /* Writeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD9F1DFAF20400CA339C /* Writeable.swift */; };
+		6A56CDAC1DFAF20400CA339C /* Deletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA01DFAF20400CA339C /* Deletable.swift */; };
+		6A56CDAD1DFAF20400CA339C /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA11DFAF20400CA339C /* Updatable.swift */; };
+		6A56CDAE1DFAF20400CA339C /* FIRDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA21DFAF20400CA339C /* FIRDataModel.swift */; };
+		6A56CDAF1DFAF20400CA339C /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA31DFAF20400CA339C /* ModelType.swift */; };
+		6A56CDB01DFAF20400CA339C /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA41DFAF20400CA339C /* Uploadable.swift */; };
+		6A56CDB11DFAF20400CA339C /* ActiveRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA51DFAF20400CA339C /* ActiveRecord.swift */; };
+		6A56CDB21DFAF20400CA339C /* Typeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA61DFAF20400CA339C /* Typeable.swift */; };
+		6A56CDB31DFAF20400CA339C /* ConfigurableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA71DFAF20400CA339C /* ConfigurableJSON.swift */; };
+		6A56CDB41DFAF20400CA339C /* PathsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA81DFAF20400CA339C /* PathsManager.swift */; };
 		6A77FBFE1DD4BD0C0008AFED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */; };
 		6A77FC001DD4BD0C0008AFED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */; };
 		6A77FC031DD4BD0C0008AFED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A77FC011DD4BD0C0008AFED /* Main.storyboard */; };
@@ -129,6 +140,17 @@
 		6A56CD801DF9A19200CA339C /* WatchMoveVersion Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchMoveVersion Extension.entitlements"; sourceTree = "<group>"; };
 		6A56CD811DF9A19200CA339C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		6A56CD831DFAC9F700CA339C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6A56CD9E1DFAF20400CA339C /* Readeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readeable.swift; sourceTree = "<group>"; };
+		6A56CD9F1DFAF20400CA339C /* Writeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Writeable.swift; sourceTree = "<group>"; };
+		6A56CDA01DFAF20400CA339C /* Deletable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deletable.swift; sourceTree = "<group>"; };
+		6A56CDA11DFAF20400CA339C /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		6A56CDA21DFAF20400CA339C /* FIRDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIRDataModel.swift; sourceTree = "<group>"; };
+		6A56CDA31DFAF20400CA339C /* ModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
+		6A56CDA41DFAF20400CA339C /* Uploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploadable.swift; sourceTree = "<group>"; };
+		6A56CDA51DFAF20400CA339C /* ActiveRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveRecord.swift; sourceTree = "<group>"; };
+		6A56CDA61DFAF20400CA339C /* Typeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typeable.swift; sourceTree = "<group>"; };
+		6A56CDA71DFAF20400CA339C /* ConfigurableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableJSON.swift; sourceTree = "<group>"; };
+		6A56CDA81DFAF20400CA339C /* PathsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathsManager.swift; sourceTree = "<group>"; };
 		6A77FBFA1DD4BD0C0008AFED /* Challenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +272,7 @@
 				A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */,
 				6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */,
 				6AC8ED0F1DF6E04E007D13CC /* Mission.swift */,
+				6A56CDB61DFAF20C00CA339C /* ProtocolFireBase */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -309,6 +332,24 @@
 				6A56CD691DF99F1C00CA339C /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A56CDB61DFAF20C00CA339C /* ProtocolFireBase */ = {
+			isa = PBXGroup;
+			children = (
+				6A56CD9E1DFAF20400CA339C /* Readeable.swift */,
+				6A56CD9F1DFAF20400CA339C /* Writeable.swift */,
+				6A56CDA01DFAF20400CA339C /* Deletable.swift */,
+				6A56CDA11DFAF20400CA339C /* Updatable.swift */,
+				6A56CDA21DFAF20400CA339C /* FIRDataModel.swift */,
+				6A56CDA31DFAF20400CA339C /* ModelType.swift */,
+				6A56CDA41DFAF20400CA339C /* Uploadable.swift */,
+				6A56CDA51DFAF20400CA339C /* ActiveRecord.swift */,
+				6A56CDA61DFAF20400CA339C /* Typeable.swift */,
+				6A56CDA71DFAF20400CA339C /* ConfigurableJSON.swift */,
+				6A56CDA81DFAF20400CA339C /* PathsManager.swift */,
+			);
+			name = ProtocolFireBase;
 			sourceTree = "<group>";
 		};
 		6A77FBF11DD4BD0C0008AFED = {
@@ -828,16 +869,27 @@
 			files = (
 				A7C009F51DE8728B0049541F /* UserDataManager.swift in Sources */,
 				6A77FC061DD4BD0C0008AFED /* Challenge3.xcdatamodeld in Sources */,
+				6A56CDAC1DFAF20400CA339C /* Deletable.swift in Sources */,
 				6A77FC001DD4BD0C0008AFED /* ViewController.swift in Sources */,
 				6AC859B71DED135000590D27 /* WorkoutViewController.swift in Sources */,
 				A7C8E3091DF1F003006A55EB /* ExpandedTableViewCell.swift in Sources */,
 				A7C009F11DE8725F0049541F /* ProfileViewController.swift in Sources */,
+				6A56CDAA1DFAF20400CA339C /* Readeable.swift in Sources */,
+				6A56CDB11DFAF20400CA339C /* ActiveRecord.swift in Sources */,
+				6A56CDB41DFAF20400CA339C /* PathsManager.swift in Sources */,
 				A7C8E30D1DF1F90F006A55EB /* QuestTableViewCell.swift in Sources */,
+				6A56CDB31DFAF20400CA339C /* ConfigurableJSON.swift in Sources */,
 				A7FCE6971DF255EA00F58741 /* testeViewController.swift in Sources */,
+				6A56CDB01DFAF20400CA339C /* Uploadable.swift in Sources */,
+				6A56CDAB1DFAF20400CA339C /* Writeable.swift in Sources */,
 				A7C009F31DE872750049541F /* RegisterViewController.swift in Sources */,
+				6A56CDAD1DFAF20400CA339C /* Updatable.swift in Sources */,
+				6A56CDAE1DFAF20400CA339C /* FIRDataModel.swift in Sources */,
 				A7DD7E841DEC674C00AC0D29 /* CharacterModel.swift in Sources */,
 				6AC8ED0C1DEFA331007D13CC /* PedometerManager.swift in Sources */,
 				6A4E8AF61DE704730067B2CF /* HealthKitManager.swift in Sources */,
+				6A56CDB21DFAF20400CA339C /* Typeable.swift in Sources */,
+				6A56CDAF1DFAF20400CA339C /* ModelType.swift in Sources */,
 				6AC8ED101DF6E04E007D13CC /* Mission.swift in Sources */,
 				6AC8ED061DEDBEC8007D13CC /* PedometerViewController.swift in Sources */,
 				6A77FBFE1DD4BD0C0008AFED /* AppDelegate.swift in Sources */,

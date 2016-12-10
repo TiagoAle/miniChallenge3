@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCustomCellDelegator {
     
@@ -41,23 +42,40 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
-        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "ande 100 passos", prize: "win 70 Exp")
-        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "run for 2 meters", prize: "Win 120 Exp")
-        let mission3 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 20, description: "ande 20 passos", prize: "Win 50 Exp")
-        let mission4 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
-        let mission5 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
+//        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "ande 100 passos", prize: "win 70 Exp")
+//        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "run for 2 meters", prize: "Win 120 Exp")
+//        let mission3 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 20, description: "ande 20 passos", prize: "Win 50 Exp")
+//        let mission4 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
+//        let mission5 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
         
-        self.missionsArray.append(mission1)
-        self.missionsArray.append(mission2)
-        self.missionsArray.append(mission3)
-        self.missionsArray.append(mission4)
-        self.missionsArray.append(mission5)
-        
-        
-        
+//        self.missionsArray.append(mission1)
+//        self.missionsArray.append(mission2)
+//        self.missionsArray.append(mission3)
+//        self.missionsArray.append(mission4)
+//        self.missionsArray.append(mission5)
+        //let userID = FIRAuth.auth()?.currentUser?.uid
+        Mission.asyncAll(completion: {(json) in
+            for key in json.keys {
+                Mission.asyncAll(path: key, completion: { (json) in
+                    let mission = Mission()
+                    mission.title = json["title"] as? String
+                    mission.activityType = json["activityType"] as? String
+                    mission.missionDescription = json["description"] as? String
+                    mission.goal = json["goal"] as? NSNumber
+                    mission.prize = String(describing: json["prize"] as! NSNumber)
+                    mission.type = json["type"] as? String
+                    self.missionsArray.append(mission)
+                    //print(mission.title)
+                    self.missionTable.reloadData()
+                })
+            }
+        })
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
     }
+    
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -107,7 +125,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.mission = self.missionsArray[indexPath.row]
             cell.title.text = cell.mission?.title
             cell.questDescription.text = cell.mission?.missionDescription
-            cell.reward.text = cell.mission?.prize
+            cell.reward.text = (cell.mission?.prize)!
             self.missionTable.rowHeight = 193
             print(indexPath.row)
             cell.delegate = self
@@ -118,7 +136,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.mission = self.missionsArray[indexPath.row]
             cell.title.text = cell.mission?.title
             //cell.questDescription.text = cell.mission?.missionDescription
-            cell.reward.text = cell.mission?.prize
+            cell.reward.text = (cell.mission?.prize)!
             self.missionTable.rowHeight = 80
             cell.delegate = self
             
