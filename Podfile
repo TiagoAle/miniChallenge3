@@ -15,7 +15,14 @@ target 'Challenge3' do
 
   target 'Challenge3Tests' do
     inherit! :search_paths
+    
     # Pods for testing
+    pod 'Firebase/Core'
+    pod 'Firebase'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
+    
   end
 
   target 'Challenge3UITests' do
