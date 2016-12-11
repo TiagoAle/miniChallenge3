@@ -32,6 +32,7 @@
 		6A56CDB31DFAF20400CA339C /* ConfigurableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA71DFAF20400CA339C /* ConfigurableJSON.swift */; };
 		6A56CDB41DFAF20400CA339C /* PathsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA81DFAF20400CA339C /* PathsManager.swift */; };
 		6A56CDB81DFCF4B600CA339C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56CDB71DFCF4B600CA339C /* HealthKit.framework */; };
+		6A56CDBA1DFDE54600CA339C /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDB91DFDE54600CA339C /* Level.swift */; };
 		6A77FBFE1DD4BD0C0008AFED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */; };
 		6A77FC001DD4BD0C0008AFED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */; };
 		6A77FC031DD4BD0C0008AFED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A77FC011DD4BD0C0008AFED /* Main.storyboard */; };
@@ -151,6 +152,7 @@
 		6A56CDA71DFAF20400CA339C /* ConfigurableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableJSON.swift; sourceTree = "<group>"; };
 		6A56CDA81DFAF20400CA339C /* PathsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathsManager.swift; sourceTree = "<group>"; };
 		6A56CDB71DFCF4B600CA339C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		6A56CDB91DFDE54600CA339C /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		6A77FBFA1DD4BD0C0008AFED /* Challenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */,
 				6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */,
 				6AC8ED0F1DF6E04E007D13CC /* Mission.swift */,
+				6A56CDB91DFDE54600CA339C /* Level.swift */,
 				6A56CDB61DFAF20C00CA339C /* ProtocolFireBase */,
 			);
 			name = Models;
@@ -889,6 +892,7 @@
 				6AC8ED0C1DEFA331007D13CC /* PedometerManager.swift in Sources */,
 				6A4E8AF61DE704730067B2CF /* HealthKitManager.swift in Sources */,
 				6A56CDB21DFAF20400CA339C /* Typeable.swift in Sources */,
+				6A56CDBA1DFDE54600CA339C /* Level.swift in Sources */,
 				6A56CDAF1DFAF20400CA339C /* ModelType.swift in Sources */,
 				6AC8ED101DF6E04E007D13CC /* Mission.swift in Sources */,
 				6AC8ED061DEDBEC8007D13CC /* PedometerViewController.swift in Sources */,

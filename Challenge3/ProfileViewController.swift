@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var missionsArray: [Mission] = []
     var usersArray: [CharacterModel] = []
+    var level = Level()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        self.missionsArray.append(mission3)
 //        self.missionsArray.append(mission4)
 //        self.missionsArray.append(mission5)
+        Level.asyncAll { (json) in
+            for key in json.keys{
+                Level.asyncAll(path: key, completion: { (json) in
+                    for i in 1...json.count{
+                        self.level.missionsIndexs?.append(json["mission\(i)"] as! Int)
+                    }
+                })
+            }
+        }
         CharacterModel.asyncAll { (json) in
             for key in json.keys {
                 CharacterModel.asyncAll(path: key, completion: { (json) in
