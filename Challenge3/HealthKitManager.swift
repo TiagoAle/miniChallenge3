@@ -27,8 +27,6 @@ class HealthKitManager: NSObject{
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.bloodType)!,
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.basalEnergyBurned)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryEnergyConsumed)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!,
             HKObjectType.workoutType()
@@ -39,8 +37,6 @@ class HealthKitManager: NSObject{
             HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.mindfulSession)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMassIndex)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.basalEnergyBurned)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryEnergyConsumed)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKQuantityType.workoutType()
         ]

@@ -19,7 +19,6 @@
 		6A56CD711DF99F1C00CA339C /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD701DF99F1C00CA339C /* ComplicationController.swift */; };
 		6A56CD731DF99F1C00CA339C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD721DF99F1C00CA339C /* Assets.xcassets */; };
 		6A56CD771DF99F1C00CA339C /* WatchMoveVersion.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6A56CD571DF99F1B00CA339C /* WatchMoveVersion.app */; };
-		6A56CD821DF9A19200CA339C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56CD811DF9A19200CA339C /* HealthKit.framework */; };
 		6A56CD841DFAC9F700CA339C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD831DFAC9F700CA339C /* GoogleService-Info.plist */; };
 		6A56CDAA1DFAF20400CA339C /* Readeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD9E1DFAF20400CA339C /* Readeable.swift */; };
 		6A56CDAB1DFAF20400CA339C /* Writeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CD9F1DFAF20400CA339C /* Writeable.swift */; };
@@ -32,6 +31,7 @@
 		6A56CDB21DFAF20400CA339C /* Typeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA61DFAF20400CA339C /* Typeable.swift */; };
 		6A56CDB31DFAF20400CA339C /* ConfigurableJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA71DFAF20400CA339C /* ConfigurableJSON.swift */; };
 		6A56CDB41DFAF20400CA339C /* PathsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A56CDA81DFAF20400CA339C /* PathsManager.swift */; };
+		6A56CDB81DFCF4B600CA339C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56CDB71DFCF4B600CA339C /* HealthKit.framework */; };
 		6A77FBFE1DD4BD0C0008AFED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */; };
 		6A77FC001DD4BD0C0008AFED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */; };
 		6A77FC031DD4BD0C0008AFED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A77FC011DD4BD0C0008AFED /* Main.storyboard */; };
@@ -138,7 +138,6 @@
 		6A56CD721DF99F1C00CA339C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A56CD741DF99F1C00CA339C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A56CD801DF9A19200CA339C /* WatchMoveVersion Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchMoveVersion Extension.entitlements"; sourceTree = "<group>"; };
-		6A56CD811DF9A19200CA339C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		6A56CD831DFAC9F700CA339C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A56CD9E1DFAF20400CA339C /* Readeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readeable.swift; sourceTree = "<group>"; };
 		6A56CD9F1DFAF20400CA339C /* Writeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Writeable.swift; sourceTree = "<group>"; };
@@ -151,6 +150,7 @@
 		6A56CDA61DFAF20400CA339C /* Typeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typeable.swift; sourceTree = "<group>"; };
 		6A56CDA71DFAF20400CA339C /* ConfigurableJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableJSON.swift; sourceTree = "<group>"; };
 		6A56CDA81DFAF20400CA339C /* PathsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathsManager.swift; sourceTree = "<group>"; };
+		6A56CDB71DFCF4B600CA339C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		6A77FBFA1DD4BD0C0008AFED /* Challenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A77FBFD1DD4BD0C0008AFED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A77FBFF1DD4BD0C0008AFED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +202,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A56CD821DF9A19200CA339C /* HealthKit.framework in Frameworks */,
 				05C8D5D6E68BE9853DE13411 /* Pods_WatchMoveVersion_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B97B66D4E622341EB31DDDFE /* Pods_Challenge3.framework in Frameworks */,
+				6A56CDB81DFCF4B600CA339C /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +254,7 @@
 		6A4E8AEE1DE703A60067B2CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6A56CD811DF9A19200CA339C /* HealthKit.framework */,
+				6A56CDB71DFCF4B600CA339C /* HealthKit.framework */,
 				C00B44E11DC5E89A3B4C7721 /* Pods_Challenge3.framework */,
 				57BF24B53A614961972FA4BC /* Pods_Challenge3Tests.framework */,
 				21B5E74D322CEACD44A9A434 /* Pods_Challenge3UITests.framework */,
@@ -541,44 +541,44 @@
 				TargetAttributes = {
 					6A56CD561DF99F1B00CA339C = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q922D8LNNZ;
+						DevelopmentTeam = K463X7473S;
 						ProvisioningStyle = Automatic;
 					};
 					6A56CD621DF99F1C00CA339C = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q922D8LNNZ;
+						DevelopmentTeam = K463X7473S;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.HealthKit.watchos = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
 					6A77FBF91DD4BD0C0008AFED = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q922D8LNNZ;
+						DevelopmentTeam = K463X7473S;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
 							};
 							com.apple.HealthKit = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 					6A77FC101DD4BD0C0008AFED = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q922D8LNNZ;
+						DevelopmentTeam = K463X7473S;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6A77FBF91DD4BD0C0008AFED;
 					};
 					6A77FC1B1DD4BD0C0008AFED = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q922D8LNNZ;
+						DevelopmentTeam = K463X7473S;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6A77FBF91DD4BD0C0008AFED;
 					};
@@ -972,7 +972,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = K463X7473S;
 				IBSC_MODULE = WatchMoveVersion_Extension;
 				INFOPLIST_FILE = WatchMoveVersion/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp;
@@ -991,7 +992,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = K463X7473S;
 				IBSC_MODULE = WatchMoveVersion_Extension;
 				INFOPLIST_FILE = WatchMoveVersion/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp;
@@ -1009,8 +1011,9 @@
 			baseConfigurationReference = 944609B7D1E5B870FED9A5EA /* Pods-WatchMoveVersion Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "WatchMoveVersion Extension/WatchMoveVersion Extension.entitlements";
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tiago Queiroz (LQ385MS3F2)";
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = "WatchMoveVersion Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp.watchkitextension;
@@ -1028,8 +1031,9 @@
 			baseConfigurationReference = 9286CDDB4A088D1978954789 /* Pods-WatchMoveVersion Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "WatchMoveVersion Extension/WatchMoveVersion Extension.entitlements";
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tiago Queiroz (LQ385MS3F2)";
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = "WatchMoveVersion Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3.watchkitapp.watchkitextension;
@@ -1140,9 +1144,10 @@
 			baseConfigurationReference = 8572F8711148A532BE5CC88B /* Pods-Challenge3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_ENTITLEMENTS = Challenge3/Challenge3.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3;
@@ -1156,9 +1161,10 @@
 			baseConfigurationReference = 85BC33CABDB4089AFD9A2F5E /* Pods-Challenge3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_ENTITLEMENTS = Challenge3/Challenge3.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bepid.Daniel.Challenge3;
@@ -1173,7 +1179,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tiago.Challenge3Tests;
@@ -1189,7 +1195,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tiago.Challenge3Tests;
@@ -1204,7 +1210,7 @@
 			baseConfigurationReference = 0BB430982DF174FF420D76A7 /* Pods-Challenge3UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tiago.Challenge3UITests;
@@ -1219,7 +1225,7 @@
 			baseConfigurationReference = AF3D332B7A3FC3E42D49B63A /* Pods-Challenge3UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = Q922D8LNNZ;
+				DEVELOPMENT_TEAM = K463X7473S;
 				INFOPLIST_FILE = Challenge3UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tiago.Challenge3UITests;

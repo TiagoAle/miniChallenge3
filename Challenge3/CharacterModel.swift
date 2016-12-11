@@ -21,7 +21,9 @@ class CharacterModel: NSObject, FIRDataModel, Uploadable, Typeable {
     
     typealias JSON = [String: AnyObject]
 
-    
+    override init() {
+        super.init()
+    }
     init(gender:String , nickName: String, age: Int, items: [String], missions: [String]) {
         if gender == "male" {
             self.charImage = UIImage(named: "male")
