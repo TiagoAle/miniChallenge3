@@ -55,20 +55,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        self.missionsArray.append(mission3)
 //        self.missionsArray.append(mission4)
 //        self.missionsArray.append(mission5)
-//        CharacterModel.asyncAll { (json) in
-//            for key in json.keys {
-//                CharacterModel.asyncAll(path: key, completion: { (json) in
-//                    let user = CharacterModel()
-//                    user.age = json["age"] as? Int
-//                    user.exp = json["exp"] as? Double
-//                    user.gender = json["gender"] as? String
-//                    user.level = json["level"] as? Int
-//                    user.nickName = json["nick"] as? String
-//                    self.usersArray.append(user)
-//                    self.labelNickName.text = self.usersArray.first?.nickName
-//                })
-//            }
-//        }
+        CharacterModel.asyncAll { (json) in
+            for key in json.keys {
+                CharacterModel.asyncAll(path: key, completion: { (json) in
+                    let user = CharacterModel()
+                    user.age = json["age"] as? Int
+                    user.exp = json["exp"] as? Double
+                    user.gender = json["gender"] as? String
+                    user.level = json["level"] as? Int
+                    user.nickName = json["nick"] as? String
+                    self.usersArray.append(user)
+                    self.labelNickName.text = self.usersArray.first?.nickName
+                })
+            }
+        }
         
         //let userID = FIRAuth.auth()?.currentUser?.uid
         Mission.asyncAll(completion: {(json) in
