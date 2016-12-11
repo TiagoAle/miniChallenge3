@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var nickName = ""
     let healthManager = HealthKitManager()
     let dataManager = UserDataManager()
-    var character: CharacterModel?
+   //var character: CharacterModel?
     
     var missionsArray: [Mission] = []
     var usersArray: [CharacterModel] = []
@@ -34,8 +34,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
-        labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
-        self.character = CharacterModel(gender: "Male", nickName: self.nickName, age: 16, items: [], missions: [])
+        //labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
+ //       self.character = CharacterModel(gender: "Male", nickName: self.nickName, age: 16, items: [], missions: [])
         
         // atualiza o progresso na barra
         //self.character?.exp = self.dataManager.saveExp(exp: (self.character?.exp)!)
@@ -45,6 +45,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
+
 //        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "ande 100 passos", prize: "win 70 Exp")
 //        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "run for 2 meters", prize: "Win 120 Exp")
 //        let mission3 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 20, description: "ande 20 passos", prize: "Win 50 Exp")
@@ -75,7 +76,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     user.level = json["level"] as? Int
                     user.nickName = json["nick"] as? String
                     self.usersArray.append(user)
+                    print(self.usersArray)
                     self.labelNickName.text = self.usersArray.first?.nickName
+                    let progress =  ((self.usersArray.first?.exp)!/200)
+                    print(progress)
+                    self.expProgress.setProgress(Float(progress), animated: true)
                 })
             }
         }
@@ -105,6 +110,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
+        
     }
     
     
@@ -161,7 +167,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.questDescription.text = cell.mission?.missionDescription
             cell.reward.text = (cell.mission?.prize)!
             self.missionTable.rowHeight = 193
-            print(indexPath.row)
+            //print(indexPath.row)
             cell.delegate = self
             return cell
         }else {
@@ -186,7 +192,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if self.index == indexPath.row {
             self.index = nil
         }else{
-            print(indexPath.row)
+           // print(indexPath.row)
             self.index = nil
             self.missionTable.reloadData()
             self.index = indexPath.row
