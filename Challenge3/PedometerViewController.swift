@@ -88,10 +88,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         let timeZone = NSTimeZone.system
         cal.timeZone = timeZone
         
-        
-        
         self.endDate = cal.date(from: comps!)
-        print(self.mission!.goal)
+        
     }
     
     // Cronometer

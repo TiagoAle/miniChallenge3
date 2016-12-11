@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import FirebaseDatabase
 
 class ResultViewController: UIViewController {
 
@@ -24,8 +25,6 @@ class ResultViewController: UIViewController {
         //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
         
-       var xp = self.dataManager.saveExp(exp: Double((self.missionData?.xpEarned)!))
-        print(xp)
         self.goal = true
         self.userMadeIt()
     }
@@ -59,6 +58,13 @@ class ResultViewController: UIViewController {
             text?.append("\n \((self.missionData?.startDate)!)")
             text?.append("\n \((self.missionData?.endDate)!)")
             self.resultTextView.text = text
+            
+            //salvar xp
+            
+            let ref = FIRDatabase.database().reference().child("CharacterModel")
+            print(ref.child("Daniel"))
+            ref.child("Daniel").updateChildValues(["exp":self.missionData?.xpEarned!])
+            
         }else{
         
             var text = self.resultTextView.text
