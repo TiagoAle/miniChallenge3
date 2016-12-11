@@ -87,8 +87,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.missionsArray.append(mission)
                     self.missionTable.reloadData()
                 })
+                
             }
+            
         })
+        
+        
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -115,6 +119,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.missionsArray.count
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.index == indexPath.row{
