@@ -10,13 +10,14 @@ import UIKit
 
 class Level: NSObject, FIRDataModel, Uploadable, Typeable {
 
-    var missionsIndexs: [Int]?
+    var missionsIndexs: [String: [Int]]?
     var id: Int?
     
     typealias JSON = [String: AnyObject]
     
     override init() {
         super.init()
+        self.missionsIndexs = [String : [Int]]()
     }
     
     func toAnyObject() -> JSON {

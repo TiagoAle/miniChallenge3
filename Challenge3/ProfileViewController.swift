@@ -60,8 +60,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         Level.asyncAll { (json) in
             for key in json.keys{
                 Level.asyncAll(path: key, completion: { (json) in
+                    self.level.missionsIndexs?[key] = [Int]()
                     for i in 1...json.count{
-                        self.level.missionsIndexs?.append(json["mission\(i)"] as! Int)
+                        self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
                     }
                 })
             }
