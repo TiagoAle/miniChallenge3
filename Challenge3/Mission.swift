@@ -41,6 +41,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
     var startDate: Date?
     var endDate: Date?
     var goal: NSNumber?
+    var id: Int?
     var currentProgress: NSNumber?
     
     var prize: String?
@@ -66,6 +67,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
         self.missionDescription = description
         self.prize = prize
         self.enabled = true
+        self.id = 1
         
         let todaysDate:Date = Date()
         let dateFormatter:DateFormatter = DateFormatter()

@@ -99,16 +99,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let type = json["type"] as? String
                     
                     let mission = Mission(title: title!, type: type!, activityType: activityType!, startDate: Date(), goal: goal!, description: missionDescription!, prize: prize!)
+                    mission.id = json["id"] as? Int
         
                     self.missionsArray.append(mission)
+                    self.missionsArray = self.missionsArray.sorted(by: {$0.id! < $1.id!})
                     self.missionTable.reloadData()
                 })
                 
             }
             
         })
-        
-        
+
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
         
