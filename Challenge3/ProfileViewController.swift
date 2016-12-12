@@ -196,7 +196,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segue") {
             let vc = segue.destination as! PedometerViewController
-            vc.mission = missionsArray[self.index!]
+            vc.mission = self.currentUser.missionsAvailable[self.index!]
+            //vc.ref = ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child()
+            // missionsArray[self.index!]
         }
     }
 

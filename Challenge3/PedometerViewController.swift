@@ -10,6 +10,7 @@ import UIKit
 import CoreMotion
 import CoreLocation
 import HealthKit
+import FirebaseDatabase
 
 class PedometerViewController: UIViewController, CLLocationManagerDelegate, PedometerManagerDelegate {
     
@@ -24,7 +25,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     var timePause: TimeInterval = 0
     var paused: Bool = false
     var mission: Mission? //= Mission(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
-    
+    var ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
    // @IBOutlet weak var activityState: UILabel!
     
     //Mission

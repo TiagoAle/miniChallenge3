@@ -65,6 +65,7 @@ class ResultViewController: UIViewController {
             print(ref.child("Daniel"))
             ref.child("Daniel").updateChildValues(["exp":self.missionData?.xpEarned!])
             
+            
         }else{
         
             var text = self.resultTextView.text
