@@ -48,7 +48,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
     var missionDescription: String?
     var enabled: Bool?
     var lastDate: String?
-    
+    var identifier: String?
     typealias JSON = [String: AnyObject]
     
     
@@ -56,7 +56,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
         super.init()
     }
     
-    init(title: String, type: String, activityType: String, startDate: Date, goal: NSNumber, description: String, prize: String) {
+    init(title: String, type: String, activityType: String, startDate: Date, goal: NSNumber, description: String, prize: String, identifier: String) {
         self.title = title
         self.type = type
         self.activityType = activityType
@@ -68,6 +68,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
         self.prize = prize
         self.enabled = true
         self.id = 1
+        self.identifier = identifier
         
         let todaysDate:Date = Date()
         let dateFormatter:DateFormatter = DateFormatter()
