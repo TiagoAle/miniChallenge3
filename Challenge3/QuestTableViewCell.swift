@@ -20,6 +20,7 @@ class QuestTableViewCell: UITableViewCell {
     
     @IBOutlet weak var reward: UILabel!
     
+    @IBOutlet weak var enabledLabel: UIView!
     
     
     override func awakeFromNib() {

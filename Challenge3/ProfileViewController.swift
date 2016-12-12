@@ -219,6 +219,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.missionTable.rowHeight = 80
             cell.delegate = self
             
+            if cell.mission?.enabled == false {
+                cell.enabledLabel.backgroundColor = UIColor.orange
+            }
+            
             return cell
         
         }
