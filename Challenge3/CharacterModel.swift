@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class CharacterModel: NSObject, FIRDataModel, Uploadable, Typeable {
     
@@ -18,9 +20,10 @@ class CharacterModel: NSObject, FIRDataModel, Uploadable, Typeable {
     var gender: String?
     var exp: Double?
     var level: Int?
+    var missionsAvailable: [Mission]?
     
     typealias JSON = [String: AnyObject]
-
+    
     override init() {
         super.init()
     }

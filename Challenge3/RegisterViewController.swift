@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate, UserDataMana
 
         
         self.nickLabel.text = self.dataManager.saveNickName(nickName: self.nickTextField.text!)
-        let dict = ["missão1" : "muito difícil", "gol": "Da Alemanha"]
+        //let dict = ["missão1" : "muito difícil", "gol": "Da Alemanha"]
         let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
         ref.child("CharacterModel").child(self.dataManager.nickName).updateChildValues(["nick" : self.dataManager.nickName])
         ref.child("CharacterModel").child(self.dataManager.nickName).updateChildValues(["age" : self.info?[0] as! Int])
