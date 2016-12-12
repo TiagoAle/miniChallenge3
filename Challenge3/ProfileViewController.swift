@@ -8,7 +8,7 @@
 
 import UIKit
 import HealthKit
-import FirebaseAuth
+import FirebaseDatabase
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCustomCellDelegator {
     
@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var missionsArray: [Mission] = []
     var usersArray: [CharacterModel] = []
     var level = Level()
+    var currentUser = CharacterModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,9 +79,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     user.nickName = json["nick"] as? String
                     self.usersArray.append(user)
                     print(self.usersArray)
-                    self.labelNickName.text = self.usersArray.first?.nickName
+                    //self.labelNickName.text = self.usersArray.first?.nickName
                     let progress =  ((self.usersArray.first?.exp)!/200)
                     print(progress)
+                    self.logIn(user: user)
                     self.expProgress.setProgress(Float(progress), animated: true)
                 })
             }
@@ -110,14 +112,34 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         })
 
+        
         self.missionTable.reloadData()
         // Do any additional setup after loading the view.
         
     }
     
+    func logIn(user: CharacterModel){
+        if user.nickName == UserDefaults.standard.object(forKey: "nick") as? String{
+            self.currentUser = user
+            self.labelNickName.text = self.currentUser.nickName
+        }
+    }
+
+    //É ESSA A FUNÇAO GAMBIARRA
+    func verifyLevel(){
+        for lvl in self.level.missionsIndexs!{
+            if lvl.key == "level\(currentUser.level)"{
+                for i in lvl.value{
+                    let dict = ["activityType": self.missionsArray[i].activityType! , "description": self.missionsArray[i].missionDescription!, "prize": self.missionsArray[i].prize!, "goal": self.missionsArray[i].goal!, "id":self.missionsArray[i].id!, "type":self.missionsArray[i].type!, "title": self.missionsArray[i].title!, "currentProgress": self.missionsArray[i].currentProgress!, "status":self.missionsArray[i].status!] as [String : Any]
+                    let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+                    ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").childByAutoId().setValue(dict)
+                }
+            }
+        }
+       // let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+      //  ref.child("CharacterModel").child(self.dataManager.nickName).child("missionsAvailable").childByAutoId().setValue(dict)
+    }
     
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

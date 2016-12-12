@@ -74,7 +74,7 @@ extension FIRDataModel {
             DispatchQueue.main.async {
                 if snapshot.exists() {
                     completion((snapshot.value as! [String : AnyObject]?)!)
-                    print(snapshot.value)
+                    //print(snapshot.value)
                 }
             }
         })

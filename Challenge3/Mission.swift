@@ -118,7 +118,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
     }
     
     func getJSON() -> [String: AnyObject] {
-        let keyPaths = [#keyPath(Mission.title), #keyPath(Mission.goal), #keyPath(Mission.prize)]
+        let keyPaths = [#keyPath(Mission.title), #keyPath(Mission.goal), #keyPath(Mission.prize), #keyPath(Mission.activityType), #keyPath(Mission.missionDescription), #keyPath(Mission.currentProgress), #keyPath(Mission.type)]
         return PathsManager.shared.configureJSON(keyPaths: keyPaths, type: self)
     }
 }
