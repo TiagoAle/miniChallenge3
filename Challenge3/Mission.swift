@@ -9,7 +9,7 @@
 import UIKit
 import HealthKit
 
-enum StatusMission {
+enum StatusMission: String{
     case done
     case inProgress
     case stoped

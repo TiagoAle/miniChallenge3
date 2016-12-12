@@ -106,6 +106,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.missionsArray.append(mission)
                     self.missionsArray = self.missionsArray.sorted(by: {$0.id! < $1.id!})
                     self.missionTable.reloadData()
+                    
                 })
                 
             }
@@ -122,17 +123,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if user.nickName == UserDefaults.standard.object(forKey: "nick") as? String{
             self.currentUser = user
             self.labelNickName.text = self.currentUser.nickName
+            self.verifyLevel()
         }
     }
 
     //É ESSA A FUNÇAO GAMBIARRA
     func verifyLevel(){
         for lvl in self.level.missionsIndexs!{
-            if lvl.key == "level\(currentUser.level)"{
+            if lvl.key.contains((currentUser.level?.description)!){
+                var j = 0
                 for i in lvl.value{
-                    let dict = ["activityType": self.missionsArray[i].activityType! , "description": self.missionsArray[i].missionDescription!, "prize": self.missionsArray[i].prize!, "goal": self.missionsArray[i].goal!, "id":self.missionsArray[i].id!, "type":self.missionsArray[i].type!, "title": self.missionsArray[i].title!, "currentProgress": self.missionsArray[i].currentProgress!, "status":self.missionsArray[i].status!] as [String : Any]
+                    j = j+1
+                    let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String] as [String : Any]
                     let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
-                    ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").childByAutoId().setValue(dict)
+                    ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
                 }
             }
         }
