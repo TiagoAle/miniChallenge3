@@ -145,12 +145,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 var j = 0
                 for i in lvl.value{
                     j = j+1
-                    let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String] as [String : Any]
+                    let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String, "enabled": self.missionsArray[i-1].enabled!] as [String : Any]
                     let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
                     ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
                 }
             }
         }
+//        CharacterModel.reference.child(currentUser.nickName!).child("missionsAvailable").observe(.value, with: { snapshot in
+//            DispatchQueue.main.async {
+//                if snapshot.exists() {
+//                    let dict = snapshot.value as! [String : AnyObject]?)!)
+//                    //print(snapshot.value)
+//                }
+//            }
+//        })
+
        // let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
       //  ref.child("CharacterModel").child(self.dataManager.nickName).child("missionsAvailable").childByAutoId().setValue(dict)
     }
