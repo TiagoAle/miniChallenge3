@@ -68,22 +68,33 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 })
             }
         }
+        //
         CharacterModel.asyncAll { (json) in
             for key in json.keys {
                 CharacterModel.asyncAll(path: key, completion: { (json) in
+                    print("---------inicio------")
                     let user = CharacterModel()
                     user.age = json["age"] as? Int
                     user.exp = json["exp"] as? Double
+                    print("------------------------")
+                    print(user.exp!)
+                    print("------------------------")
                     user.gender = json["gender"] as? String
                     user.level = json["level"] as? Int
                     user.nickName = json["nick"] as? String
                     self.usersArray.append(user)
-                    print(self.usersArray)
-                    //self.labelNickName.text = self.usersArray.first?.nickName
-                    let progress =  ((self.usersArray.first?.exp)!/200)
-                    print(progress)
                     self.logIn(user: user)
-                    self.expProgress.setProgress(Float(progress), animated: true)
+                    
+                    for i in self.usersArray{
+                        
+                        if i.nickName == self.nickName {
+                        
+                            print(i)
+                            let progress =  ((i.exp)!/200)
+                            self.expProgress.setProgress(Float(progress), animated: true)
+                            
+                        }
+                    }
                 })
             }
         }
