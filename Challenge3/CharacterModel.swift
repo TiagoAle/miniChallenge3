@@ -20,7 +20,7 @@ class CharacterModel: NSObject, FIRDataModel, Uploadable, Typeable {
     var gender: String?
     var exp: Double?
     var level: Int?
-    var missionsAvailable: [Mission]?
+    var missionsAvailable = [Mission]()
     
     typealias JSON = [String: AnyObject]
     

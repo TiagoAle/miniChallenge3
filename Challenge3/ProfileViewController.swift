@@ -67,37 +67,38 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 })
             }
+            self.logIn()
         }
         //
-        CharacterModel.asyncAll { (json) in
-            for key in json.keys {
-                CharacterModel.asyncAll(path: key, completion: { (json) in
-                    print("---------inicio------")
-                    let user = CharacterModel()
-                    user.age = json["age"] as? Int
-                    user.exp = json["exp"] as? Double
-                    print("------------------------")
-                    print(user.exp!)
-                    print("------------------------")
-                    user.gender = json["gender"] as? String
-                    user.level = json["level"] as? Int
-                    user.nickName = json["nick"] as? String
-                    self.usersArray.append(user)
-                    self.logIn(user: user)
-                    
-                    for i in self.usersArray{
-                        
-                        if i.nickName == self.nickName {
-                        
-                            print(i)
-                            let progress =  ((i.exp)!/200)
-                            self.expProgress.setProgress(Float(progress), animated: true)
-                            
-                        }
-                    }
-                })
-            }
-        }
+//        CharacterModel.asyncAll { (json) in
+//            for key in json.keys {
+//                CharacterModel.asyncAll(path: key, completion: { (json) in
+//                    print("---------inicio------")
+//                    let user = CharacterModel()
+//                    user.age = json["age"] as? Int
+//                    user.exp = json["exp"] as? Double
+//                    print("------------------------")
+//                    print(user.exp!)
+//                    print("------------------------")
+//                    user.gender = json["gender"] as? String
+//                    user.level = json["level"] as? Int
+//                    user.nickName = json["nick"] as? String
+//                    self.usersArray.append(user)
+//                    
+//                    for i in self.usersArray{
+//                        
+//                        if i.nickName == self.nickName {
+//                        
+//                            print(i)
+//                            let progress =  ((i.exp)!/200)
+//                            self.expProgress.setProgress(Float(progress), animated: true)
+//                            
+//                        }
+//                    }
+//                    self.logIn(user: user)
+//                })
+//            }
+//        }
         
         //let userID = FIRAuth.auth()?.currentUser?.uid
         Mission.asyncAll(completion: {(json) in
@@ -130,12 +131,28 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func logIn(user: CharacterModel){
-        if user.nickName == UserDefaults.standard.object(forKey: "nick") as? String{
+    func logIn(){
+        let nick = UserDefaults.standard.object(forKey: "nick") as! String
+        CharacterModel.asyncAll(path: nick, completion: { (json) in
+            print("---------inicio------")
+            let user = CharacterModel()
+            user.age = json["age"] as? Int
+            user.exp = json["exp"] as? Double
+            print("------------------------")
+            //print(user.exp!)
+            print("------------------------")
+            user.gender = json["gender"] as? String
+            user.level = json["level"] as? Int
+            user.nickName = json["nick"] as? String
+            
+            let progress =  ((user.exp)!/200)
+            self.expProgress.setProgress(Float(progress), animated: true)
+            
             self.currentUser = user
             self.labelNickName.text = self.currentUser.nickName
             self.verifyLevel()
-        }
+        })
+        
     }
 
     //É ESSA A FUNÇAO GAMBIARRA
@@ -145,23 +162,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 var j = 0
                 for i in lvl.value{
                     j = j+1
-                    let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String, "enabled": self.missionsArray[i-1].enabled!] as [String : Any]
-                    let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
-                    ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
+                    if self.missionsArray.count > 0{
+                        let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String, "enabled": self.missionsArray[i-1].enabled!] as [String : Any]
+                        let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+                        ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
+
+                        
+                    }
                 }
             }
         }
-//        CharacterModel.reference.child(currentUser.nickName!).child("missionsAvailable").observe(.value, with: { snapshot in
-//            DispatchQueue.main.async {
-//                if snapshot.exists() {
-//                    let dict = snapshot.value as! [String : AnyObject]?)!)
-//                    //print(snapshot.value)
-//                }
-//            }
-//        })
-
-       // let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
-      //  ref.child("CharacterModel").child(self.dataManager.nickName).child("missionsAvailable").childByAutoId().setValue(dict)
+        CharacterModel.asyncAll(path: self.currentUser.nickName!, completion: { (json) in
+            let dict = json["missionsAvailable"] as! [String: AnyObject]
+            
+            self.getMissionsAvailable(dict: dict)
+        })
+    }
+    
+    func getMissionsAvailable(dict: [String: AnyObject]){
+        for d in dict{
+            let m = Mission(title: d.value["title"] as! String, type: d.value["type"] as! String, activityType:d.value["activityType"] as! String, startDate: Date(), goal: d.value["goal"] as! NSNumber, description: d.value["description"] as! String, prize: d.value["prize"] as! String)
+            if !(currentUser.missionsAvailable.contains(m)){
+                currentUser.missionsAvailable.append(m)
+            }
+        }
+        self.missionTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -182,7 +207,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.missionsArray.count
+        return self.currentUser.missionsAvailable.count
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -210,7 +235,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             
             let cell = self.missionTable.dequeueReusableCell(withIdentifier: "CellExp")! as! ExpandedTableViewCell
-            cell.mission = self.missionsArray[indexPath.row]
+            cell.mission = self.currentUser.missionsAvailable[indexPath.row]
             cell.title.text = cell.mission?.title
             cell.questDescription.text = cell.mission?.missionDescription
             cell.reward.text = (cell.mission?.prize)!
@@ -221,7 +246,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }else {
         
             let cell = self.missionTable.dequeueReusableCell(withIdentifier: "Cell")! as! QuestTableViewCell
-            cell.mission = self.missionsArray[indexPath.row]
+            cell.mission = self.currentUser.missionsAvailable[indexPath.row]
             cell.title.text = cell.mission?.title
             //cell.questDescription.text = cell.mission?.missionDescription
             cell.reward.text = (cell.mission?.prize)!
