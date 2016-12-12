@@ -90,6 +90,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         cal.timeZone = timeZone
         
         self.endDate = cal.date(from: comps!)
+        print(ref)
         
     }
     
@@ -193,6 +194,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             // pass data to next view
             let resultView = segue.destination as? ResultViewController
             resultView?.missionData = sender as? Mission
+            resultView?.ref = self.ref
         }
         
     }

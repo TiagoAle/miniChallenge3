@@ -198,7 +198,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (segue.identifier == "segue") {
             let vc = segue.destination as! PedometerViewController
             vc.mission = self.currentUser.missionsAvailable[self.index!]
-            //vc.ref = ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child()
+            vc.ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/").child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child(self.currentUser.missionsAvailable[self.index!].identifier!)
             // missionsArray[self.index!]
         }
     }

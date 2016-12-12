@@ -18,6 +18,7 @@ class ResultViewController: UIViewController {
     var goal: Bool?
     //var workoutsArray: [HKWorkout]?
     var missionData: Mission?
+    var ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -63,7 +64,29 @@ class ResultViewController: UIViewController {
             
             let ref = FIRDatabase.database().reference().child("CharacterModel")
             print(ref.child("Daniel"))
-            ref.child("Daniel").updateChildValues(["exp":self.missionData?.xpEarned!])
+//            let xp = ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).observe(.value, with: { snapshoot in
+//                DispatchQueue.main.async {
+//                    if snapshoot.exists() {
+//                        //completion((snapshoot.value as! [String : AnyOb)!)
+//                        print(snapshot.value)
+//                    }
+//            
+//            
+//                }
+//            })
+            
+            
+            CharacterModel.asyncAll(path: (UserDefaults.standard.object(forKey: "nick") as! String), completion: {(json) in
+                var exp = json["exp"] as! Int
+                exp = exp + (self.missionData?.xpEarned!)!
+                ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).updateChildValues(["exp":exp])
+                print(self.ref)
+                self.ref.updateChildValues(["enabled":false])
+                
+                
+            })
+
+            
             
             
         }else{
