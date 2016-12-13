@@ -289,6 +289,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.missionTable.rowHeight = 193
             //print(indexPath.row)
             cell.delegate = self
+            
+            if cell.mission?.enabled == false {
+                cell.cellState.backgroundColor = UIColor.orange
+                cell.buttonState.isHidden = true
+                cell.buttonState.isEnabled = false
+            }else{
+                cell.cellState.backgroundColor = UIColor.white
+                cell.buttonState.isEnabled = true
+            }
+            
             return cell
         }else {
         
@@ -302,6 +312,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if cell.mission?.enabled == false {
                 cell.enabledLabel.backgroundColor = UIColor.orange
+                cell.enabledLabel.alpha = 0.5
+            }else{
+            
+                cell.enabledLabel.backgroundColor = UIColor.white
+                cell.enabledLabel.alpha = 1
+            
             }
             
             return cell
