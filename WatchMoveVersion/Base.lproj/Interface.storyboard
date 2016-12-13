@@ -90,7 +90,7 @@
                         <table alignment="left" id="Yjr-3C-GwX">
                             <items>
                                 <tableRow id="q2i-s6-1y8">
-                                    <group key="rootItem" width="1" height="149" alignment="left" id="zkf-xF-qeL"/>
+                                    <group key="rootItem" width="1" height="149" alignment="left" layout="vertical" id="zkf-xF-qeL"/>
                                 </tableRow>
                             </items>
                         </table>

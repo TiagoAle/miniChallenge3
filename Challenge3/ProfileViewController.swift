@@ -29,7 +29,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var usersArray: [CharacterModel] = []
     var level = Level()
     var currentUser = CharacterModel()
-    var session: WCSession?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -38,12 +37,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if WCSession.isSupported(){
-            session = WCSession.default()
-            session?.delegate = self
-            session?.activate()
-        }
         
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
@@ -76,7 +69,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             for key in json.keys{
                 Level.asyncAll(path: key, completion: { (json) in
                     self.level.missionsIndexs?[key] = [Int]()
-                    for i in 1...json.count{
+                    for i in 1...json.count-1{
                         self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
                     }
                 })
@@ -149,14 +142,42 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref.child(UserDefaults.standard.object(forKey: "nick") as! String).observe(.value, with: { (snapshot) in
              DispatchQueue.main.async {
                 let dict = snapshot.value as! [String: AnyObject]
+                print(dict)
                 let exp = dict["exp"] as! Int
                 let progress = Float(exp)/200.0
-                
+                do{
+                    try WatchSessionManager.sharedManager.updateApplicationContext(dict)
+                }catch{
+                    print("Erro")
+                }
                 self.expProgress.setProgress(progress, animated: true)
             }
             
             
         })
+//        if let nick = UserDefaults.standard.object(forKey: "nick") as? String{
+//            CharacterModel.asyncAll(path: nick, completion: { (json) in
+//                print("---------inicio------")
+//                let user = CharacterModel()
+//                user.age = json["age"] as? Int
+//                user.exp = json["exp"] as? Double
+//                print("------------------------")
+//                //print(user.exp!)
+//                print("------------------------")
+//                user.gender = json["gender"] as? String
+//                user.level = json["level"] as? Int
+//                user.nickName = json["nick"] as? String
+//                
+//                let dict = [nick: json as AnyObject]
+//                do{
+//                    try WatchSessionManager.sharedManager.updateApplicationContext(dict)
+//                }catch{
+//                    print("Erro")
+//                }
+//                
+//            })
+//        }
+
     }
     
     func logIn(){
@@ -178,14 +199,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.currentUser = user
             self.labelNickName.text = self.currentUser.nickName
-            let dict = [nick: json as AnyObject]
-            do{
-                try self.session?.updateApplicationContext(dict)
-            }catch{
-                print("Erro")
-            }
-            
-
+//            let dict = [nick: json as AnyObject]
+//            do{
+//                try WatchSessionManager.sharedManager.updateApplicationContext(dict)
+//            }catch{
+//                print("Erro")
+//            }
             self.verifyLevel()
         })
         

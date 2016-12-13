@@ -11,17 +11,15 @@ import CoreData
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import WatchConnectivity
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
 
-    var session: WCSession!
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        WatchSessionManager.sharedManager.startSession()
         FIRApp.configure()
         
         FIRAuth.auth()?.signIn(withEmail: "gitmove@bepid.com", password: "git123", completion: {(user: FIRUser?, error: Error?) in
@@ -34,12 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
         })
         
         FIRDatabase.database().persistenceEnabled = true
-        
-        if WCSession.isSupported(){
-            session = WCSession.default()
-            session?.delegate = self
-            session?.activate()
-        }
         // Override point for customization after application launch.
         return true
     }
@@ -60,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -111,32 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-        if let error = error {
-            print("session activation failed with error: \(error.localizedDescription)")
-            return
-        }
-        
-        /*
-         Called when the activation of a session finishes. Your implementation
-         should check the value of the activationState parameter to see if
-         communication with the counterpart app is possible. When the state is
-         WCSessionActivationStateActivated, you may communicate normally with
-         the other app.
-         */
-        
-        print("session activated with state: \(activationState.rawValue)")
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        
-        print("session did become inactive")
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        WCSession.default().activate()
     }
     
 

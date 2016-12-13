@@ -30,6 +30,8 @@
 	<string>please</string>
 	<key>NSMotionUsageDescription</key>
 	<string>please</string>
+	<key>UIBackgroundModes</key>
+	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

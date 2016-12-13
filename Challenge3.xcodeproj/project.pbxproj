@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		05C8D5D6E68BE9853DE13411 /* Pods_WatchMoveVersion_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503C1D577A3D25D3B1C57DFC /* Pods_WatchMoveVersion_Extension.framework */; };
 		2E7906A1D923899ACC337FCA /* Pods_WatchMoveVersion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2BB899819BAB2141F0790A /* Pods_WatchMoveVersion.framework */; };
+		6A3D29E81E00166B006F7B8B /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3D29E71E00166B006F7B8B /* WatchSessionManager.swift */; };
+		6A3D29EC1E00168F006F7B8B /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3D29EB1E00168F006F7B8B /* WatchSessionManager.swift */; };
 		6A4E8AF61DE704730067B2CF /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E8AF51DE704730067B2CF /* HealthKitManager.swift */; };
 		6A56CD5B1DF99F1C00CA339C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD591DF99F1C00CA339C /* Interface.storyboard */; };
 		6A56CD5D1DF99F1C00CA339C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A56CD5C1DF99F1C00CA339C /* Assets.xcassets */; };
@@ -124,6 +126,8 @@
 		4417A5C5AAE4411CF591D774 /* Pods-WatchMoveVersion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchMoveVersion.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchMoveVersion/Pods-WatchMoveVersion.release.xcconfig"; sourceTree = "<group>"; };
 		503C1D577A3D25D3B1C57DFC /* Pods_WatchMoveVersion_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchMoveVersion_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BF24B53A614961972FA4BC /* Pods_Challenge3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A3D29E71E00166B006F7B8B /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		6A3D29EB1E00168F006F7B8B /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		6A4E8AF41DE704190067B2CF /* Challenge3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Challenge3.entitlements; sourceTree = "<group>"; };
 		6A4E8AF51DE704730067B2CF /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		6A56CD571DF99F1B00CA339C /* WatchMoveVersion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMoveVersion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +275,7 @@
 			children = (
 				A7C009F41DE8728B0049541F /* UserDataManager.swift */,
 				6A4E8AF51DE704730067B2CF /* HealthKitManager.swift */,
+				6A3D29EB1E00168F006F7B8B /* WatchSessionManager.swift */,
 				A7DD7E831DEC674C00AC0D29 /* CharacterModel.swift */,
 				6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */,
 				6AC8ED0F1DF6E04E007D13CC /* Mission.swift */,
@@ -321,6 +326,7 @@
 				6A56CD6A1DF99F1C00CA339C /* InterfaceController.swift */,
 				6A56CD6C1DF99F1C00CA339C /* ExtensionDelegate.swift */,
 				6A56CD6E1DF99F1C00CA339C /* NotificationController.swift */,
+				6A3D29E71E00166B006F7B8B /* WatchSessionManager.swift */,
 				6A56CD701DF99F1C00CA339C /* ComplicationController.swift */,
 				6A56CD721DF99F1C00CA339C /* Assets.xcassets */,
 				6A56CD741DF99F1C00CA339C /* Info.plist */,
@@ -546,6 +552,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = K463X7473S;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes.watchos.app = {
+								enabled = 1;
+							};
+						};
 					};
 					6A56CD621DF99F1C00CA339C = {
 						CreatedOnToolsVersion = 8.1;
@@ -554,6 +565,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
+							};
+							com.apple.BackgroundModes.watchos.extension = {
+								enabled = 1;
 							};
 							com.apple.HealthKit.watchos = {
 								enabled = 0;
@@ -567,6 +581,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
 							};
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -863,6 +880,7 @@
 				6A56CD711DF99F1C00CA339C /* ComplicationController.swift in Sources */,
 				6A56CD6D1DF99F1C00CA339C /* ExtensionDelegate.swift in Sources */,
 				6A56CD6B1DF99F1C00CA339C /* InterfaceController.swift in Sources */,
+				6A3D29E81E00166B006F7B8B /* WatchSessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,6 +896,7 @@
 				A7C8E3091DF1F003006A55EB /* ExpandedTableViewCell.swift in Sources */,
 				A7C009F11DE8725F0049541F /* ProfileViewController.swift in Sources */,
 				6A56CDAA1DFAF20400CA339C /* Readeable.swift in Sources */,
+				6A3D29EC1E00168F006F7B8B /* WatchSessionManager.swift in Sources */,
 				6A56CDB11DFAF20400CA339C /* ActiveRecord.swift in Sources */,
 				6A56CDB41DFAF20400CA339C /* PathsManager.swift in Sources */,
 				A7C8E30D1DF1F90F006A55EB /* QuestTableViewCell.swift in Sources */,
