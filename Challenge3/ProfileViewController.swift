@@ -34,6 +34,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.updateProgressBar()
+        
+        CharacterModel.asyncAllSingle(path: self.currentUser.nickName!, completion: { (json) in
+            let dict = json["missionsAvailable"] as! [String: AnyObject]
+            
+            self.getMissionsAvailable(dict: dict)
+        })
+        
     }
     
     override func viewDidLoad() {
@@ -151,7 +158,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let dict = snapshot.value as! [String: AnyObject]
                 let exp = dict["exp"] as! Int
                 let progress = Float(exp)/200.0
-                
+                print(dict)
                 self.expProgress.setProgress(progress, animated: true)
             }
             
@@ -219,6 +226,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.currentUser.missionsAvailable = []
         for d in dict{
             let m = Mission(title: d.value["title"] as! String, type: d.value["type"] as! String, activityType:d.value["activityType"] as! String, startDate: Date(), goal: d.value["goal"] as! NSNumber, description: d.value["description"] as! String, prize: d.value["prize"] as! String, identifier: d.value["identifier"] as! String)
+            m.enabled = d.value["enabled"] as! Bool
             if !(currentUser.missionsAvailable.contains(m)){
                 currentUser.missionsAvailable.append(m)
             }
