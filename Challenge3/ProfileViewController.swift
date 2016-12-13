@@ -54,6 +54,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
+        
+        self.missionTable.becomeFirstResponder()
         //labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
  //       self.character = CharacterModel(gender: "Male", nickName: self.nickName, age: 16, items: [], missions: [])
         
@@ -226,7 +228,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.currentUser.missionsAvailable = []
         for d in dict{
             let m = Mission(title: d.value["title"] as! String, type: d.value["type"] as! String, activityType:d.value["activityType"] as! String, startDate: Date(), goal: d.value["goal"] as! NSNumber, description: d.value["description"] as! String, prize: d.value["prize"] as! String, identifier: d.value["identifier"] as! String)
-            m.enabled = d.value["enabled"] as! Bool
+            m.enabled = d.value["enabled"] as? Bool
             if !(currentUser.missionsAvailable.contains(m)){
                 currentUser.missionsAvailable.append(m)
             }
@@ -275,6 +277,40 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+//    func tableView(tableView: UITableView, canFocusRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        if indexPath.row == 2 {
+//            self.missionTable.scrollToRow(at: indexPath as IndexPath, at: UITableViewScrollPosition.bottom, animated: true)
+//            return true
+//        }
+//        return false
+//    }
+    
+
+    
+    
+
+    
+//    func tableViewScrollToBottom(to row: NSIndexPath, animated: Bool) {
+//        
+//        let delay = 0.1 * Double(NSEC_PER_SEC)
+//        //let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//        
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+//            let numberOfSections = self.missionTable.numberOfSections
+//            let numberOfRows = self.missionTable.numberOfRows(inSection: numberOfSections-1)
+//            
+//            if numberOfRows > 0 {
+//                let indexPath = row
+//                //(forRow: numberOfRows-1, inSection: (numberOfSections-1))
+//                self.missionTable.scrollToRow(at: indexPath as IndexPath, at: UITableViewScrollPosition.bottom, animated: animated)
+//            }
+//        }
+//        
+//    }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if self.index == indexPath.row{
@@ -282,6 +318,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             
             let cell = self.missionTable.dequeueReusableCell(withIdentifier: "CellExp")! as! ExpandedTableViewCell
+            
+            
             cell.mission = self.currentUser.missionsAvailable[indexPath.row]
             cell.title.text = cell.mission?.title
             cell.questDescription.text = cell.mission?.missionDescription
@@ -296,7 +334,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.buttonState.isEnabled = false
             }else{
                 cell.cellState.backgroundColor = UIColor.white
+                cell.buttonState.isHidden = false
                 cell.buttonState.isEnabled = true
+            }
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.missionTable.scrollToRow(at: IndexPath(row: self.index!, section: 0), at: .bottom, animated: true)
             }
             
             return cell
@@ -323,12 +367,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         
         }
-//        self.missionTable.reloadData()
+//       self.missionTable.reloadData()
 
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.performSegue(withIdentifier: "segue", sender: nil)
+       
+        
         if self.index == indexPath.row {
             self.index = nil
         }else{
@@ -339,8 +385,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         let indexP = NSIndexPath(row: indexPath.row, section: 0)
        self.missionTable.reloadRows(at:[indexP as IndexPath] , with: .fade)
-        //self.missionTable.reloadData()
-        //performSegue(withIdentifier: "segue", sender: nil)
+        
         
     }
     //Session
