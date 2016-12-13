@@ -27,6 +27,9 @@ class ExpandedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var questDescription: UILabel!
     
+    @IBOutlet weak var buttonState: UIButton!
+ 
+    @IBOutlet weak var cellState: UIView!
     
     
     
