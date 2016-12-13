@@ -43,17 +43,15 @@
         <!--Interface Controller-->
         <scene sceneID="aMy-wv-hhD">
             <objects>
-                <controller id="dXb-c5-It1" customClass="InterfaceController" customModule="Challenge3Watch" customModuleProvider="target">
+                <controller id="dXb-c5-It1" customClass="InterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
-                        <button width="83" height="83" alignment="center" backgroundImage="avatarCircle2" id="HYr-uJ-9fO">
+                        <button width="83" height="83" alignment="center" backgroundImage="avatar" id="HYr-uJ-9fO">
                             <connections>
                                 <segue destination="S7Q-5D-he4" kind="push" id="2gL-s8-uGa"/>
                             </connections>
                         </button>
-                        <label alignment="center" verticalAlignment="center" text="Teobaldo" id="fFR-Yb-Gyw">
-                            <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="16"/>
-                        </label>
-                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="watchShield" id="gIv-RJ-LW6">
+                        <label width="88" alignment="center" text="Teobaldo" textAlignment="center" id="pHM-M8-M4C"/>
+                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="balloon" id="gIv-RJ-LW6">
                             <connections>
                                 <segue destination="s4V-Iq-M9T" kind="push" id="SR0-pH-hMz"/>
                             </connections>
@@ -62,6 +60,9 @@
                             <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="8"/>
                         </label>
                     </items>
+                    <connections>
+                        <outlet property="label" destination="pHM-M8-M4C" id="KAy-WV-HOF"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="332"/>

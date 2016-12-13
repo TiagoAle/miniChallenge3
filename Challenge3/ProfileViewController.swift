@@ -9,8 +9,9 @@
 import UIKit
 import HealthKit
 import FirebaseDatabase
+import WatchConnectivity
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCustomCellDelegator {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCustomCellDelegator, WCSessionDelegate {
     
     @IBOutlet weak var missionTable: UITableView!
     @IBOutlet weak var labelNickName: UILabel!
@@ -28,6 +29,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var usersArray: [CharacterModel] = []
     var level = Level()
     var currentUser = CharacterModel()
+    var session: WCSession?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -37,7 +39,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        if WCSession.isSupported(){
+            session = WCSession.default()
+            session?.delegate = self
+            session?.activate()
+        }
+        
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
         //labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
@@ -171,6 +178,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.currentUser = user
             self.labelNickName.text = self.currentUser.nickName
+            let dict = [nick: json as AnyObject]
+            do{
+                try self.session?.updateApplicationContext(dict)
+            }catch{
+                print("Erro")
+            }
+            
+
             self.verifyLevel()
         })
         
@@ -303,5 +318,32 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         //self.missionTable.reloadData()
         //performSegue(withIdentifier: "segue", sender: nil)
         
+    }
+    //Session
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        if let error = error {
+            print("session activation failed with error: \(error.localizedDescription)")
+            return
+        }
+        
+        /*
+         Called when the activation of a session finishes. Your implementation
+         should check the value of the activationState parameter to see if
+         communication with the counterpart app is possible. When the state is
+         WCSessionActivationStateActivated, you may communicate normally with
+         the other app.
+         */
+        
+        print("session activated with state: \(activationState.rawValue)")
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+        print("session did become inactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        WCSession.default().activate()
     }
 }
