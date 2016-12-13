@@ -29,6 +29,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var level = Level()
     var currentUser = CharacterModel()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.updateProgressBar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +63,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        self.missionsArray.append(mission3)
 //        self.missionsArray.append(mission4)
 //        self.missionsArray.append(mission5)
+        
+        self.updateProgressBar()
         Level.asyncAll { (json) in
             for key in json.keys{
                 Level.asyncAll(path: key, completion: { (json) in
@@ -120,7 +127,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.missionTable.reloadData()
                     
                 })
-                
             }
             
         })
@@ -131,9 +137,24 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    func updateProgressBar(){
+        let ref = FIRDatabase.database().reference().child("CharacterModel")
+        ref.child(UserDefaults.standard.object(forKey: "nick") as! String).observe(.value, with: { (snapshot) in
+             DispatchQueue.main.async {
+                let dict = snapshot.value as! [String: AnyObject]
+                let exp = dict["exp"] as! Int
+                let progress = Float(exp)/200.0
+                
+                self.expProgress.setProgress(progress, animated: true)
+            }
+            
+            
+        })
+    }
+    
     func logIn(){
         let nick = UserDefaults.standard.object(forKey: "nick") as! String
-        CharacterModel.asyncAll(path: nick, completion: { (json) in
+        CharacterModel.asyncAllSingle(path: nick, completion: { (json) in
             print("---------inicio------")
             let user = CharacterModel()
             user.age = json["age"] as? Int
@@ -145,8 +166,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             user.level = json["level"] as? Int
             user.nickName = json["nick"] as? String
             
-            let progress =  ((user.exp)!/200)
-            self.expProgress.setProgress(Float(progress), animated: true)
+//            let progress =  ((user.exp)!/200)
+//            self.expProgress.setProgress(Float(progress), animated: true)
             
             self.currentUser = user
             self.labelNickName.text = self.currentUser.nickName
@@ -172,7 +193,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         }
-        CharacterModel.asyncAll(path: self.currentUser.nickName!, completion: { (json) in
+        CharacterModel.asyncAllSingle(path: self.currentUser.nickName!, completion: { (json) in
             let dict = json["missionsAvailable"] as! [String: AnyObject]
             
             self.getMissionsAvailable(dict: dict)

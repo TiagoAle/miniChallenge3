@@ -25,9 +25,14 @@ class ResultViewController: UIViewController {
 
         //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
-        
+        var updated: Bool = false
         self.goal = true
-        self.userMadeIt()
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+         self.userMadeIt()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,28 +68,35 @@ class ResultViewController: UIViewController {
             //salvar xp
             
             let ref = FIRDatabase.database().reference().child("CharacterModel")
-            print(ref.child("Daniel"))
-//            let xp = ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).observe(.value, with: { snapshoot in
-//                DispatchQueue.main.async {
-//                    if snapshoot.exists() {
-//                        //completion((snapshoot.value as! [String : AnyOb)!)
-//                        print(snapshot.value)
-//                    }
-//            
-//            
-//                }
+             ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).observeSingleEvent(of: .value, with: { (snapshot) in
+                DispatchQueue.main.async {
+                    if snapshot.exists() {
+                        //completion((snapshoot.value as! [String : AnyOb)!)
+                        var dict = snapshot.value as! [String: AnyObject]
+                        var exp = dict["exp"] as! Int
+                        exp = exp + (self.missionData?.xpEarned!)!
+                        ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).updateChildValues(["exp":exp])
+                        print((UserDefaults.standard.object(forKey: "nick") as? String)!)
+                        print(self.ref)
+                        self.ref.updateChildValues(["enabled":false])
+                    }
+                    
+                    
+                }
+             })
+            
+            
+            
+            
+//            CharacterModel.asyncAll(path: (UserDefaults.standard.object(forKey: "nick") as! String), completion: {(json) in
+//                var exp = json["exp"] as! Int
+//                exp = exp + (self.missionData?.xpEarned!)!
+//                ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).updateChildValues(["exp":exp])
+//                print(self.ref)
+//                self.ref.updateChildValues(["enabled":false])
+//                
+//                
 //            })
-            
-            
-            CharacterModel.asyncAll(path: (UserDefaults.standard.object(forKey: "nick") as! String), completion: {(json) in
-                var exp = json["exp"] as! Int
-                exp = exp + (self.missionData?.xpEarned!)!
-                ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).updateChildValues(["exp":exp])
-                print(self.ref)
-                self.ref.updateChildValues(["enabled":false])
-                
-                
-            })
 
             
             

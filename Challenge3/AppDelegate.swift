@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         })
+        
+        FIRDatabase.database().persistenceEnabled = true
         // Override point for customization after application launch.
         return true
     }
