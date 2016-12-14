@@ -108,20 +108,30 @@
             <objects>
                 <controller identifier="MissionView" id="s4V-Iq-M9T" customClass="MissionInterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
+                        <label width="135" alignment="left" text="Missions" textAlignment="center" id="UDr-RI-i7d">
+                            <fontDescription key="font" type="system" pointSize="19"/>
+                        </label>
                         <table alignment="left" id="gi9-BC-LZe">
                             <items>
                                 <tableRow identifier="MissionRow" id="8I3-Qb-rOz" customClass="MissionRow" customModule="WatchMoveVersion_Extension">
-                                    <group key="rootItem" width="1" height="49" alignment="left" layout="vertical" id="6w1-p1-d1v">
+                                    <group key="rootItem" width="1" height="50" alignment="left" id="6w1-p1-d1v">
                                         <items>
-                                            <label width="126" alignment="left" text="Label" id="lB3-1x-xNj"/>
-                                            <group width="1" alignment="left" id="Qmd-00-lyO">
+                                            <separator alignment="left" id="aeX-1D-bvb"/>
+                                            <group width="115" height="67" alignment="left" layout="vertical" id="Qmd-00-lyO">
                                                 <items>
-                                                    <label width="64" alignment="left" text="Label" id="YLB-ln-8dj">
-                                                        <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </label>
-                                                    <label width="52" alignment="left" text="Label" textAlignment="right" id="yMN-mq-jH2">
-                                                        <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </label>
+                                                    <label width="126" alignment="left" text="Label" id="lB3-1x-xNj"/>
+                                                    <group width="1" height="25" alignment="left" id="5v4-SQ-BUU">
+                                                        <items>
+                                                            <label width="64" alignment="left" verticalAlignment="bottom" text="Label" id="YLB-ln-8dj">
+                                                                <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="font" type="system" pointSize="13"/>
+                                                            </label>
+                                                            <label width="49" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="right" id="yMN-mq-jH2">
+                                                                <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="font" type="system" pointSize="13"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
                                                 </items>
                                             </group>
                                         </items>
