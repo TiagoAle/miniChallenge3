@@ -24,12 +24,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge3/ProfileViewController.swift"
-            timestampString = "503329891.553259"
+            timestampString = "503385577.238126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "updateProgressBar()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

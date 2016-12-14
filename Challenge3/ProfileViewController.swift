@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var expProgress: UIProgressView!
     
+    var flag: Bool? = false
     
     var index: Int? = nil
     var nickName = ""
@@ -33,14 +34,24 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.updateProgressBar()
+        print(self.flag)
+        if let flag = self.flag{
         
-        if currentUser != CharacterModel(){
-            CharacterModel.asyncAllSingle(path: self.currentUser.nickName!, completion: { (json) in
-                let dict = json["missionsAvailable"] as! [String: AnyObject]
-                
-                self.getMissionsAvailable(dict: dict)
-            })
+            if flag == true {
+                CharacterModel.asyncAllSingle(path: self.currentUser.nickName!, completion: { (json) in
+                    let dict = json["missionsAvailable"] as! [String: AnyObject]
+                    
+                    self.getMissionsAvailable(dict: dict)
+                })
+               // self.flag = false
+            }
+        
         }
+        
+        self.flag = true
+        
+        
+       // self.missionTable.reloadData()
         
     }
     
@@ -62,6 +73,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
+//        self.flag = true
 
 //        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "ande 100 passos", prize: "win 70 Exp")
 //        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "run for 2 meters", prize: "Win 120 Exp")
