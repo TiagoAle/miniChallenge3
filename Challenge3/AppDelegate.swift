@@ -32,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         })
         
         FIRDatabase.database().persistenceEnabled = true
+        
+        let dict = ["Quem é?": "ninguém"]
+        do{
+            try WatchSessionManager.sharedManager.updateApplicationContext(dict as [String : AnyObject])
+        }catch{
+            print("Erro")
+        }
         // Override point for customization after application launch.
         return true
     }

@@ -47,15 +47,11 @@
                     <items>
                         <button width="83" height="83" alignment="center" backgroundImage="avatar" id="HYr-uJ-9fO">
                             <connections>
-                                <segue destination="S7Q-5D-he4" kind="push" id="2gL-s8-uGa"/>
+                                <action selector="pushButtonPressed" destination="dXb-c5-It1" id="O9h-4D-cPb"/>
                             </connections>
                         </button>
                         <label width="88" alignment="center" text="Teobaldo" textAlignment="center" id="pHM-M8-M4C"/>
-                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="balloon" id="gIv-RJ-LW6">
-                            <connections>
-                                <segue destination="s4V-Iq-M9T" kind="push" id="SR0-pH-hMz"/>
-                            </connections>
-                        </button>
+                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="balloon" id="gIv-RJ-LW6"/>
                         <label alignment="center" verticalAlignment="bottom" text="Quests" id="xcl-ip-JKe">
                             <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="8"/>
                         </label>
@@ -67,30 +63,65 @@
             </objects>
             <point key="canvasLocation" x="220" y="332"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Profile-->
         <scene sceneID="dkm-7E-Fwp">
             <objects>
-                <controller id="S7Q-5D-he4">
+                <controller identifier="Profile" id="S7Q-5D-he4" customClass="ProfileControllerInterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
                         <label alignment="center" text="Teobaldo" id="bbZ-bS-0le">
-                            <color key="textColor" red="1" green="0.48159492310000002" blue="0.3079790456" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="16"/>
                         </label>
-                        <button width="111" height="106" alignment="center" backgroundImage="lvlRings" id="Hw9-DD-y2i"/>
+                        <group width="1" alignment="left" id="efU-gt-RZZ">
+                            <items>
+                                <separator height="20" alignment="left" id="hfU-Dw-qer">
+                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </separator>
+                                <label width="71" alignment="left" text="Level" textAlignment="left" id="FoO-tY-yFO">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </label>
+                                <label width="30" alignment="right" text="0" id="dWf-LK-NyH">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </label>
+                            </items>
+                        </group>
+                        <label alignment="center" text="EXP" id="fJt-mL-K8C">
+                            <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <imageView width="80" height="79" alignment="center" image="exp0" id="pRW-Vh-wot"/>
                     </items>
+                    <connections>
+                        <outlet property="expImage" destination="pRW-Vh-wot" id="iKs-Ff-gDW"/>
+                        <outlet property="labelNick" destination="bbZ-bS-0le" id="grJ-jS-4ue"/>
+                        <outlet property="level" destination="dWf-LK-NyH" id="J6E-Vt-xp3"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="476" y="194"/>
+            <point key="canvasLocation" x="476" y="184"/>
         </scene>
         <!--Interface Controller-->
         <scene sceneID="WkS-6o-jzN">
             <objects>
                 <controller id="s4V-Iq-M9T">
                     <items>
-                        <table alignment="left" id="Yjr-3C-GwX">
+                        <table alignment="left" id="gi9-BC-LZe">
                             <items>
-                                <tableRow id="q2i-s6-1y8">
-                                    <group key="rootItem" width="1" height="149" alignment="left" layout="vertical" id="zkf-xF-qeL"/>
+                                <tableRow id="8I3-Qb-rOz">
+                                    <group key="rootItem" width="1" height="49" alignment="left" layout="vertical" id="6w1-p1-d1v">
+                                        <items>
+                                            <label width="126" alignment="left" text="Label" id="lB3-1x-xNj"/>
+                                            <group width="1" alignment="left" id="Qmd-00-lyO">
+                                                <items>
+                                                    <label width="64" alignment="left" text="Label" id="YLB-ln-8dj">
+                                                        <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </label>
+                                                    <label width="52" alignment="left" text="Label" textAlignment="right" id="yMN-mq-jH2">
+                                                        <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
                                 </tableRow>
                             </items>
                         </table>

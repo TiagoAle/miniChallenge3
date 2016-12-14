@@ -34,6 +34,11 @@ class InterfaceController: WKInterfaceController, DataSourceChangedDelegate{
         super.didDeactivate()
     }
     
+    @IBAction func pushButtonPressed() {
+        self.pushController(withName: "Profile", context: self.dictionary)
+    }
+
+    
     // MARK: DataSourceUpdatedDelegate
     func dataSourceDidUpdate(_ dataSource: [String : Any]) {
         self.dictionary = dataSource
@@ -41,4 +46,5 @@ class InterfaceController: WKInterfaceController, DataSourceChangedDelegate{
         self.label.setText(self.dictionary.keys.first)
         
     }
+    
 }
