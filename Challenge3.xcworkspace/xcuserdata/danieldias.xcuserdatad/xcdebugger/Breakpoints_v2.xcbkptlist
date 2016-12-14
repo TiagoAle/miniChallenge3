@@ -24,12 +24,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge3/ProfileViewController.swift"
-            timestampString = "503385577.238126"
+            timestampString = "503417465.71418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "updateProgressBar()"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "ProfileViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Challenge3/ProfileViewController.swift"
+            timestampString = "503417465.71418"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "logIn()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

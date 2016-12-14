@@ -19,11 +19,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var expProgress: UIProgressView!
     
     var flag: Bool? = false
+    var xp: Int? = 100
     
     var index: Int? = nil
     var nickName = ""
     let healthManager = HealthKitManager()
     let dataManager = UserDataManager()
+   // var xpLevel: Int?
    //var character: CharacterModel?
     
     var missionsArray: [Mission] = []
@@ -34,7 +36,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.updateProgressBar()
-        //print(self.flag)
         if let flag = self.flag{
         
             if flag == true {
@@ -62,30 +63,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.dataSource = self
         
         self.missionTable.becomeFirstResponder()
-        //labelNickName.text = UserDefaults.standard.object(forKey: "nick") as? String
- //       self.character = CharacterModel(gender: "Male", nickName: self.nickName, age: 16, items: [], missions: [])
-        
-        // atualiza o progresso na barra
-        //self.character?.exp = self.dataManager.saveExp(exp: (self.character?.exp)!)
-        //self.expProgress.setProgress(Float((self.character?.exp)!), animated: true)
 
         
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
-//        self.flag = true
-
-//        let mission1 = Mission(title: "Walk for prize", type: .daily, activityType: .walk, startDate: Date(), goal: 100, description: "ande 100 passos", prize: "win 70 Exp")
-//        let mission2 = Mission(title: "Run for prize", type: .extra, activityType: .run, startDate: Date(), goal: 2, description: "run for 2 meters", prize: "Win 120 Exp")
-//        let mission3 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 20, description: "ande 20 passos", prize: "Win 50 Exp")
-//        let mission4 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
-//        let mission5 = Mission(title: "Walk for prize", type: .daily, activityType: .run, startDate: Date(), goal: 10, description: "ande 10 passos", prize: "Win 30 Exp")
-        
-//        self.missionsArray.append(mission1)
-//        self.missionsArray.append(mission2)
-//        self.missionsArray.append(mission3)
-//        self.missionsArray.append(mission4)
-//        self.missionsArray.append(mission5)
         
         self.updateProgressBar()
         Level.asyncAll { (json) in
@@ -94,6 +76,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.level.missionsIndexs?[key] = [Int]()
                     for i in 1...json.count-1{
                         self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
+                        
                     }
                 })
             }
@@ -135,8 +118,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
              DispatchQueue.main.async {
                 let dict = snapshot.value as! [String: AnyObject]
                 print(dict)
+                //let level = dict["level"] as! Int
                 let exp = dict["exp"] as! Int
-                let progress = Float(exp)/200.0
+                let progress = Float(exp)/Float(self.xp!)
                 self.expProgress.setProgress(progress, animated: true)
             }
             
