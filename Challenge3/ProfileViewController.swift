@@ -19,12 +19,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var expProgress: UIProgressView!
     
     var flag: Bool? = false
+    var xp: Int? = 100
     
     var index: Int? = nil
     var nickName = ""
     let healthManager = HealthKitManager()
     let dataManager = UserDataManager()
-    var xpLevel: Int?
+   // var xpLevel: Int?
    //var character: CharacterModel?
     
     var missionsArray: [Mission] = []
@@ -76,6 +77,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.level.missionsIndexs?[key] = [Int]()
                     for i in 1...json.count-1{
                         self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
+                        
                     }
                 })
             }
@@ -119,7 +121,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 print(dict)
                 //let level = dict["level"] as! Int
                 let exp = dict["exp"] as! Int
-                let progress = Float(exp)/200.0
+                let progress = Float(exp)/Float(self.xp!)
                 self.expProgress.setProgress(progress, animated: true)
             }
             
