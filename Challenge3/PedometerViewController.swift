@@ -127,33 +127,6 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         manager.stopUpdatingLocation()
         
         buttonStart.backgroundColor = backgroundOrigin
-                healthManager.saveWorkout(startDate: self.endDate!, endDate: Date(), completion: { (success, error ) -> Void in
-                    if( success )
-                    {
-                        print("Workout saved!")
-                    }
-                    else if( error != nil ) {
-                        print("\(error)")
-                    }
-                })
-        
-                var workouts = [HKWorkout]()
-                healthManager.readWorkOuts(completion: { (results, error) -> Void in
-                    if( error != nil )
-                    {
-                        print("Error reading workouts: \(error?.localizedDescription)")
-                        return
-                    }
-                    else
-                    {
-                        print("Workouts read successfully!")
-                    }
-        
-                    //Kkeep workouts and refresh tableview in main thread
-                    workouts = results as! [HKWorkout]
-                   // print((workouts.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
-                    
-                })
 
     }
     
@@ -204,15 +177,19 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         self.stepsQuant = steps
         self.mission?.currentProgress = steps
         if (self.mission?.currentProgress?.intValue)! >= (self.mission?.goal?.intValue)! {
-            self.mission?.endDate = Date()
-//            self.mission?.xpEarned = 10
-            self.mission?.verifyMission()
             DispatchQueue.main.async {
+                self.mission?.endDate = Date()
+//            self.mission?.xpEarned = 10
+                self.mission?.verifyMission()
+            
                 self.performSegue(withIdentifier: "Result", sender: self.mission)
             }
             
         }
-        self.labelSteps.text = "\((mission?.currentProgress)!)"
+        DispatchQueue.main.async {
+            self.labelSteps.text = "\((self.mission?.currentProgress)!)"
+        }
+        
         
     }
     

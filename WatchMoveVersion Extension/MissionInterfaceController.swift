@@ -13,7 +13,7 @@ import Foundation
 class MissionInterfaceController: WKInterfaceController {
 
     var dictionary = [String: Any]()
-    
+    var dictMission = [Any]()
     @IBOutlet var table: WKInterfaceTable!
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -45,8 +45,14 @@ class MissionInterfaceController: WKInterfaceController {
                 row.titleLabel.setText((dict["title"] as! String))
                 row.steps.setText("\(dict["goal"] as! NSNumber) steps")
                 row.xpEarned.setText("30 exp")
+                self.dictMission.append(dict)
             }
         }
+    }
+    
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        let mission = self.dictMission[rowIndex]
+        presentController(withName: "WorkoutView", context: mission)
     }
 
 }

@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.updateProgressBar()
-        print(self.flag)
+        //print(self.flag)
         if let flag = self.flag{
         
             if flag == true {

@@ -25,7 +25,7 @@ class ResultViewController: UIViewController {
 
         //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
-        var updated: Bool = false
+        
         self.goal = true
        
     }

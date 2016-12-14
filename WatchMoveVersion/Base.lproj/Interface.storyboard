@@ -152,20 +152,80 @@
             </objects>
             <point key="canvasLocation" x="477" y="472"/>
         </scene>
-        <!--Interface Controller-->
+        <!--WorkoutView-->
         <scene sceneID="1w8-0y-JVo">
             <objects>
-                <controller id="PuA-Jw-H1W">
+                <controller identifier="WorkoutView" id="PuA-Jw-H1W" customClass="WorkoutInterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
-                        <imageView width="100" height="101" alignment="center" image="watchRing" id="OoK-87-9gi"/>
-                        <button width="102" alignment="center" verticalAlignment="bottom" title="Pause" id="h1l-rf-DG0">
+                        <group width="1" alignment="left" id="iyR-3d-ksy">
+                            <items>
+                                <label width="66" alignment="left" text="Label" textAlignment="right" id="MsH-sZ-clk"/>
+                                <label alignment="left" text="/" id="Keu-hl-yUb"/>
+                                <label width="57" alignment="left" text="Label" textAlignment="left" id="8jA-cR-uWq"/>
+                            </items>
+                        </group>
+                        <group width="104" height="85" alignment="center" backgroundImage="exp0" id="crw-Mb-w7Q">
+                            <items>
+                                <timer height="20" alignment="center" verticalAlignment="center" id="YAA-9s-MAE">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <calendarUnit key="units" minute="YES" second="YES"/>
+                                </timer>
+                            </items>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </group>
+                        <button width="102" alignment="center" verticalAlignment="bottom" title="Start" id="h1l-rf-DG0">
+                            <color key="backgroundColor" red="1" green="0.41077703049999997" blue="0.18837801230000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" name="Comfortaa" family="Comfortaa" pointSize="22"/>
+                            <connections>
+                                <action selector="startStopAction" destination="PuA-Jw-H1W" id="0oz-oi-v43"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="groupTime" destination="crw-Mb-w7Q" id="OP6-wR-swt"/>
+                        <outlet property="labelSteps" destination="MsH-sZ-clk" id="Hlj-3X-DRl"/>
+                        <outlet property="labelTotal" destination="8jA-cR-uWq" id="6Kt-cZ-X8q"/>
+                        <outlet property="startPauseButton" destination="h1l-rf-DG0" id="c2M-gk-v6D"/>
+                        <outlet property="timer" destination="YAA-9s-MAE" id="UHC-CF-kzl"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="714" y="471"/>
+        </scene>
+        <!--ResultView-->
+        <scene sceneID="baV-ej-rng">
+            <objects>
+                <controller identifier="ResultView" id="8aJ-h0-4et">
+                    <items>
+                        <label alignment="center" text="Results" id="EwQ-SM-I6H">
+                            <fontDescription key="font" type="system" pointSize="23"/>
+                        </label>
+                        <group width="1" height="18" alignment="left" id="YVj-o5-lDp">
+                            <items>
+                                <label alignment="left" text="Activity" id="nlg-EJ-VbB"/>
+                                <label alignment="right" text="Label" id="wzi-7d-lip"/>
+                            </items>
+                        </group>
+                        <group width="1" height="20" alignment="left" id="j5O-v4-YJB">
+                            <items>
+                                <label alignment="left" text="Steps" id="eyC-kp-pOa"/>
+                                <label alignment="right" text="Label" id="5yf-Dn-snK"/>
+                            </items>
+                        </group>
+                        <group width="1" height="24" alignment="left" id="JG5-Dn-Hmx">
+                            <items>
+                                <label alignment="left" text="Exp" id="V7E-Si-jSv"/>
+                                <label alignment="right" text="Label" id="LKr-7V-ILy"/>
+                            </items>
+                        </group>
+                        <button width="102" alignment="center" verticalAlignment="bottom" title="Finish" id="n7S-Ar-Y6Y">
                             <color key="backgroundColor" red="1" green="0.41077703049999997" blue="0.18837801230000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" name="Comfortaa" family="Comfortaa" pointSize="22"/>
                         </button>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="715" y="472"/>
+            <point key="canvasLocation" x="994" y="471"/>
         </scene>
     </scenes>
 </document>
