@@ -12,9 +12,18 @@ import Foundation
 
 class MissionInterfaceController: WKInterfaceController {
 
+    var dictionary = [String: Any]()
+    
+    @IBOutlet var table: WKInterfaceTable!
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
+        let user = context as! Dictionary<String, Any>
+        if user.count > 0{
+            let info = user[user.keys.first!] as! [String: AnyObject]
+            self.dictionary = info["missionsAvailable"] as! [String: AnyObject]
+            print(self.dictionary)
+        }
+        setupTable()
         // Configure interface objects here.
     }
 
@@ -26,6 +35,18 @@ class MissionInterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+    func setupTable() {
+        table.setNumberOfRows(self.dictionary.count, withRowType: "MissionRow")
+        
+        for i in 0 ..< self.dictionary.count {
+            if let row = table.rowController(at: i) as? MissionRow {
+                let dict = self.dictionary["mission\(i+1)"] as! [String: AnyObject]
+                row.titleLabel.setText((dict["title"] as! String))
+                row.steps.setText("\(dict["goal"] as! NSNumber) steps")
+                row.xpEarned.setText("30 exp")
+            }
+        }
     }
 
 }

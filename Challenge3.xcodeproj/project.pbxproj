@@ -45,6 +45,7 @@
 		6A77FC211DD4BD0C0008AFED /* Challenge3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77FC201DD4BD0C0008AFED /* Challenge3UITests.swift */; };
 		6AAF6BDD1E00A4FE0032EAA3 /* ProfileControllerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF6BDC1E00A4FE0032EAA3 /* ProfileControllerInterfaceController.swift */; };
 		6AAF6BDF1E00C98E0032EAA3 /* MissionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF6BDE1E00C98E0032EAA3 /* MissionInterfaceController.swift */; };
+		6AAF6BE11E00CA370032EAA3 /* MissionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF6BE01E00CA370032EAA3 /* MissionRow.swift */; };
 		6AC859B71DED135000590D27 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC859B61DED135000590D27 /* WorkoutViewController.swift */; };
 		6AC8ED061DEDBEC8007D13CC /* PedometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */; };
 		6AC8ED0C1DEFA331007D13CC /* PedometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */; };
@@ -175,6 +176,7 @@
 		6A77FC221DD4BD0C0008AFED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AAF6BDC1E00A4FE0032EAA3 /* ProfileControllerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileControllerInterfaceController.swift; sourceTree = "<group>"; };
 		6AAF6BDE1E00C98E0032EAA3 /* MissionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionInterfaceController.swift; sourceTree = "<group>"; };
+		6AAF6BE01E00CA370032EAA3 /* MissionRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionRow.swift; sourceTree = "<group>"; };
 		6AC859B61DED135000590D27 /* WorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
 		6AC8ED051DEDBEC8007D13CC /* PedometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerViewController.swift; sourceTree = "<group>"; };
 		6AC8ED0B1DEFA331007D13CC /* PedometerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerManager.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				6A56CD6C1DF99F1C00CA339C /* ExtensionDelegate.swift */,
 				6AAF6BDC1E00A4FE0032EAA3 /* ProfileControllerInterfaceController.swift */,
 				6AAF6BDE1E00C98E0032EAA3 /* MissionInterfaceController.swift */,
+				6AAF6BE01E00CA370032EAA3 /* MissionRow.swift */,
 				6A56CD6E1DF99F1C00CA339C /* NotificationController.swift */,
 				6A3D29E71E00166B006F7B8B /* WatchSessionManager.swift */,
 				6A56CD701DF99F1C00CA339C /* ComplicationController.swift */,
@@ -887,6 +890,7 @@
 				6AAF6BDF1E00C98E0032EAA3 /* MissionInterfaceController.swift in Sources */,
 				6A56CD711DF99F1C00CA339C /* ComplicationController.swift in Sources */,
 				6A56CD6D1DF99F1C00CA339C /* ExtensionDelegate.swift in Sources */,
+				6AAF6BE11E00CA370032EAA3 /* MissionRow.swift in Sources */,
 				6A56CD6B1DF99F1C00CA339C /* InterfaceController.swift in Sources */,
 				6A3D29E81E00166B006F7B8B /* WatchSessionManager.swift in Sources */,
 			);

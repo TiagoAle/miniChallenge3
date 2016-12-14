@@ -51,7 +51,11 @@
                             </connections>
                         </button>
                         <label width="88" alignment="center" text="Teobaldo" textAlignment="center" id="pHM-M8-M4C"/>
-                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="balloon" id="gIv-RJ-LW6"/>
+                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="balloon" id="gIv-RJ-LW6">
+                            <connections>
+                                <action selector="pushMissionButton" destination="dXb-c5-It1" id="RvP-3i-sdU"/>
+                            </connections>
+                        </button>
                         <label alignment="center" verticalAlignment="bottom" text="Quests" id="xcl-ip-JKe">
                             <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="8"/>
                         </label>
@@ -99,14 +103,14 @@
             </objects>
             <point key="canvasLocation" x="476" y="184"/>
         </scene>
-        <!--Interface Controller-->
+        <!--MissionView-->
         <scene sceneID="WkS-6o-jzN">
             <objects>
-                <controller id="s4V-Iq-M9T">
+                <controller identifier="MissionView" id="s4V-Iq-M9T" customClass="MissionInterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
                         <table alignment="left" id="gi9-BC-LZe">
                             <items>
-                                <tableRow id="8I3-Qb-rOz">
+                                <tableRow identifier="MissionRow" id="8I3-Qb-rOz" customClass="MissionRow" customModule="WatchMoveVersion_Extension">
                                     <group key="rootItem" width="1" height="49" alignment="left" layout="vertical" id="6w1-p1-d1v">
                                         <items>
                                             <label width="126" alignment="left" text="Label" id="lB3-1x-xNj"/>
@@ -122,10 +126,18 @@
                                             </group>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="steps" destination="YLB-ln-8dj" id="eEc-be-970"/>
+                                        <outlet property="titleLabel" destination="lB3-1x-xNj" id="ffg-GP-Vu0"/>
+                                        <outlet property="xpEarned" destination="yMN-mq-jH2" id="Vjz-Nj-WNo"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <connections>
+                        <outlet property="table" destination="gi9-BC-LZe" id="d5N-D4-XSv"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="477" y="472"/>

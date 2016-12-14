@@ -38,13 +38,15 @@ class InterfaceController: WKInterfaceController, DataSourceChangedDelegate{
         self.pushController(withName: "Profile", context: self.dictionary)
     }
 
+    @IBAction func pushMissionButton() {
+        self.pushController(withName: "MissionView", context: self.dictionary)
+    }
     
     // MARK: DataSourceUpdatedDelegate
     func dataSourceDidUpdate(_ dataSource: [String : Any]) {
         self.dictionary = dataSource
         print(dictionary)
         self.label.setText(self.dictionary.keys.first)
-        
     }
     
 }
