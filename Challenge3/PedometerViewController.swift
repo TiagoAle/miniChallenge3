@@ -195,6 +195,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             let resultView = segue.destination as? ResultViewController
             resultView?.missionData = sender as? Mission
             resultView?.ref = self.ref
+            
         }
         
     }

@@ -45,6 +45,7 @@ class ResultViewController: UIViewController {
 
         let presentingVC = self.presentingViewController!
         let navigationController = presentingVC is UINavigationController ? presentingVC as? UINavigationController : presentingVC.navigationController
+        
         navigationController?.popViewController(animated: false)
         
         self.dismiss(animated: true, completion: nil)
