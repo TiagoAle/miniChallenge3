@@ -24,13 +24,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenge3/ProfileViewController.swift"
-            timestampString = "503417465.71418"
+            timestampString = "503497676.261362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "getMissionsAvailable(dict:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
