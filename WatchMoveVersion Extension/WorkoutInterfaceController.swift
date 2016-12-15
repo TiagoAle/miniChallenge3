@@ -46,9 +46,21 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
             wkTimerReset(timer: self.timer, interval: 0.0)
             self.stop = false
         }else{
+            do{
+                try WatchSessionManager.sharedManager.updateApplicationContext(self.mission!)
+            }catch{
+                print("Erro")
+            }
             self.startPauseButton.setTitle("Start")
             self.timer.stop()
             self.stop = true
+            
+            let action = WKAlertAction(title: "OK", style: .default, handler: { 
+                self.dismiss()
+            })
+            
+            self.presentAlert(withTitle: "Results", message: "Activity: \((self.mission?["activityType"] as? String)!)\nSteps: \(((self.mission?["currentProgress"] as? Int)?.description)!)\nExp: +30", preferredStyle: .alert, actions: [action])
+            //self.presentController(withName: "ResultView", context: self.mission)
         }
     }
     
@@ -56,9 +68,9 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
         self.mission?["currentProgress"] = steps
         if (self.mission?["currentProgress"] as? Int)! >= (self.mission?["goal"] as? Int)! {
             DispatchQueue.main.async {
-                
+                self.mission?["status"] = "done" as AnyObject?
+                self.presentController(withName: "ResultView", context: self.mission)
             }
-            
         }
         DispatchQueue.main.async {
             self.labelSteps.setText(steps.description)

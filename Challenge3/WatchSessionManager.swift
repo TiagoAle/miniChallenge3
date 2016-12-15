@@ -8,6 +8,10 @@
 
 import WatchConnectivity
 
+protocol DataSourceChangedDelegate {
+    func dataSourceDidUpdate(_ dataSource: [String: Any])
+}
+
 class WatchSessionManager: NSObject, WCSessionDelegate {
     
     static let sharedManager = WatchSessionManager()
@@ -16,6 +20,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     }
     
     fileprivate let session: WCSession? = WCSession.isSupported() ? WCSession.default() : nil
+    fileprivate var dataSourceChangedDelegates = [DataSourceChangedDelegate]()
     
     fileprivate var validSession: WCSession? {
         
@@ -37,6 +42,20 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         session?.delegate = self
         session?.activate()
     }
+    
+    func addDataSourceChangedDelegate<T>(_ delegate: T) where T: DataSourceChangedDelegate, T: Equatable {
+        dataSourceChangedDelegates.append(delegate)
+    }
+    
+    func removeDataSourceChangedDelegate<T>(_ delegate: T) where T: DataSourceChangedDelegate, T: Equatable {
+        for (index, indexDelegate) in dataSourceChangedDelegates.enumerated() {
+            if let indexDelegate = indexDelegate as? T, indexDelegate == delegate {
+                dataSourceChangedDelegates.remove(at: index)
+                break
+            }
+        }
+    }
+
 }
 
 // MARK: Application Context
@@ -54,6 +73,19 @@ extension WatchSessionManager {
             }
         }
     }
+    
+    
+    //Receiver
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        if validSession != nil {
+            DispatchQueue.main.async { [weak self] in
+                self?.dataSourceChangedDelegates.forEach { $0.dataSourceDidUpdate(applicationContext as [String : AnyObject])}
+            }
+        }
+    }
+    
+    
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
         if let error = error {

@@ -14,4 +14,5 @@ class MissionRow: NSObject {
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var steps: WKInterfaceLabel!
     @IBOutlet var xpEarned: WKInterfaceLabel!
+    @IBOutlet var enabled: WKInterfaceSeparator!
 }

@@ -41,6 +41,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
             }
         }
     }
+    
 }
 
 // MARK: Application Context
@@ -48,6 +49,17 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 // if the data was not sent, it will be replaced
 extension WatchSessionManager {
     
+    //Sender
+    func updateApplicationContext(_ applicationContext: [String : AnyObject]) throws {
+        do {
+            try session.updateApplicationContext(applicationContext)
+        } catch let error {
+            throw error
+        }
+    }
+    
+    
+
     // Receiver
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         
@@ -56,6 +68,7 @@ extension WatchSessionManager {
         }
         
     }
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
         if let error = error {

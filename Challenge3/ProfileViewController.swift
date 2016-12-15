@@ -11,7 +11,7 @@ import HealthKit
 import FirebaseDatabase
 import WatchConnectivity
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCustomCellDelegator, WCSessionDelegate {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCustomCellDelegator, DataSourceChangedDelegate{
     
     @IBOutlet weak var missionTable: UITableView!
     @IBOutlet weak var labelNickName: UILabel!
@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var usersArray: [CharacterModel] = []
     var level = Level()
     var currentUser = CharacterModel()
+    var missionChanged = [String:Any]()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -51,6 +52,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.flag = true
         
+        WatchSessionManager.sharedManager.addDataSourceChangedDelegate(self)
         
        // self.missionTable.reloadData()
         
@@ -58,6 +60,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
@@ -82,7 +86,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             self.logIn()
         }
-
         Mission.asyncAll(completion: {(json) in
             for key in json.keys {
                 Mission.asyncAll(path: key, completion: { (json) in
@@ -138,8 +141,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 user.gender = json["gender"] as? String
                 user.level = json["level"] as? Int
                 user.nickName = json["nick"] as? String
-                
+                //json["xpTotal"] =
                 let dict = [nick: json as AnyObject]
+                
                 do{
                     try WatchSessionManager.sharedManager.updateApplicationContext(dict)
                 }catch{
@@ -149,6 +153,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             })
         }
 
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        WatchSessionManager.sharedManager.removeDataSourceChangedDelegate(self)
+    }
+    
+    func dataSourceDidUpdate(_ dataSource: [String : Any]) {
+        self.missionChanged = dataSource
+        print(self.missionChanged)
     }
     
     func logIn(){
@@ -364,31 +377,5 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
     }
-    //Session
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-        if let error = error {
-            print("session activation failed with error: \(error.localizedDescription)")
-            return
-        }
-        
-        /*
-         Called when the activation of a session finishes. Your implementation
-         should check the value of the activationState parameter to see if
-         communication with the counterpart app is possible. When the state is
-         WCSessionActivationStateActivated, you may communicate normally with
-         the other app.
-         */
-        
-        print("session activated with state: \(activationState.rawValue)")
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        
-        print("session did become inactive")
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        WCSession.default().activate()
-    }
+  
 }

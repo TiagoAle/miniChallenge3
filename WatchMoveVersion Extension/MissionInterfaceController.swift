@@ -12,9 +12,11 @@ import Foundation
 
 class MissionInterfaceController: WKInterfaceController {
 
+    
     var dictionary = [String: Any]()
     var dictMission = [Any]()
     @IBOutlet var table: WKInterfaceTable!
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         let user = context as! Dictionary<String, Any>
@@ -42,6 +44,9 @@ class MissionInterfaceController: WKInterfaceController {
         for i in 0 ..< self.dictionary.count {
             if let row = table.rowController(at: i) as? MissionRow {
                 let dict = self.dictionary["mission\(i+1)"] as! [String: AnyObject]
+                if dict["enabled"] as! Bool == false{
+                    row.enabled.setColor(UIColor.red)
+                }
                 row.titleLabel.setText((dict["title"] as! String))
                 row.steps.setText("\(dict["goal"] as! NSNumber) steps")
                 row.xpEarned.setText("30 exp")

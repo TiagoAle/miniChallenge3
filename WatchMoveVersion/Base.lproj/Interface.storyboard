@@ -9,9 +9,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Comfortaa-Bold.ttf">
-            <string>Comfortaa-Bold</string>
-        </array>
         <array key="Comfortaa-Regular.ttf">
             <string>Comfortaa</string>
         </array>
@@ -45,19 +42,23 @@
             <objects>
                 <controller id="dXb-c5-It1" customClass="InterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
-                        <button width="83" height="83" alignment="center" backgroundImage="avatar" id="HYr-uJ-9fO">
+                        <button width="67" height="70" alignment="center" backgroundImage="avatarCircle2" id="HYr-uJ-9fO">
                             <connections>
                                 <action selector="pushButtonPressed" destination="dXb-c5-It1" id="O9h-4D-cPb"/>
                             </connections>
                         </button>
-                        <label width="88" alignment="center" text="Teobaldo" textAlignment="center" id="pHM-M8-M4C"/>
-                        <button width="17" height="21" alignment="center" verticalAlignment="bottom" backgroundImage="balloon" id="gIv-RJ-LW6">
+                        <label width="136" alignment="center" text="Teobaldo" textAlignment="center" id="pHM-M8-M4C">
+                            <color key="textColor" red="0.99215686270000003" green="0.4823529412" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
+                        </label>
+                        <button width="32" height="30" alignment="center" verticalAlignment="bottom" backgroundImage="balloon" id="gIv-RJ-LW6">
                             <connections>
                                 <action selector="pushMissionButton" destination="dXb-c5-It1" id="RvP-3i-sdU"/>
                             </connections>
                         </button>
                         <label alignment="center" verticalAlignment="bottom" text="Quests" id="xcl-ip-JKe">
-                            <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="8"/>
+                            <color key="textColor" red="0.99215686270000003" green="0.4823529412" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
                         </label>
                     </items>
                     <connections>
@@ -65,32 +66,38 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="332"/>
+            <point key="canvasLocation" x="219" y="319"/>
         </scene>
         <!--Profile-->
         <scene sceneID="dkm-7E-Fwp">
             <objects>
                 <controller identifier="Profile" id="S7Q-5D-he4" customClass="ProfileControllerInterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
-                        <label alignment="center" text="Teobaldo" id="bbZ-bS-0le">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="font" name="Comfortaa-Bold" family="Comfortaa" pointSize="16"/>
-                        </label>
-                        <group width="1" alignment="left" id="efU-gt-RZZ">
+                        <group width="1" alignment="left" radius="7" id="7QF-md-u8f">
                             <items>
-                                <separator height="20" alignment="left" id="hfU-Dw-qer">
-                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </separator>
-                                <label width="71" alignment="left" text="Level" textAlignment="left" id="FoO-tY-yFO">
+                                <label alignment="center" text="Teobaldo" id="bbZ-bS-0le">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </label>
-                                <label width="30" alignment="right" text="0" id="dWf-LK-NyH">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
                                 </label>
                             </items>
+                            <color key="backgroundColor" red="0.62602163458205129" green="0.25916208336174645" blue="0.0053176546161873145" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" alignment="left" radius="7" id="efU-gt-RZZ">
+                            <items>
+                                <label width="71" alignment="left" text=" Level" textAlignment="left" id="FoO-tY-yFO">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
+                                </label>
+                                <label width="24" alignment="right" text="0" id="dWf-LK-NyH">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.62602163460000004" green="0.25916208340000002" blue="0.0053176546159999999" alpha="1" colorSpace="calibratedRGB"/>
                         </group>
                         <label alignment="center" text="EXP" id="fJt-mL-K8C">
                             <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
                         </label>
                         <imageView width="80" height="79" alignment="center" image="exp0" id="pRW-Vh-wot"/>
                     </items>
@@ -101,22 +108,31 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="476" y="184"/>
+            <point key="canvasLocation" x="476.00000000000006" y="183.51282051282053"/>
         </scene>
         <!--MissionView-->
         <scene sceneID="WkS-6o-jzN">
             <objects>
                 <controller identifier="MissionView" id="s4V-Iq-M9T" customClass="MissionInterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
-                        <label width="135" alignment="left" text="Missions" textAlignment="center" id="UDr-RI-i7d">
-                            <fontDescription key="font" type="system" pointSize="19"/>
-                        </label>
+                        <group width="155" alignment="left" radius="10" id="xTa-u2-LyZ">
+                            <items>
+                                <imageView width="25" height="26" alignment="left" image="atrofeu" id="e7w-pW-XPL"/>
+                                <label width="79" alignment="center" text="Missions" textAlignment="center" id="UDr-RI-i7d">
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="19"/>
+                                </label>
+                                <imageView width="25" height="26" alignment="right" image="atrofeu" id="6lH-8l-tWi"/>
+                            </items>
+                            <color key="backgroundColor" red="0.62602163460000004" green="0.25916208340000002" blue="0.0053176546159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
                         <table alignment="left" id="gi9-BC-LZe">
                             <items>
                                 <tableRow identifier="MissionRow" id="8I3-Qb-rOz" customClass="MissionRow" customModule="WatchMoveVersion_Extension">
-                                    <group key="rootItem" width="1" height="50" alignment="left" id="6w1-p1-d1v">
+                                    <group key="rootItem" width="1" height="50" alignment="left" radius="15" id="6w1-p1-d1v">
                                         <items>
-                                            <separator alignment="left" id="aeX-1D-bvb"/>
+                                            <separator alignment="left" id="aeX-1D-bvb">
+                                                <color key="color" red="0.1134959167" green="0.63739983970000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
                                             <group width="115" height="67" alignment="left" layout="vertical" id="Qmd-00-lyO">
                                                 <items>
                                                     <label width="126" alignment="left" text="Label" id="lB3-1x-xNj"/>
@@ -124,11 +140,11 @@
                                                         <items>
                                                             <label width="64" alignment="left" verticalAlignment="bottom" text="Label" id="YLB-ln-8dj">
                                                                 <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="font" type="system" pointSize="13"/>
+                                                                <fontDescription key="font" type="system" weight="semibold" pointSize="13"/>
                                                             </label>
                                                             <label width="49" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="right" id="yMN-mq-jH2">
                                                                 <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="font" type="system" pointSize="13"/>
+                                                                <fontDescription key="font" type="system" weight="semibold" pointSize="13"/>
                                                             </label>
                                                         </items>
                                                     </group>
@@ -137,6 +153,7 @@
                                         </items>
                                     </group>
                                     <connections>
+                                        <outlet property="enabled" destination="aeX-1D-bvb" id="NZY-oQ-Xal"/>
                                         <outlet property="steps" destination="YLB-ln-8dj" id="eEc-be-970"/>
                                         <outlet property="titleLabel" destination="lB3-1x-xNj" id="ffg-GP-Vu0"/>
                                         <outlet property="xpEarned" destination="yMN-mq-jH2" id="Vjz-Nj-WNo"/>
@@ -150,7 +167,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="477" y="472"/>
+            <point key="canvasLocation" x="476.87179487179492" y="471.20512820512823"/>
         </scene>
         <!--WorkoutView-->
         <scene sceneID="1w8-0y-JVo">
@@ -195,26 +212,31 @@
         <!--ResultView-->
         <scene sceneID="baV-ej-rng">
             <objects>
-                <controller identifier="ResultView" id="8aJ-h0-4et">
+                <controller identifier="ResultView" id="8aJ-h0-4et" customClass="ResultController" customModule="WatchMoveVersion_Extension">
                     <items>
-                        <label alignment="center" text="Results" id="EwQ-SM-I6H">
-                            <fontDescription key="font" type="system" pointSize="23"/>
-                        </label>
+                        <group width="1" alignment="left" radius="10" id="6cu-gV-Upu">
+                            <items>
+                                <label alignment="center" text="Results" id="EwQ-SM-I6H">
+                                    <fontDescription key="font" type="system" pointSize="19"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.62602163460000004" green="0.25916208340000002" blue="0.0053176546159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
                         <group width="1" height="18" alignment="left" id="YVj-o5-lDp">
                             <items>
-                                <label alignment="left" text="Activity" id="nlg-EJ-VbB"/>
+                                <label width="63" alignment="left" text="Activity:" id="nlg-EJ-VbB"/>
                                 <label alignment="right" text="Label" id="wzi-7d-lip"/>
                             </items>
                         </group>
                         <group width="1" height="20" alignment="left" id="j5O-v4-YJB">
                             <items>
-                                <label alignment="left" text="Steps" id="eyC-kp-pOa"/>
+                                <label width="49" alignment="left" text="Steps:" id="eyC-kp-pOa"/>
                                 <label alignment="right" text="Label" id="5yf-Dn-snK"/>
                             </items>
                         </group>
                         <group width="1" height="24" alignment="left" id="JG5-Dn-Hmx">
                             <items>
-                                <label alignment="left" text="Exp" id="V7E-Si-jSv"/>
+                                <label width="35" alignment="left" text="Exp:" id="V7E-Si-jSv"/>
                                 <label alignment="right" text="Label" id="LKr-7V-ILy"/>
                             </items>
                         </group>
@@ -223,9 +245,14 @@
                             <fontDescription key="font" name="Comfortaa" family="Comfortaa" pointSize="22"/>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="activity" destination="wzi-7d-lip" id="SMr-dA-Tif"/>
+                        <outlet property="exp" destination="LKr-7V-ILy" id="ymp-Mu-OPX"/>
+                        <outlet property="steps" destination="5yf-Dn-snK" id="OfW-FH-RMH"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="994" y="471"/>
+            <point key="canvasLocation" x="714" y="189"/>
         </scene>
     </scenes>
 </document>
