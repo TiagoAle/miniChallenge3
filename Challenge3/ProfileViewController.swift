@@ -184,7 +184,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.currentUser = user
             self.labelNickName.text = self.currentUser.nickName
             
+//            // mudei aqui
+            print("--------------    -----------------")
+            print("level\(self.currentUser.level!)")
+            print("-------------------------------")
+            print("-------------------------------")
+
+            Level.asyncAllSingle(path: "level\(self.currentUser.level!)", completion: { (json) in
+             
+                self.xp = json["xp"] as! Int
+                
+            })
+//            //-------
+            
             self.verifyLevel()
+
         })
         
     }
