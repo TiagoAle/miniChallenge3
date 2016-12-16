@@ -24,7 +24,10 @@ class ProfileControllerInterfaceController: WKInterfaceController {
             let nick = info["nick"] as! String
             let lvl = info["level"] as! Int
             let exp = info["exp"] as! Int
-            let progress = Float(exp)/200.0 * 100
+            var progress = Float(exp)/(info["xpTotal"] as! Float) * 100
+            if progress > 100{
+                progress = 100
+            }
             print(String.init(format: "%.0f", progress))
             self.labelNick.setText(nick)
             self.level.setText(lvl.description)

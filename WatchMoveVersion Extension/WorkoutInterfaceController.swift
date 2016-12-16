@@ -13,12 +13,16 @@ import CoreMotion
 
 class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate {
 
-    @IBOutlet var timer: WKInterfaceTimer!
+    
+    @IBOutlet var timerLabel: WKInterfaceLabel!
     @IBOutlet var groupTime: WKInterfaceGroup!
     @IBOutlet var labelSteps: WKInterfaceLabel!
     @IBOutlet var startPauseButton: WKInterfaceButton!
     @IBOutlet var labelTotal: WKInterfaceLabel!
     var stop = true
+    var zeroTime = TimeInterval()
+    var timer : Timer = Timer()
+    var pedometer = PedometerManager()
     var mission: Dictionary<String, AnyObject>?
     
     override func awake(withContext context: Any?) {
@@ -43,9 +47,15 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
     @IBAction func startStopAction() {
         if self.stop{
             self.startPauseButton.setTitle("Stop")
-            wkTimerReset(timer: self.timer, interval: 0.0)
+            //wkTimerReset(timer: self.timer, interval: 0.0)
+            if !timer.isValid{
+                timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+                zeroTime = Date.timeIntervalSinceReferenceDate
+                pedometer.updateValues(startDate: Date())
+            }
             self.stop = false
         }else{
+            timer.invalidate()
             self.mission?["enabled"] = false as AnyObject? 
             do{
                 print(self.mission!)
@@ -54,7 +64,7 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
                 print("Erro")
             }
             self.startPauseButton.setTitle("Start")
-            self.timer.stop()
+            //self.timer.stop()
             self.stop = true
             
             let action = WKAlertAction(title: "OK", style: .default, handler: { 
@@ -85,10 +95,26 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
         //faz nada
     }
     
-    func wkTimerReset(timer:WKInterfaceTimer,interval:TimeInterval){
-        timer.stop()
-        let time  = Date(timeIntervalSinceNow: interval)
-        timer.setDate(time)
-        timer.start()
+    func updateTime() {
+        let currentTime = Date.timeIntervalSinceReferenceDate
+        
+        var timePassed: TimeInterval = currentTime - zeroTime
+        
+        let minutes = UInt8(timePassed / 60.0)
+        timePassed -= (TimeInterval(minutes) * 60)
+        let seconds = UInt8(timePassed)
+        timePassed -= TimeInterval(seconds)
+        
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", seconds)
+        
+        self.groupTime.setBackgroundImageNamed("time\(seconds)")
+        self.timerLabel.setText("\(strMinutes):\(strSeconds)")
+    
+        if "\(strMinutes):\(strSeconds)" == "60:00" {
+            timer.invalidate()
+        }
+        
     }
+
 }
