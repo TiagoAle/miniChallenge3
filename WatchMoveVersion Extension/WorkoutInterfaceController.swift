@@ -23,11 +23,11 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
     var zeroTime = TimeInterval()
     var timer : Timer = Timer()
     var pedometer = PedometerManager()
-    var mission: Dictionary<String, AnyObject>?
+    var mission: Dictionary<String, Any>?
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        self.mission = context as? Dictionary<String, AnyObject>
+        self.mission = context as? Dictionary<String, Any>
         print(self.mission!)
         labelSteps.setText((mission?["currentProgress"] as! Int).description)
         labelTotal.setText((mission?["goal"] as! Int).description)
@@ -56,10 +56,10 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
             self.stop = false
         }else{
             timer.invalidate()
-            self.mission?["enabled"] = false as AnyObject? 
+            self.mission?["enabled"] = false
             do{
                 print(self.mission!)
-                try WatchSessionManager.sharedManager.updateApplicationContext(self.mission!)
+                try WatchSessionManager.sharedManager.updateApplicationContext(self.mission! as [String : AnyObject])
             }catch{
                 print("Erro")
             }
@@ -71,7 +71,7 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
                 self.dismiss()
             })
             
-            self.presentAlert(withTitle: "Results", message: "Activity: \((self.mission?["activityType"] as? String)!)\nSteps: \(((self.mission?["currentProgress"] as? Int)?.description)!)\nExp: +30", preferredStyle: .alert, actions: [action])
+            self.presentAlert(withTitle: "Results", message: "Activity: \((self.mission?["activityType"] as? String)!)\nSteps: \(((self.mission?["currentProgress"] as? Int)?.description)!)\nExp: +\((self.mission?["prize"])!)", preferredStyle: .alert, actions: [action])
             //self.presentController(withName: "ResultView", context: self.mission)
         }
     }
