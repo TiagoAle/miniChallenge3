@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let activityType = json["activityType"] as? String
                     let missionDescription = json["description"] as? String
                     let goal = json["goal"] as? NSNumber
-                    let prize = json["prize"] as? String
+                    let prize = json["prize"] as? NSNumber
                     let type = json["type"] as? String
                     
                     let mission = Mission(title: title!, type: type!, activityType: activityType!, startDate: Date(), goal: goal!, description: missionDescription!, prize: prize!, identifier: key)
@@ -122,9 +122,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let dict = snapshot.value as! [String: AnyObject]
                 print(dict)
                 //let level = dict["level"] as! Int
-                let exp = dict["exp"] as! Int
-                let progress = Float(exp)/Float(self.xp!)
-                self.expProgress.setProgress(progress, animated: true)
+                if let exp = dict["exp"] as? Double{
+                    let progress = Float(exp)/Float(self.xp!)
+                    self.expProgress.setProgress(progress, animated: true)
+                }
             }
             
             
@@ -141,14 +142,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 user.gender = json["gender"] as? String
                 user.level = json["level"] as? Int
                 user.nickName = json["nick"] as? String
-                //json["xpTotal"] =
-                let dict = [nick: json as AnyObject]
-                
-                do{
-                    try WatchSessionManager.sharedManager.updateApplicationContext(dict)
-                }catch{
-                    print("Erro")
-                }
                 
             })
         }
@@ -161,6 +154,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func dataSourceDidUpdate(_ dataSource: [String : Any]) {
         self.missionChanged = dataSource
+        let p = (self.missionChanged["prize"] as? Double)!
+        self.currentUser.exp = self.currentUser.exp! + p
+        let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/CharacterModel")
+        ref.child(self.currentUser.nickName!).child("exp").setValue(self.currentUser.exp)
+        ref.child("missionsAvailable").child(self.missionChanged["identifier"] as! String).setValue(self.missionChanged)
         print(self.missionChanged)
     }
     
@@ -184,6 +182,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.currentUser = user
             self.labelNickName.text = self.currentUser.nickName
             
+            var aux = json
 //            // mudei aqui
             print("--------------    -----------------")
             print("level\(self.currentUser.level!)")
@@ -192,8 +191,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             Level.asyncAllSingle(path: "level\(self.currentUser.level!)", completion: { (json) in
              
-                self.xp = json["xp"] as! Int
+                self.xp = json["xp"] as? Int
                 
+                aux["xpTotal"] = self.xp! as AnyObject?
+                
+                let infoUsers = [nick: aux]
+                
+                do{
+                    try WatchSessionManager.sharedManager.updateApplicationContext(infoUsers as [String : AnyObject])
+                }catch{
+                    print("Erro")
+                }
+
             })
 //            //-------
             
@@ -230,7 +239,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getMissionsAvailable(dict: [String: AnyObject]){
         self.currentUser.missionsAvailable = []
         for d in dict{
-            let m = Mission(title: d.value["title"] as! String, type: d.value["type"] as! String, activityType:d.value["activityType"] as! String, startDate: Date(), goal: d.value["goal"] as! NSNumber, description: d.value["description"] as! String, prize: d.value["prize"] as! String, identifier: d.value["identifier"] as! String)
+            let m = Mission(title: d.value["title"] as! String, type: d.value["type"] as! String, activityType:d.value["activityType"] as! String, startDate: Date(), goal: d.value["goal"] as! NSNumber, description: d.value["description"] as! String, prize: d.value["prize"] as! NSNumber, identifier: d.value["identifier"] as! String)
             m.enabled = d.value["enabled"] as? Bool
             if !(currentUser.missionsAvailable.contains(m)){
                 currentUser.missionsAvailable.append(m)
@@ -326,7 +335,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.mission = self.currentUser.missionsAvailable[indexPath.row]
             cell.title.text = cell.mission?.title
             cell.questDescription.text = cell.mission?.missionDescription
-            cell.reward.text = (cell.mission?.prize)!
+            cell.reward.text = ("You will earn \((cell.mission?.prize)!) exp")
             self.missionTable.rowHeight = 193
             //print(indexPath.row)
             cell.delegate = self
@@ -353,7 +362,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.mission = self.currentUser.missionsAvailable[indexPath.row]
             cell.title.text = cell.mission?.title
             //cell.questDescription.text = cell.mission?.missionDescription
-            cell.reward.text = (cell.mission?.prize)!
+            cell.reward.text = ("You will earn \((cell.mission?.prize)!) exp")
             self.missionTable.rowHeight = 80
             cell.delegate = self
             

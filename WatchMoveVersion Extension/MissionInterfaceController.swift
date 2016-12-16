@@ -49,7 +49,7 @@ class MissionInterfaceController: WKInterfaceController {
                 }
                 row.titleLabel.setText((dict["title"] as! String))
                 row.steps.setText("\(dict["goal"] as! NSNumber) steps")
-                row.xpEarned.setText("30 exp")
+                row.xpEarned.setText("\(dict["prize"] as! NSNumber) exp")
                 self.dictMission.append(dict)
             }
         }

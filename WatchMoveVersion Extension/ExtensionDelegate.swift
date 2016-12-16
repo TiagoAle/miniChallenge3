@@ -11,14 +11,8 @@ import WatchKit
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
-        let dict = ["Quem é?": "ninguém"]
         WatchSessionManager.sharedManager.startSession()
-        do{
-            try WatchSessionManager.sharedManager.updateApplicationContext(dict as [String : AnyObject])
-        }catch{
-            print("Erro")
-        }
+        // Perform any final initialization of your application.
     }
 
     func applicationDidBecomeActive() {

@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Challenge3/ProfileViewController.swift"
-            timestampString = "503496920.495491"
+            filePath = "WatchMoveVersion Extension/WorkoutInterfaceController.swift"
+            timestampString = "503546229.261448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "dataSourceDidUpdate(_:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "startStopAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WatchMoveVersion Extension/WorkoutInterfaceController.swift"
+            timestampString = "503546402.966431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "startStopAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

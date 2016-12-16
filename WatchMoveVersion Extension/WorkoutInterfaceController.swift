@@ -46,7 +46,9 @@ class WorkoutInterfaceController: WKInterfaceController,PedometerManagerDelegate
             wkTimerReset(timer: self.timer, interval: 0.0)
             self.stop = false
         }else{
+            self.mission?["enabled"] = false as AnyObject? 
             do{
+                print(self.mission!)
                 try WatchSessionManager.sharedManager.updateApplicationContext(self.mission!)
             }catch{
                 print("Erro")

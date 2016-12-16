@@ -44,7 +44,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
     var id: Int?
     var currentProgress: NSNumber?
     
-    var prize: String?
+    var prize: NSNumber?
     var missionDescription: String?
     var enabled: Bool?
     var lastDate: String?
@@ -56,7 +56,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
         super.init()
     }
     
-    init(title: String, type: String, activityType: String, startDate: Date, goal: NSNumber, description: String, prize: String, identifier: String) {
+    init(title: String, type: String, activityType: String, startDate: Date, goal: NSNumber, description: String, prize: NSNumber, identifier: String) {
         self.title = title
         self.type = type
         self.activityType = activityType
@@ -69,6 +69,7 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
         self.enabled = true
         self.id = 1
         self.identifier = identifier
+        self.xpEarned = prize as Int?
         
         let todaysDate:Date = Date()
         let dateFormatter:DateFormatter = DateFormatter()
@@ -76,15 +77,15 @@ class Mission: NSObject, FIRDataModel, Uploadable, Typeable {
         let todayString:String = dateFormatter.string(from: todaysDate)
         self.lastDate = todayString
        // print(self.prize)
-        let myString: String = self.prize!
-        let myStringArr = myString.components(separatedBy: " ")
-        for i in myStringArr {
-        
-            if let exp = Int(i){
-                self.xpEarned = exp
-                //print(self.xpEarned!)
-            }
-        }
+//        let myString: String = self.prize!
+//        let myStringArr = myString.components(separatedBy: " ")
+//        for i in myStringArr {
+//        
+//            if let exp = Int(i){
+//                self.xpEarned = exp
+//                //print(self.xpEarned!)
+//            }
+//        }
     }
 
     
