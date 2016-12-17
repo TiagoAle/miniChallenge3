@@ -16,6 +16,7 @@ protocol DataSourceChangedDelegate {
 class WatchSessionManager: NSObject, WCSessionDelegate {
     
     static let sharedManager = WatchSessionManager()
+    
     fileprivate override init() {
         super.init()
     }

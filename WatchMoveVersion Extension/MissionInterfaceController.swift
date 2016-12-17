@@ -54,8 +54,16 @@ class MissionInterfaceController: WKInterfaceController {
             }
         }
     }
-    
+
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        let row = table.rowController(at: rowIndex) as? MissionRow
+        row?.enabled.setColor(UIColor.red)
+        let dict = self.dictionary["mission\(rowIndex+1)"] as! [String: AnyObject]
+        if dict["enabled"] as! Bool == false{
+            self.presentAlert(withTitle: "Mission already done!", message: "Please pick a green mission", preferredStyle: .alert, actions: [WKAlertAction.init(title: "OK", style: .cancel, handler: {
+                    self.dismiss()
+            })])
+        }
         let mission = self.dictMission[rowIndex]
         presentController(withName: "WorkoutView", context: mission)
     }

@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="529" y="820"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Interface-->
         <scene sceneID="aMy-wv-hhD">
             <objects>
-                <controller id="dXb-c5-It1" customClass="InterfaceController" customModule="WatchMoveVersion_Extension">
+                <controller identifier="Interface" id="dXb-c5-It1" customClass="InterfaceController" customModule="WatchMoveVersion_Extension">
                     <items>
                         <button width="67" height="70" alignment="center" backgroundImage="avatarCircle2" id="HYr-uJ-9fO">
                             <connections>
@@ -131,7 +131,7 @@
                                     <group key="rootItem" width="1" height="50" alignment="left" radius="15" id="6w1-p1-d1v">
                                         <items>
                                             <separator alignment="left" id="aeX-1D-bvb">
-                                                <color key="color" red="0.1134959167" green="0.63739983970000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="color" red="0.11264832470852058" green="0.63921568627450975" blue="0.00098378771079894018" alpha="1" colorSpace="calibratedRGB"/>
                                             </separator>
                                             <group width="115" height="67" alignment="left" layout="vertical" id="Qmd-00-lyO">
                                                 <items>

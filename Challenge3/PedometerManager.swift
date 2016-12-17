@@ -69,6 +69,7 @@ class PedometerManager: NSObject {
                 DispatchQueue.main.async {
                     if(error == nil){
                         self.stepsQuant = data!.numberOfSteps
+                        print(self.stepsQuant!)
                         // passar por delegate
                         self.delegate?.updateSteps(steps: self.stepsQuant!)
                     }

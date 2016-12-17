@@ -36,6 +36,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        Level.asyncAll { (json) in
+            for key in json.keys{
+                Level.asyncAll(path: key, completion: { (json) in
+                    self.level.missionsIndexs?[key] = [Int]()
+                    for i in 1...json.count-1{
+                        self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
+                        
+                    }
+                })
+            }
+            self.logIn()
+        }
         self.updateProgressBar()
         if let flag = self.flag{
         
@@ -74,19 +86,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         
-        Level.asyncAll { (json) in
-            for key in json.keys{
-                Level.asyncAll(path: key, completion: { (json) in
-                    self.level.missionsIndexs?[key] = [Int]()
-                    for i in 1...json.count-1{
-                        self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
-                        
-                    }
-                })
-            }
-            //self.logIn()
-        }
-        self.updateProgressBar()
+        
+        //self.updateProgressBar()
         Mission.asyncAll(completion: {(json) in
             for key in json.keys {
                 Mission.asyncAll(path: key, completion: { (json) in
@@ -103,7 +104,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
                     self.missionsArray.append(mission)
                     self.missionsArray = self.missionsArray.sorted(by: {$0.id! < $1.id!})
-                    self.missionTable.reloadData()
+                    //self.missionTable.reloadData()
                     
                 })
             }
@@ -111,7 +112,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         })
 
         
-        self.missionTable.reloadData()
+        //self.missionTable.reloadData()
         // Do any additional setup after loading the view.
         
     }
@@ -135,16 +136,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let nick = UserDefaults.standard.object(forKey: "nick") as? String{
             CharacterModel.asyncAll(path: nick, completion: { (json) in
                 print("---------inicio------")
-                let user = CharacterModel()
-                user.age = json["age"] as? Int
-                user.exp = json["exp"] as? Double
+    
+                self.currentUser.age = json["age"] as? Int
+                self.currentUser.exp = json["exp"] as? Double
                 print("------------------------")
                 //print(user.exp!)
                 print("------------------------")
-                user.gender = json["gender"] as? String
-                user.level = json["level"] as? Int
-                user.nickName = json["nick"] as? String
-                self.currentUser = user
+                self.currentUser.gender = json["gender"] as? String
+                self.currentUser.level = json["level"] as? Int
+                self.currentUser.nickName = json["nick"] as? String
+                
                 self.labelNickName.text = self.currentUser.nickName
                 
                 var aux = json
@@ -190,70 +191,90 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref.child(self.currentUser.nickName!).child("missionsAvailable").child(self.missionChanged["identifier"] as! String).setValue(self.missionChanged)
         print(self.missionChanged["enabled"] as! Bool)
         
+        CharacterModel.asyncAll(path: self.currentUser.nickName!, completion: { (json) in
+            let dict = json["missionsAvailable"] as! [String: AnyObject]
+            
+            self.getMissionsAvailable(dict: dict)
+            let infoUsers = [self.currentUser.nickName!: json]
+            
+            do{
+                try WatchSessionManager.sharedManager.updateApplicationContext(infoUsers as [String : AnyObject])
+            }catch{
+                print("Erro")
+            }
+//            let str = self.missionChanged["identifier"] as! String
+//            
+//            
+//            var numstr: String = ""
+//            for char in str.characters {
+//                if Int("\(char)") != nil {
+//                    numstr.append(char)
+//                }
+//            }
+//            let num: Int? = Int(numstr)
+//            let mission = Mission(title: self.missionChanged["title"] as! String, type: self.missionChanged["type"] as! String, activityType: self.missionChanged["activityType"] as! String, startDate: Date(), goal: self.missionChanged["goal"] as! NSNumber, description: self.missionChanged["description"] as! String, prize: self.missionChanged["prize"] as! NSNumber, identifier: self.missionChanged["identifier"] as! String)
+//            
+//            self.currentUser.missionsAvailable[num!-1] = mission
+//            print(self.currentUser.missionsAvailable)
+            self.missionTable.reloadData()
+        })
         
-        var id = 0
-        let str = self.missionChanged["identifier"] as! String
-        
-        
-
-
-        //self.currentUser.missionsAvailable[]
     }
     
-//    func logIn(){
-//        let nick = UserDefaults.standard.object(forKey: "nick") as! String
-//        CharacterModel.asyncAllSingle(path: nick, completion: { (json) in
-//            print("---------inicio------")
-//            let user = CharacterModel()
-//            user.age = json["age"] as? Int
-//            user.exp = json["exp"] as? Double
-//            print("------------------------")
-//            //print(user.exp!)
-//            print("------------------------")
-//            user.gender = json["gender"] as? String
-//            user.level = json["level"] as? Int
-//            user.nickName = json["nick"] as? String
-//            
-////            let progress =  ((user.exp)!/200)
-////            self.expProgress.setProgress(Float(progress), animated: true)
-//            
-//            self.currentUser = user
-//            self.labelNickName.text = self.currentUser.nickName
-//            
-//            var aux = json
-////            // mudei aqui
-//            print("--------------    -----------------")
-//            print("level\(self.currentUser.level!)")
-//            print("-------------------------------")
-//            print("-------------------------------")
-//
-//            Level.asyncAllSingle(path: "level\(self.currentUser.level!)", completion: { (json) in
-//             
-//                self.xp = json["xp"] as? Int
-//                
-//                aux["xpTotal"] = self.xp! as AnyObject?
-//                
-//                let infoUsers = [nick: aux]
-//                
-//                do{
-//                    try WatchSessionManager.sharedManager.updateApplicationContext(infoUsers as [String : AnyObject])
-//                }catch{
-//                    print("Erro")
-//                }
-//
-//            })
-////            //-------
-//            
-//            self.verifyLevel()
-//
-//        })
-//        
-//    }
+    func logIn(){
+        let nick = UserDefaults.standard.object(forKey: "nick") as! String
+        CharacterModel.asyncAllSingle(path: nick, completion: { (json) in
+            print("---------inicio------")
+            
+            self.currentUser.age = json["age"] as? Int
+            self.currentUser.exp = json["exp"] as? Double
+            print("------------------------")
+            //print(user.exp!)
+            print("------------------------")
+            self.currentUser.gender = json["gender"] as? String
+            self.currentUser.level = json["level"] as? Int
+            self.currentUser.nickName = json["nick"] as? String
+            
+//            let progress =  ((user.exp)!/200)
+//            self.expProgress.setProgress(Float(progress), animated: true)
+            
+            self.labelNickName.text = self.currentUser.nickName
+            
+            var aux = json
+//            // mudei aqui
+            print("--------------    -----------------")
+            print("level\(self.currentUser.level!)")
+            print("-------------------------------")
+            print("-------------------------------")
+
+            Level.asyncAllSingle(path: "level\(self.currentUser.level!)", completion: { (json) in
+             
+                self.xp = json["xp"] as? Int
+                
+                aux["xpTotal"] = self.xp! as AnyObject?
+                
+                let infoUsers = [nick: aux]
+                
+                do{
+                    try WatchSessionManager.sharedManager.updateApplicationContext(infoUsers as [String : AnyObject])
+                }catch{
+                    print("Erro")
+                }
+
+            })
+//            //-------
+            
+            self.verifyLevel()
+
+        })
+        
+    }
 
     //É ESSA A FUNÇAO GAMBIARRA
+    // Função que verifica o nível do usuário e adiciona as missões do nível nas missonsAvailable do usuário
     func verifyLevel(){
         for lvl in self.level.missionsIndexs!{
-            if lvl.key.contains((currentUser.level?.description)!){
+            if lvl.key == (currentUser.level?.description)!{
                 var j = 0
                 for i in lvl.value{
                     j = j+1
@@ -275,16 +296,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             })
         }
     }
-    
+    // Transforma dicionário em um objeto Mission e apenda no array do currentUser
     func getMissionsAvailable(dict: [String: AnyObject]){
         self.currentUser.missionsAvailable = []
         for d in dict{
             let m = Mission(title: d.value["title"] as! String, type: d.value["type"] as! String, activityType:d.value["activityType"] as! String, startDate: Date(), goal: d.value["goal"] as! NSNumber, description: d.value["description"] as! String, prize: d.value["prize"] as! NSNumber, identifier: d.value["identifier"] as! String)
             m.enabled = d.value["enabled"] as? Bool
-            if !(currentUser.missionsAvailable.contains(m)){
-                currentUser.missionsAvailable.append(m)
+            if !(self.currentUser.missionsAvailable.contains(m)){
+                self.currentUser.missionsAvailable.append(m)
             }
         }
+        self.currentUser.missionsAvailable = self.currentUser.missionsAvailable.sorted(by: {$0.identifier! < $1.identifier!})
         self.missionTable.reloadData()
     }
     
