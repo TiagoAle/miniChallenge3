@@ -35,7 +35,7 @@ class WorkoutInterfaceController: WKInterfaceController {
         print(self.mission!)
         labelSteps.setText((mission?["currentProgress"] as! Int).description)
         labelTotal.setText((mission?["goal"] as! Int).description)
-        self.goal = mission?["goal"] as? NSNumber
+        self.goal = (mission?["goal"] as! NSNumber)
         // Configure interface objects here.
     }
 
