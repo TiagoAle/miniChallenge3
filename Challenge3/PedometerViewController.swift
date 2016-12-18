@@ -30,13 +30,11 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     
     //Mission
     
-
-    @IBOutlet weak var goal: UILabel!
-    
 //     self.mission = Mission(title: "dorgas", type: .daily, activityType: .walk, startDate: Date(), goal: 10, description: "deu ruim eim", prize: "ganha algo")
 
 
     //Cronometer
+    @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     var zeroTime = TimeInterval()
@@ -110,12 +108,14 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
             buttonStart.backgroundColor = UIColor(colorLiteralRed: 0, green: 0.7, blue: 0, alpha: 1)
             
         }
+        self.pauseButton.isEnabled = true
     }
     
     @IBAction func pauseTimer(_ sender: Any) {
         timer.invalidate()
         self.timePause = self.timePause + Date.timeIntervalSinceReferenceDate - zeroTime
         self.paused = true
+        self.pauseButton.isEnabled = false
     }
     
 
@@ -173,24 +173,26 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
     }
     
-    func updateSteps(steps: NSNumber) {
+    func updateSteps(steps: NSNumber, speed: NSNumber, distance: NSNumber) {
         self.stepsQuant = steps
+        self.speed = speed.doubleValue * 3.6
+        self.distanceTraveled = distance.doubleValue
         self.mission?.currentProgress = steps
+        DispatchQueue.main.async {
+            self.labelSteps.text = "\((self.mission?.currentProgress)!)"
+            self.labelSpeed.text = "\(self.speed)"
+            self.milesLabel.text = "\(self.distanceTraveled)"
+        }
         if (self.mission?.currentProgress?.intValue)! >= (self.mission?.goal?.intValue)! {
             DispatchQueue.main.async {
                 self.mission?.endDate = Date()
-//            self.mission?.xpEarned = 10
+                
                 self.mission?.verifyMission()
-            
+                
                 self.performSegue(withIdentifier: "Result", sender: self.mission)
             }
             
         }
-        DispatchQueue.main.async {
-            self.labelSteps.text = "\((self.mission?.currentProgress)!)"
-        }
-        
-        
     }
     
     func clearVelocity() {
@@ -200,45 +202,29 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     }
 
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var lastLocation = locations.last
-        //var secondLast = locations[locations.count - 2]
-        //var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
-        if !(lastLocation?.speed.isLessThanOrEqualTo(-1.0))!{
-            labelSpeed.text = String.init(format: "%.2f", (lastLocation?.speed)! * 3.6)
-            //print(speed)
-            print((lastLocation?.speed)!)
-        }
-        
-        
-        if startLocation == nil {
-            startLocation = locations.first as CLLocation!
-        } else {
-            let lastDistance = lastLocation?.distance(from: locations.last as CLLocation!)
-            distanceTraveled += lastDistance! * 0.000621371
-            
-            let trimmedDistance = String(format: "%.2f", distanceTraveled)
-            
-            milesLabel.text = "\(trimmedDistance)"
-        }
-        
-        lastLocation = locations.last as CLLocation!
-    }
-    
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        
-//        let lastLocation = locations.last
-//        self.locations.append(lastLocation!)
-//        let secondLast: CLLocation
-//        if self.locations.count > 1{
-//            secondLast = self.locations[self.locations.count-2]
-//            let distanceChange: CLLocationDistance = (lastLocation?.distance(from: secondLast))!
-//            let sinceLastUpdate: TimeInterval = (lastLocation?.timestamp.timeIntervalSince(secondLast.timestamp))!
-//            let calculatedSpeed = distanceChange/sinceLastUpdate
-//            labelSpeed.text = String.init(format: "%.2f", (calculatedSpeed) * 3.6)
-//            print(calculatedSpeed)
+//        var lastLocation = locations.last
+//        //var secondLast = locations[locations.count - 2]
+//        //var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
+//        if !(lastLocation?.speed.isLessThanOrEqualTo(-1.0))!{
+//            labelSpeed.text = String.init(format: "%.2f", (lastLocation?.speed)! * 3.6)
+//            //print(speed)
+//            print((lastLocation?.speed)!)
 //        }
 //        
+//        
+//        if startLocation == nil {
+//            startLocation = locations.first as CLLocation!
+//        } else {
+//            let lastDistance = lastLocation?.distance(from: locations.last as CLLocation!)
+//            distanceTraveled += lastDistance! * 0.000621371
+//            
+//            let trimmedDistance = String(format: "%.2f", distanceTraveled)
+//            
+//            milesLabel.text = "\(trimmedDistance)"
+//        }
+//        
+//        lastLocation = locations.last as CLLocation!
 //    }
     
 }
