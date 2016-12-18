@@ -35,6 +35,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate, UserDataMana
         self.userExistDB(user: self.nickTextField.text!)
         print(self.test)
         
+        
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ProfileViewController
