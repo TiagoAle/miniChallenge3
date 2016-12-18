@@ -42,6 +42,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate, UserDataMana
         ref.child("CharacterModel").child(self.dataManager.nickName).updateChildValues(["level" : 1])
         //ref.child("CharacterModel").child(self.dataManager.nickName).child("missionsAvailable").childByAutoId().setValue(dict)
         
+        
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ProfileViewController

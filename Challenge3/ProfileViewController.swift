@@ -259,18 +259,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     //É ESSA A FUNÇAO GAMBIARRA
     // Função que verifica o nível do usuário e adiciona as missões do nível nas missonsAvailable do usuário
     func verifyLevel(){
-        for lvl in self.level.missionsIndexs!{
-            print(lvl.key)
-            if lvl.key == ("level\(currentUser.level!.description)"){
-                var j = 0
-                for i in lvl.value{
-                    j = j+1
-                    if self.missionsArray.count > 0{
-                        let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String, "enabled": self.missionsArray[i-1].enabled!, "identifier": "mission\(j)"] as [String : Any]
-                        let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
-                        ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
-
-                        
+        if self.currentUser.exp! == 0{
+            for lvl in self.level.missionsIndexs!{
+                print(lvl.key)
+                if lvl.key == ("level\(currentUser.level!.description)"){
+                    var j = 0
+                    for i in lvl.value{
+                        j = j+1
+                        if self.missionsArray.count > 0{
+                            let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String, "enabled": self.missionsArray[i-1].enabled!, "identifier": "mission\(j)"] as [String : Any]
+                            let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+                            ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
+                            
+                            
+                        }
                     }
                 }
             }
