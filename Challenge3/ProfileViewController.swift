@@ -36,18 +36,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        Level.asyncAll { (json) in
-            for key in json.keys{
-                Level.asyncAll(path: key, completion: { (json) in
-                    self.level.missionsIndexs?[key] = [Int]()
-                    for i in 1...json.count-1{
-                        self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
-                        
-                    }
-                })
-            }
-            self.logIn()
-        }
+ 
         self.updateProgressBar()
         if let flag = self.flag{
         
@@ -85,9 +74,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
         
+        Level.asyncAll { (json) in
+            for key in json.keys{
+                Level.asyncAll(path: key, completion: { (json) in
+                    self.level.missionsIndexs?[key] = [Int]()
+                    for i in 1...json.count-1{
+                        self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
+                        
+                    }
+                })
+            }
+            //self.logIn()
+        }
         
         
-        self.updateProgressBar()
         Mission.asyncAll(completion: {(json) in
             for key in json.keys {
                 Mission.asyncAll(path: key, completion: { (json) in
@@ -108,10 +108,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                 })
             }
-            
+            self.logIn()
         })
 
-        
+        self.updateProgressBar()
         //self.missionTable.reloadData()
         // Do any additional setup after loading the view.
         
@@ -174,7 +174,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             })
         }
-        self.verifyLevel()
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -261,7 +260,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // Função que verifica o nível do usuário e adiciona as missões do nível nas missonsAvailable do usuário
     func verifyLevel(){
         for lvl in self.level.missionsIndexs!{
-            if lvl.key == (currentUser.level?.description)!{
+            print(lvl.key)
+            if lvl.key == ("level\(currentUser.level!.description)"){
                 var j = 0
                 for i in lvl.value{
                     j = j+1
