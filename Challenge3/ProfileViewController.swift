@@ -87,7 +87,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         
-        //self.updateProgressBar()
+        self.updateProgressBar()
         Mission.asyncAll(completion: {(json) in
             for key in json.keys {
                 Mission.asyncAll(path: key, completion: { (json) in
@@ -202,20 +202,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }catch{
                 print("Erro")
             }
-//            let str = self.missionChanged["identifier"] as! String
-//            
-//            
-//            var numstr: String = ""
-//            for char in str.characters {
-//                if Int("\(char)") != nil {
-//                    numstr.append(char)
-//                }
-//            }
-//            let num: Int? = Int(numstr)
-//            let mission = Mission(title: self.missionChanged["title"] as! String, type: self.missionChanged["type"] as! String, activityType: self.missionChanged["activityType"] as! String, startDate: Date(), goal: self.missionChanged["goal"] as! NSNumber, description: self.missionChanged["description"] as! String, prize: self.missionChanged["prize"] as! NSNumber, identifier: self.missionChanged["identifier"] as! String)
-//            
-//            self.currentUser.missionsAvailable[num!-1] = mission
-//            print(self.currentUser.missionsAvailable)
+
             self.missionTable.reloadData()
         })
         

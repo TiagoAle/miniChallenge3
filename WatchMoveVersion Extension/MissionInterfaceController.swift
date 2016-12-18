@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 
 
-class MissionInterfaceController: WKInterfaceController {
+class MissionInterfaceController: WKInterfaceController, DataSourceChangedDelegate {
 
     
     var dictionary = [String: Any]()
@@ -25,16 +25,18 @@ class MissionInterfaceController: WKInterfaceController {
             self.dictionary = info["missionsAvailable"] as! [String: AnyObject]
             print(self.dictionary)
         }
-        setupTable()
         // Configure interface objects here.
+        setupTable()
     }
 
     override func willActivate() {
+        WatchSessionManager.sharedManager.addDataSourceChangedDelegate(self)
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
     }
 
     override func didDeactivate() {
+        WatchSessionManager.sharedManager.removeDataSourceChangedDelegate(self)
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
@@ -66,6 +68,20 @@ class MissionInterfaceController: WKInterfaceController {
         }
         let mission = self.dictMission[rowIndex]
         presentController(withName: "WorkoutView", context: mission)
+    }
+    
+    // MARK: DataSourceUpdatedDelegate
+    func dataSourceDidUpdate(_ dataSource: [String : Any]) {
+//        self.dictionary = dataSource
+//        print(dictionary)
+        let user = dataSource
+        if user.count > 0{
+            let info = user[user.keys.first!] as! [String: AnyObject]
+            self.dictionary = info["missionsAvailable"] as! [String: AnyObject]
+            print(self.dictionary)
+        }
+        setupTable()
+        //self.label.setText(self.dictionary.keys.first)
     }
 
 }
