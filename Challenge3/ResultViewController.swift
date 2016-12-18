@@ -25,6 +25,7 @@ class ResultViewController: UIViewController {
 
         //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
+        self.userMadeIt()
         
         //self.goal = true
        
@@ -32,15 +33,12 @@ class ResultViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-         self.userMadeIt()
+//         self.userMadeIt()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func goToProfile(_ sender: UIButton) {
+        
         self.dismiss(animated: true, completion: nil)
 
         let presentingVC = self.presentingViewController!
@@ -85,20 +83,6 @@ class ResultViewController: UIViewController {
                     
                 }
              })
-            
-            
-            
-            
-//            CharacterModel.asyncAll(path: (UserDefaults.standard.object(forKey: "nick") as! String), completion: {(json) in
-//                var exp = json["exp"] as! Int
-//                exp = exp + (self.missionData?.xpEarned!)!
-//                ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).updateChildValues(["exp":exp])
-//                print(self.ref)
-//                self.ref.updateChildValues(["enabled":false])
-//                
-//                
-//            })
-
             
             
             

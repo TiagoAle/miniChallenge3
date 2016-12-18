@@ -164,9 +164,10 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "Result") {
+            
             // pass data to next view
             let resultView = segue.destination as? ResultViewController
-            resultView?.missionData = sender as? Mission
+            resultView?.missionData = self.mission
             resultView?.ref = self.ref
             
         }
@@ -188,7 +189,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
                 self.mission?.verifyMission()
                 PedometerManager.pedoMeter.stopUpdates()
                 self.pedometer.activityManager.stopActivityUpdates()
-                self.performSegue(withIdentifier: "Result", sender: self.mission)
+                self.performSegue(withIdentifier: "Result", sender: nil)
             }
             
         }
