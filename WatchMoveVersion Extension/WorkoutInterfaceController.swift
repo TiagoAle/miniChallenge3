@@ -23,6 +23,7 @@ class WorkoutInterfaceController: WKInterfaceController {
     var zeroTime = TimeInterval()
     var timer : Timer = Timer()
     var numSteps: NSNumber = 0
+    var goal: NSNumber?
     //var pedometer = PedometerManager()
     let pedometer = CMPedometer()
     public typealias CMPedometerHandler = (CMPedometerData?, NSError?) -> Void
@@ -34,7 +35,7 @@ class WorkoutInterfaceController: WKInterfaceController {
         print(self.mission!)
         labelSteps.setText((mission?["currentProgress"] as! Int).description)
         labelTotal.setText((mission?["goal"] as! Int).description)
-        
+        self.goal = (mission?["goal"] as! NSNumber)
         // Configure interface objects here.
     }
 
@@ -73,6 +74,13 @@ class WorkoutInterfaceController: WKInterfaceController {
                         
                         if let data = data {
                             self.numSteps = data.numberOfSteps
+                            
+                            if self.numSteps.intValue >= (self.goal?.intValue)!{
+                                let action = WKAlertAction(title: "OK", style: .default, handler: {
+                                    self.dismiss()
+                                })
+                                self.presentAlert(withTitle: "Results", message: "Activity: \((self.mission?["activityType"] as? String)!)\nSteps: \(((self.mission?["currentProgress"] as? Int)?.description)!)\nExp: +\((self.mission?["prize"])!)", preferredStyle: .alert, actions: [action])
+                            }
                             //let distance = data.distance
                             self.labelSteps.setText("\(self.numSteps)")
                             // Now do something with these values

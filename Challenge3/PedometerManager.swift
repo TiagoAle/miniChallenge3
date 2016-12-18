@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 
 protocol PedometerManagerDelegate {
-    func updateSteps(steps: NSNumber)
+    func updateSteps(steps: NSNumber, distance: NSNumber)
     func clearVelocity()
 }
 
@@ -18,11 +18,13 @@ class PedometerManager: NSObject {
     
     var delegate: PedometerManagerDelegate?
     var stepsQuant: NSNumber?
+    var speed: NSNumber?
+    var distance: NSNumber?
     var days:[String] = []
     var stepsTaken:[Int] = []
     let activityManager = CMMotionActivityManager()
     let manager = CMMotionManager()
-    let pedoMeter = CMPedometer()
+    static var pedoMeter = CMPedometer()
     var midnightOfToday: Date?
     
     let desafio = 10.0
@@ -65,13 +67,14 @@ class PedometerManager: NSObject {
             })
         }
         if(CMPedometer.isStepCountingAvailable()){
-            self.pedoMeter.startUpdates(from: startDate) { (data, error) -> Void in
+            PedometerManager.pedoMeter.startUpdates(from: startDate) { (data, error) -> Void in
                 DispatchQueue.main.async {
                     if(error == nil){
                         self.stepsQuant = data!.numberOfSteps
+                        self.distance = data!.distance
                         print(self.stepsQuant!)
                         // passar por delegate
-                        self.delegate?.updateSteps(steps: self.stepsQuant!)
+                        self.delegate?.updateSteps(steps: self.stepsQuant!, distance: self.distance!)
                     }
                 }
             }
