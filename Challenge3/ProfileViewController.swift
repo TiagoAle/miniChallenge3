@@ -20,14 +20,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var flag: Bool? = false
     var xp: Int? = 100
+    var xpfeito: Float = 0
+    var mustChangeLevel = false
     
     var index: Int? = nil
     var nickName = ""
     let healthManager = HealthKitManager()
     let dataManager = UserDataManager()
-   // var xpLevel: Int?
-   //var character: CharacterModel?
-    
+
     var missionsArray: [Mission] = []
     var usersArray: [CharacterModel] = []
     var level = Level()
@@ -42,11 +42,102 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
             if flag == true {
                 CharacterModel.asyncAllSingle(path: self.currentUser.nickName!, completion: { (json) in
+                    
+                    if let points = json["exp"] as? Int {
+                        
+//                        print(points)
+//                        print(self.xp!)
+                        self.xpfeito = Float(points)
+                        
+                        // testando se passou do nivel
+                        if Float(points) >= Float(self.xp!){
+                            
+                            //reinicia o valor do xp
+                            let resto = Float(points) - Float(self.xp!)
+                            self.xpfeito = resto
+                            let newLevel = self.currentUser.level! + 1
+                            
+                            let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+                            ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["exp" : self.xpfeito])
+                            ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["level" : newLevel])
+                            
+                            print("o usuario esta sendo alterado no Banco")
+                            self.mustChangeLevel = true
+                        }
+                        if self.mustChangeLevel {
+                            //-----se der merda vai ser aqui------/////////
+                            
+                            self.level.missionsIndexs = [:]
+                            self.currentUser.level = self.currentUser.level! + 1
+                            
+                            Level.asyncAll { (json) in
+                                for key in json.keys{
+                                    Level.asyncAll(path: key, completion: { (json) in
+                                        self.level.missionsIndexs?[key] = [Int]()
+                                        for i in 1...json.count-1{
+                                            self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
+                                            self.mustChangeLevel = false
+                                        }
+                                    })
+                                }
+                                //self.logIn()
+                            }
+                            
+                            
+                            Mission.asyncAll(completion: {(json) in
+                                for key in json.keys {
+                                    Mission.asyncAll(path: key, completion: { (json) in
+                                        
+                                        let title = json["title"] as? String
+                                        let activityType = json["activityType"] as? String
+                                        let missionDescription = json["description"] as? String
+                                        let goal = json["goal"] as? NSNumber
+                                        let prize = json["prize"] as? NSNumber
+                                        let type = json["type"] as? String
+                                        
+                                        let mission = Mission(title: title!, type: type!, activityType: activityType!, startDate: Date(), goal: goal!, description: missionDescription!, prize: prize!, identifier: key)
+                                        mission.id = json["id"] as? Int
+                                        
+                                        self.missionsArray.append(mission)
+                                        self.missionsArray = self.missionsArray.sorted(by: {$0.id! < $1.id!})
+                                        //self.missionTable.reloadData()
+                                        
+                                    })
+                                }
+                                self.logIn()
+                            })
+                            
+                            self.updateProgressBar()
+                            //era p atualizar aqui
+                            print("era p atualizar aqui")
+                            print(points)
+                            
+                            //-----
+                            
+                            Level.asyncAllSingle(path: "level\(self.currentUser.level!)", completion: { (json) in
+                                
+                                print(json["xp"] as? Int)
+                                self.xp = json["xp"] as? Int
+                                print("==========================")
+                                print(self.currentUser.level)
+                                print(self.xp!)
+                                print("--------aquiii------------")
+                                self.expProgress.setProgress(self.xpfeito/Float(self.xp!), animated: true)
+                                
+                            })
+                        
+                        }
+                        
+//                        let progress = self.xpfeito/Float(self.xp!)
+
+                        self.expProgress.setProgress(self.xpfeito/Float(self.xp!), animated: true)
+                    }
+                    
                     let dict = json["missionsAvailable"] as! [String: AnyObject]
                     
                     self.getMissionsAvailable(dict: dict)
                 })
-               // self.flag = false
+
             }
         
         }
@@ -126,7 +217,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     //let level = dict["level"] as! Int
                     if let exp = dict["exp"] as? Double{
                         let progress = Float(exp)/Float(self.xp!)
-                        self.expProgress.setProgress(progress, animated: true)
+                        self.xpfeito = progress
+                        self.expProgress.setProgress(self.xpfeito, animated: true)
                     }
                 }
             }
@@ -139,9 +231,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
                 self.currentUser.age = json["age"] as? Int
                 self.currentUser.exp = json["exp"] as? Double
-                print("------------------------")
-                //print(user.exp!)
-                print("------------------------")
+
                 self.currentUser.gender = json["gender"] as? String
                 self.currentUser.level = json["level"] as? Int
                 self.currentUser.nickName = json["nick"] as? String

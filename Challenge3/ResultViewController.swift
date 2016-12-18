@@ -15,7 +15,7 @@ class ResultViewController: UIViewController {
     let dataManager = UserDataManager()
     @IBOutlet weak var resultTextView: UITextView!
     
-    var goal: Bool?
+    var goal: Bool? = true
     //var workoutsArray: [HKWorkout]?
     var missionData: Mission?
     var ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
@@ -26,7 +26,7 @@ class ResultViewController: UIViewController {
         //print((workoutsArray?.first?.totalEnergyBurned?.doubleValue(for: HKUnit.calorie()))!)
         // Do any additional setup after loading the view.
         
-        self.goal = true
+        //self.goal = true
        
     }
     
