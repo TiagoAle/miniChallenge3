@@ -46,6 +46,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
+  - MBCircularProgressBar (0.3.5)
 
 DEPENDENCIES:
   - Firebase
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - MBCircularProgressBar
 
 SPEC CHECKSUMS:
   Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
@@ -66,7 +68,8 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
 
-PODFILE CHECKSUM: 5a95f54aec09c1fed2171ad782f2411d7ea2717f
+PODFILE CHECKSUM: 2318d16d5ff442d12b115c45a69d40b260c695b8
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
