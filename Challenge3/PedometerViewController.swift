@@ -44,6 +44,7 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
     var distanceTraveled = 0.0
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
+    let SECS_OLD_MAX = 2.0;
     
     //Pedometer
     @IBOutlet weak var labelSteps: UILabel!
@@ -189,6 +190,8 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
                 self.mission?.verifyMission()
                 PedometerManager.pedoMeter.stopUpdates()
                 self.pedometer.activityManager.stopActivityUpdates()
+                self.manager.stopUpdatingLocation()
+                self.manager.stopUpdatingHeading()
                 self.performSegue(withIdentifier: "Result", sender: nil)
             }
             
@@ -201,17 +204,22 @@ class PedometerViewController: UIViewController, CLLocationManagerDelegate, Pedo
         
     }
 
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let lastLocation = locations.last
-        //var secondLast = locations[locations.count - 2]
-        //var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
-        if !(lastLocation?.speed.isLessThanOrEqualTo(-1.0))!{
-            self.speed = (lastLocation?.speed)! * 3.6
-            labelSpeed.text = String.init(format: "%.2f", self.speed!)
-            //print(speed)
-            print((lastLocation?.speed)!)
+        let eventDate:Date = (locations.first?.timestamp)!
+        let howRecent: TimeInterval = eventDate.timeIntervalSinceNow
+        //Is the event recent and accurate enough ?
+        if (abs(howRecent) < SECS_OLD_MAX) {
+            let lastLocation = locations.last
+            //var secondLast = locations[locations.count - 2]
+            //var speed: CLLocationSpeed = (lastLocation?.speed)! - secondLast.speed
+            if !(lastLocation?.speed.isLessThanOrEqualTo(-1.0))!{
+                self.speed = (lastLocation?.speed)! * 3.6
+                labelSpeed.text = String.init(format: "%.2f", self.speed!)
+                //print(speed)
+                print((lastLocation?.speed)!)
+            }
         }
+        
     }
     
 }
