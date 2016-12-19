@@ -138,11 +138,11 @@
                                                     <label width="126" alignment="left" text="Label" id="lB3-1x-xNj"/>
                                                     <group width="1" height="25" alignment="left" id="5v4-SQ-BUU">
                                                         <items>
-                                                            <label width="64" alignment="left" verticalAlignment="bottom" text="Label" id="YLB-ln-8dj">
+                                                            <label width="57" alignment="left" verticalAlignment="bottom" text="Label" id="YLB-ln-8dj">
                                                                 <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="font" type="system" weight="semibold" pointSize="13"/>
                                                             </label>
-                                                            <label width="49" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="right" id="yMN-mq-jH2">
+                                                            <label width="56" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="right" id="yMN-mq-jH2">
                                                                 <color key="textColor" red="0.99215686274509807" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="font" type="system" weight="semibold" pointSize="13"/>
                                                             </label>
@@ -167,7 +167,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="476.87179487179492" y="471.20512820512823"/>
+            <point key="canvasLocation" x="476" y="471"/>
         </scene>
         <!--WorkoutView-->
         <scene sceneID="1w8-0y-JVo">

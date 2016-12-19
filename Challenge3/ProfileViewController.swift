@@ -290,6 +290,56 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref.child(self.currentUser.nickName!).child("missionsAvailable").child(self.missionChanged["identifier"] as! String).setValue(self.missionChanged)
         print(self.missionChanged["enabled"] as! Bool)
         
+        if self.currentUser.exp! >= Double(self.xp!){
+            self.missionsArray = []
+            let resto = Float(self.currentUser.exp!) - Float(self.xp!)
+            self.xpfeito = resto
+            let newLevel = self.currentUser.level! + 1
+            self.mustChangeLevel = true
+            
+            let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+            ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["exp" : self.xpfeito])
+            ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["level" : newLevel])
+            
+            Level.asyncAll { (json) in
+                for key in json.keys{
+                    Level.asyncAll(path: key, completion: { (json) in
+                        self.level.missionsIndexs?[key] = [Int]()
+                        for i in 1...json.count-1{
+                            self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
+                            
+                        }
+                    })
+                }
+                //self.logIn()
+            }
+            
+            
+            Mission.asyncAll(completion: {(json) in
+                for key in json.keys {
+                    Mission.asyncAll(path: key, completion: { (json) in
+                        
+                        let title = json["title"] as? String
+                        let activityType = json["activityType"] as? String
+                        let missionDescription = json["description"] as? String
+                        let goal = json["goal"] as? NSNumber
+                        let prize = json["prize"] as? NSNumber
+                        let type = json["type"] as? String
+                        
+                        let mission = Mission(title: title!, type: type!, activityType: activityType!, startDate: Date(), goal: goal!, description: missionDescription!, prize: prize!, identifier: key)
+                        mission.id = json["id"] as? Int
+                        
+                        self.missionsArray.append(mission)
+                        self.missionsArray = self.missionsArray.sorted(by: {$0.id! < $1.id!})
+                        //self.missionTable.reloadData()
+                        
+                    })
+                }
+                self.logIn()
+            })
+
+        }
+        
         CharacterModel.asyncAll(path: self.currentUser.nickName!, completion: { (json) in
             let dict = json["missionsAvailable"] as! [String: AnyObject]
             
