@@ -38,86 +38,125 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidAppear(true)
  
         
+
+        
         //if let flag = self.flag{
         
-            if flag == true {
-                CharacterModel.asyncAllSingle(path: self.currentUser.nickName!, completion: { (json) in
+        if flag == true {
+            CharacterModel.asyncAllSingle(path: self.currentUser.nickName!, completion: { (json) in
+                
+                if let points = json["exp"] as? Int {
                     
-                    if let points = json["exp"] as? Int {
+                    //                        print(points)
+                    //                        print(self.xp!)
+                    self.xpfeito = Float(points)
+                    
+                    // testando se passou do nivel
+                    if Float(points) >= Float(self.xp!){
                         
-//                        print(points)
-//                        print(self.xp!)
-                        self.xpfeito = Float(points)
+                        //reinicia o valor do xp
+                        self.missionsArray = []
+                        let resto = Float(points) - Float(self.xp!)
+                        self.xpfeito = resto
+                        let newLevel = self.currentUser.level! + 1
+                        self.mustChangeLevel = true
                         
-                        // testando se passou do nivel
-                        if Float(points) >= Float(self.xp!){
-                            
-                            //reinicia o valor do xp
-                            let resto = Float(points) - Float(self.xp!)
-                            self.xpfeito = resto
-                            let newLevel = self.currentUser.level! + 1
-                            
-                            let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
-                            ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["exp" : self.xpfeito])
-                            ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["level" : newLevel])
-                            CharacterModel.asyncAll(path: self.currentUser.nickName!, completion: { (json) in
-                                print("---------inicio------")
-                                
-                                self.currentUser.age = json["age"] as? Int
-                                self.currentUser.exp = json["exp"] as? Double
-                                
-                                self.currentUser.gender = json["gender"] as? String
-                                self.currentUser.level = json["level"] as? Int
-                                self.currentUser.nickName = json["nick"] as? String
-                                
-                                self.labelNickName.text = self.currentUser.nickName
-                                
-                                var aux = json
-                                //            // mudei aqui
-                                print("--------------    -----------------")
-                                print("level\(self.currentUser.level!)")
-                                print("-------------------------------")
-                                print("-------------------------------")
-                                
-                                Level.asyncAllSingle(path: "level\(self.currentUser.level!)", completion: { (json) in
-                                    
-                                    self.xp = json["xp"] as? Int
-                                    
-                                    aux["xpTotal"] = self.xp! as AnyObject?
-                                    
-                                    let infoUsers = [self.currentUser.nickName!: aux]
-                                    
-                                    do{
-                                        try WatchSessionManager.sharedManager.updateApplicationContext(infoUsers as [String : AnyObject])
-                                    }catch{
-                                        print("Erro")
+                        let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+                        ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["exp" : self.xpfeito])
+                        ref.child("CharacterModel").child(self.currentUser.nickName!).updateChildValues(["level" : newLevel])
+                        
+                        Level.asyncAll { (json) in
+                            for key in json.keys{
+                                Level.asyncAll(path: key, completion: { (json) in
+                                    self.level.missionsIndexs?[key] = [Int]()
+                                    for i in 1...json.count-1{
+                                        self.level.missionsIndexs?[key]?.append(json["mission\(i)"] as! Int)
+                                        
                                     }
+                                })
+                            }
+                            //self.logIn()
+                        }
+                        
+                        
+                        Mission.asyncAll(completion: {(json) in
+                            for key in json.keys {
+                                Mission.asyncAll(path: key, completion: { (json) in
+                                    
+                                    let title = json["title"] as? String
+                                    let activityType = json["activityType"] as? String
+                                    let missionDescription = json["description"] as? String
+                                    let goal = json["goal"] as? NSNumber
+                                    let prize = json["prize"] as? NSNumber
+                                    let type = json["type"] as? String
+                                    
+                                    let mission = Mission(title: title!, type: type!, activityType: activityType!, startDate: Date(), goal: goal!, description: missionDescription!, prize: prize!, identifier: key)
+                                    mission.id = json["id"] as? Int
+                                    
+                                    self.missionsArray.append(mission)
+                                    self.missionsArray = self.missionsArray.sorted(by: {$0.id! < $1.id!})
+                                    //self.missionTable.reloadData()
                                     
                                 })
-                                //            //-------
-                            })
-
-                            print("o usuario esta sendo alterado no Banco")
-                        }
-
+                            }
+                            self.logIn()
+                        })
+//                        CharacterModel.asyncAll(path: self.currentUser.nickName!, completion: { (json) in
+//                            print("---------inicio------")
+//                            
+//                            self.currentUser.age = json["age"] as? Int
+//                            self.currentUser.exp = json["exp"] as? Double
+//                            
+//                            self.currentUser.gender = json["gender"] as? String
+//                            self.currentUser.level = json["level"] as? Int
+//                            self.currentUser.nickName = json["nick"] as? String
+//                            
+//                            self.labelNickName.text = self.currentUser.nickName
+//                            
+//                            var aux = json
+//                            //            // mudei aqui
+//                            print("--------------    -----------------")
+//                            print("level\(self.currentUser.level!)")
+//                            print("-------------------------------")
+//                            print("-------------------------------")
+//                            
+//                            Level.asyncAllSingle(path: "level\(self.currentUser.level!)", completion: { (json) in
+//                                
+//                                self.xp = json["xp"] as? Int
+//                                
+//                                aux["xpTotal"] = self.xp! as AnyObject?
+//                                
+//                                let infoUsers = [self.currentUser.nickName!: aux]
+//                                
+//                                do{
+//                                    try WatchSessionManager.sharedManager.updateApplicationContext(infoUsers as [String : AnyObject])
+//                                }catch{
+//                                    print("Erro")
+//                                }
+//                                
+//                            })
+//                            //            //-------
+//                        })
+                    
+                        print("o usuario esta sendo alterado no Banco")
                     }
-                })
-                
-
-            }
-
+                    
+                }
+            })
+             
+            
+        }
+        
         
         self.flag = true
         self.updateProgressBar()
         WatchSessionManager.sharedManager.addDataSourceChangedDelegate(self)
-
+        
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
@@ -128,8 +167,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.missionTable.register(UINib(nibName: "QuestTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.missionTable.register(UINib(nibName: "ExpandedTableViewCell", bundle: nil), forCellReuseIdentifier: "CellExp")
         
-        
-        Level.asyncAll { (json) in
+        Level.asyncAllSingle { (json) in
             for key in json.keys{
                 Level.asyncAll(path: key, completion: { (json) in
                     self.level.missionsIndexs?[key] = [Int]()
@@ -139,14 +177,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 })
             }
-            //self.logIn()
         }
         
-        
-        Mission.asyncAll(completion: {(json) in
+        Mission.asyncAllSingle(completion: {(json) in
             for key in json.keys {
                 Mission.asyncAll(path: key, completion: { (json) in
-
+                    
                     let title = json["title"] as? String
                     let activityType = json["activityType"] as? String
                     let missionDescription = json["description"] as? String
@@ -156,7 +192,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                     let mission = Mission(title: title!, type: type!, activityType: activityType!, startDate: Date(), goal: goal!, description: missionDescription!, prize: prize!, identifier: key)
                     mission.id = json["id"] as? Int
-        
+                    
                     self.missionsArray.append(mission)
                     self.missionsArray = self.missionsArray.sorted(by: {$0.id! < $1.id!})
                     //self.missionTable.reloadData()
@@ -165,6 +201,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             self.logIn()
         })
+        
         self.updateProgressBar()
         
         let ref = FIRDatabase.database().reference().child("CharacterModel").child(UserDefaults.standard.object(forKey: "nick") as! String).child("missionsAvailable")
@@ -184,28 +221,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func updateProgressBar(){
-        let ref = FIRDatabase.database().reference().child("CharacterModel")
-        ref.child(UserDefaults.standard.object(forKey: "nick") as! String).observe(.value, with: { (snapshot) in
-             DispatchQueue.main.async {
-                if let dict = snapshot.value as? [String: AnyObject]{
-                    print(dict)
-                    //let level = dict["level"] as! Int
-                    if let exp = dict["exp"] as? NSNumber{
-                        let progress = exp.floatValue/Float(self.xp!)
-                        self.expProgress.setProgress(progress, animated: true)
-                    }
-                }
-            }
-            
-            
-        })
         if let nick = UserDefaults.standard.object(forKey: "nick") as? String{
             CharacterModel.asyncAll(path: nick, completion: { (json) in
                 print("---------inicio------")
-    
+                
                 self.currentUser.age = json["age"] as? Int
                 self.currentUser.exp = json["exp"] as? Double
-
+                
                 self.currentUser.gender = json["gender"] as? String
                 self.currentUser.level = json["level"] as? Int
                 self.currentUser.nickName = json["nick"] as? String
@@ -237,6 +259,21 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //            //-------
             })
         }
+        let ref = FIRDatabase.database().reference().child("CharacterModel")
+        ref.child(UserDefaults.standard.object(forKey: "nick") as! String).observe(.value, with: { (snapshot) in
+             DispatchQueue.main.async {
+                if let dict = snapshot.value as? [String: AnyObject]{
+                    print(dict)
+                    //let level = dict["level"] as! Int
+                    if let exp = dict["exp"] as? NSNumber{
+                        let progress = exp.floatValue/Float(self.xp!)
+                        self.expProgress.setProgress(progress, animated: true)
+                    }
+                }
+            }
+            
+            
+        })
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -312,8 +349,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             })
 //            //-------
-            
-           self.verifyLevel()
+            if self.mustChangeLevel || self.currentUser.exp == 0{
+                self.verifyLevel()
+            }
 
         })
     }
@@ -321,20 +359,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     //É ESSA A FUNÇAO GAMBIARRA
     // Função que verifica o nível do usuário e adiciona as missões do nível nas missonsAvailable do usuário
     func verifyLevel(){
-        if self.currentUser.exp! == 0{
-            for lvl in self.level.missionsIndexs!{
-                print(lvl.key)
-                if lvl.key == ("level\(currentUser.level!.description)"){
-                    var j = 0
-                    for i in lvl.value{
-                        j = j+1
-                        if self.missionsArray.count > 0{
-                            let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String, "enabled": self.missionsArray[i-1].enabled!, "identifier": "mission\(j)"] as [String : Any]
-                            let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
-                            ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
-                            
-                            
-                        }
+        self.mustChangeLevel = false
+        self.currentUser.missionsAvailable = []
+        for lvl in self.level.missionsIndexs!{
+            print(lvl.key)
+            if lvl.key == ("level\(currentUser.level!.description)"){
+                var j = 0
+                for i in lvl.value{
+                    j = j+1
+                    if self.missionsArray.count > 0{
+                        let dict = ["activityType": self.missionsArray[i-1].activityType! , "description": self.missionsArray[i-1].missionDescription!, "prize": self.missionsArray[i-1].prize!, "goal": self.missionsArray[i-1].goal!, "id":self.missionsArray[i-1].id!, "type":self.missionsArray[i-1].type!, "title": self.missionsArray[i-1].title!, "currentProgress": self.missionsArray[i-1].currentProgress!, "status": (self.missionsArray[i-1].status?.rawValue)! as String, "enabled": self.missionsArray[i-1].enabled!, "identifier": "mission\(j)"] as [String : Any]
+                        let ref = FIRDatabase.database().reference(fromURL: "https://gitmove-e1481.firebaseio.com/")
+                        ref.child("CharacterModel").child(self.currentUser.nickName!).child("missionsAvailable").child("mission\(j)").setValue(dict)
+                        
+                        
                     }
                 }
             }
@@ -346,6 +384,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.getMissionsAvailable(dict: dict)
             })
         }
+        self.missionTable.reloadData()
     }
     // Transforma dicionário em um objeto Mission e apenda no array do currentUser
     func getMissionsAvailable(dict: [String: AnyObject]){

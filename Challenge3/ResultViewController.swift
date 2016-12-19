@@ -72,9 +72,9 @@ class ResultViewController: UIViewController {
                     if snapshot.exists() {
                         //completion((snapshoot.value as! [String : AnyOb)!)
                         var dict = snapshot.value as! [String: AnyObject]
-                        var exp = dict["exp"] as! Int
-                        exp = exp + (self.missionData?.xpEarned!)!
-                        ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).updateChildValues(["exp":exp])
+                        let exp = dict["exp"] as! NSNumber
+                        let exp2 = exp.intValue + (self.missionData?.xpEarned!)!
+                        ref.child((UserDefaults.standard.object(forKey: "nick") as? String)!).updateChildValues(["exp":exp2])
                         print((UserDefaults.standard.object(forKey: "nick") as? String)!)
                         print(self.ref)
                         self.ref.updateChildValues(["enabled":false])

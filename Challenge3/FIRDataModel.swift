@@ -68,6 +68,17 @@ extension FIRDataModel {
             }
         })
     }
+    static func asyncAllSingle(completion: @escaping (_ json: JSON) -> Void) {
+        
+        Self.reference.child(Self.className).observeSingleEvent(of: .value, with: { snapshot in
+            DispatchQueue.main.async {
+                if snapshot.exists() {
+                    completion((snapshot.value as! [String : AnyObject]?)!)
+                    //print(snapshot.value)
+                }
+            }
+        })
+    }
     static func asyncAll(path: String, completion: @escaping (_ json: JSON) -> Void) {
         
         Self.reference.child(Self.className).child(path).observe(.value, with: { snapshot in
