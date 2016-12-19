@@ -20,13 +20,14 @@ class QuestTableViewCell: UITableViewCell {
     
     @IBOutlet weak var reward: UILabel!
     
-    @IBOutlet weak var enabledLabel: UIView!
+    @IBOutlet weak var viewBack: UIView!
+
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title.text = "titulodaquest"
-        self.questImage.image = #imageLiteral(resourceName: "male")
+        self.questImage.image = #imageLiteral(resourceName: "shild")
         self.reward.text = "tu perde peso"
         // Initialization code
     }

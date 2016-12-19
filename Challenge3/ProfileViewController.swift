@@ -122,6 +122,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.missionTable.delegate = self
         self.missionTable.dataSource = self
+        //setando borda para a table
+        self.missionTable.layer.masksToBounds = true
+        //self.missionTable.layer.borderColor = UIColor( red: 153/255, green: 153/255, blue:0/255, alpha: 1.0 ).cgColor
+        self.missionTable.layer.borderColor = UIColor.black.cgColor
+        self.missionTable.layer.borderWidth = 4.0
+        //----------
         
         self.missionTable.becomeFirstResponder()
 
@@ -455,7 +461,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.delegate = self
             
             if cell.mission?.enabled == false {
-                cell.cellState.backgroundColor = UIColor.orange
+
+                
+                 cell.cellState.backgroundColor = UIColor(red: 255/255.0, green: 183/255.0, blue: 136/255.0, alpha: 1.0)                //aqui
                 cell.buttonState.isHidden = true
                 cell.buttonState.isEnabled = false
             }else{
@@ -481,12 +489,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.delegate = self
             
             if cell.mission?.enabled == false {
-                cell.enabledLabel.backgroundColor = UIColor.orange
-                cell.enabledLabel.alpha = 0.5
+                cell.viewBack.backgroundColor = UIColor(red: 255/255.0, green: 183/255.0, blue: 136/255.0, alpha: 1.0)
+
             }else{
             
-                cell.enabledLabel.backgroundColor = UIColor.white
-                cell.enabledLabel.alpha = 1
+                cell.viewBack.backgroundColor = UIColor.white
+                cell.viewBack.alpha = 1
             
             }
             
