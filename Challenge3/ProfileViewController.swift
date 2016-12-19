@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var missionTable: UITableView!
     @IBOutlet weak var labelNickName: UILabel!
     
+    @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var expProgress: UIProgressView!
     
     var flag: Bool? = false
