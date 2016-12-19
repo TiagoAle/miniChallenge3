@@ -37,7 +37,7 @@ class ExpandedTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title.text = "titulodaquest"
-        self.questImage.image = #imageLiteral(resourceName: "shild")
+        self.questImage.image = #imageLiteral(resourceName: "questIcon")
         self.reward.text = "tu perde peso"
         self.questDescription.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus, orci ac tempor eleifend, tellus leo ultricies erat, sed sodales nisl velit in enim. "
         // Initialization code

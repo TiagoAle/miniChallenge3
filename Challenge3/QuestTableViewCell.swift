@@ -27,7 +27,7 @@ class QuestTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.title.text = "titulodaquest"
-        self.questImage.image = #imageLiteral(resourceName: "shild")
+        self.questImage.image = #imageLiteral(resourceName: "questIcon")
         self.reward.text = "tu perde peso"
         // Initialization code
     }
